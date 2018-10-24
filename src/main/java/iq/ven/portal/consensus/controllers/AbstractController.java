@@ -12,8 +12,6 @@ import java.io.Writer;
 import java.net.ConnectException;
 
 public class AbstractController {
-
-
     protected static final Logger logger = LoggerFactory.getLogger(AbstractController.class);
 
     @ExceptionHandler
@@ -40,7 +38,7 @@ public class AbstractController {
             writer.append(message);
         }
         logger.error("AbstractController." + exception.getClass(), exception);
-        return null;
+        return message;
     }
 
     private static boolean isCausedBy(Throwable exception, Class<? extends Throwable> cause_class) {

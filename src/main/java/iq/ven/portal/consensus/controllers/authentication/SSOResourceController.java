@@ -53,7 +53,7 @@ public class SSOResourceController extends AbstractController {
                         .withUsername(userDetails.getUsername())
                         .build();
                 projectUser.setUserData(userData);
-
+                userState.setUserRole(userDetails.getRoles());
                 userState.setLogInDate(new Date());
 
 

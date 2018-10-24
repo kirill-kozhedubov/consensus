@@ -7,8 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/course")
-public class IssueRestController extends AbstractController {
+@RequestMapping("/issue")
+public class IssueResourceController extends AbstractController {
 
     @RequestMapping(path = "/zulul", method = RequestMethod.POST)
     @ResponseBody
