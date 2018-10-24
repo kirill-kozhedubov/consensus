@@ -1,5 +1,6 @@
 package iq.ven.portal.consensus.database.user.model;
 
+import iq.ven.portal.consensus.database.Base;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -9,13 +10,9 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "user_table")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
-    private long id;
+@Table(name = "users")
+@PrimaryKeyJoinColumn(name="id")
+public class User extends Base{
 
     @Column(name = "email", unique=true)
     @Email(message = "*Please provide a valid Email")
@@ -47,15 +44,6 @@ public class User {
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
-
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getPassword() {
         return password;
