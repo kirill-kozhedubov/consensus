@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Component
 @Scope(value="session", proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -17,15 +17,15 @@ public class UserState implements Serializable {
     @Autowired
     private ProjectUser projectUser;
 
-    private Set<Role> userRoles;
+    private List<Role> userRoles;
 
     private Date logInDate;
 
-    public Set<Role> getUserRole() {
+    public List<Role> getUserRole() {
         return userRoles;
     }
 
-    public void setUserRole(Set<Role> userRoles) {
+    public void setUserRole(List<Role> userRoles) {
         this.userRoles = userRoles;
     }
 

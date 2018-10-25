@@ -2,11 +2,13 @@ package iq.ven.portal.consensus.database;
 
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "base")
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Base {
+public class Base implements Serializable{
+    @Id
     @Column(name = "id")
     private int id;
 

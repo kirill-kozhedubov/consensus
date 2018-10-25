@@ -49,7 +49,7 @@ public class UserDataServiceImpl implements UserDataService, UserDetailsService 
             rolesDataService.saveRole(roleUser);
             role = rolesDataService.findRoleByName("USER");
         }
-        user.setRoles(new HashSet<Role>(Arrays.asList(role)));
+        user.setRoles(Arrays.asList(role));
         userRepository.save(user);
     }
 
@@ -64,7 +64,7 @@ public class UserDataServiceImpl implements UserDataService, UserDetailsService 
             return null;
     }
 
-    private List<GrantedAuthority> getUserAuthority(Set<Role> userRoles) {
+    private List<GrantedAuthority> getUserAuthority(List<Role> userRoles) {
         Set<GrantedAuthority> roles = new HashSet<GrantedAuthority>();
         for (Role role : userRoles) {
             roles.add(new SimpleGrantedAuthority(role.getRole()));
