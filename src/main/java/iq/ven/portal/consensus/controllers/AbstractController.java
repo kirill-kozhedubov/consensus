@@ -1,7 +1,10 @@
 package iq.ven.portal.consensus.controllers;
 
+import iq.ven.portal.consensus.common.beans.ProjectUser;
+import iq.ven.portal.consensus.common.beans.UserState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -12,7 +15,15 @@ import java.io.Writer;
 import java.net.ConnectException;
 
 public class AbstractController {
+
     protected static final Logger logger = LoggerFactory.getLogger(AbstractController.class);
+
+    @Autowired
+    protected ProjectUser projectUser;
+
+    @Autowired
+    protected UserState userState;
+
 
     @ExceptionHandler
     public String handleException(HttpServletRequest request,

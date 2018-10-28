@@ -1,4 +1,4 @@
-package iq.ven.portal.consensus.common.beans;
+package iq.ven.portal.consensus.common.model.base;
 
 public class UserData {
 

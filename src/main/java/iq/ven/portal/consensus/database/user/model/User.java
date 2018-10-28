@@ -11,15 +11,15 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-@PrimaryKeyJoinColumn(name="id")
-public class User extends Base{
+@PrimaryKeyJoinColumn(name = "id")
+public class User extends Base {
 
-    @Column(name = "email", unique=true)
+    @Column(name = "email", unique = true)
     @Email(message = "*Please provide a valid Email")
     @NotEmpty(message = "*Please provide an email")
     private String email;
 
-    @Column(name = "username", unique=true)
+    @Column(name = "username", unique = true)
     @Email(message = "*Please provide a valid Username")
     @NotEmpty(message = "*Please provide a username")
     private String username;

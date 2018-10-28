@@ -10,10 +10,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script th:src="@{/js/authentication.js}"></script>
+    <script th:src="@{/js/consensus.ven.lib.js}"></script>
 </head>
+<!--
+<head>
+    <div th:replace="headerfragment :: header"></div>
+    <title>Example</title>
+    <script src="customStuff"></script>
+</head>
+-->
+
+
+
 
 <body>
-<form th:action="@{/registration}" method="get">
+<form th:action="@{/sso/registration}" method="get">
     <button class="btn btn-md btn-warning btn-block" type="Submit">Go To Registration Page</button>
 </form>
 

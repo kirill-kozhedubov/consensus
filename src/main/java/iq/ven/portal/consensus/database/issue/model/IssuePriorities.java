@@ -1,4 +1,5 @@
 package iq.ven.portal.consensus.database.issue.model;
 
-public class IssuePriorities {
+public enum IssuePriorities {
+    CRITICAL, HIGH, LOW, NORMAL
 }

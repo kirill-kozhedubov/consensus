@@ -1,7 +1,7 @@
 package iq.ven.portal.consensus.controllers.authentication;
 
 import iq.ven.portal.consensus.common.beans.ProjectUser;
-import iq.ven.portal.consensus.common.beans.UserData;
+import iq.ven.portal.consensus.common.model.base.UserData;
 import iq.ven.portal.consensus.common.beans.UserState;
 import iq.ven.portal.consensus.common.validators.UserValidator;
 import iq.ven.portal.consensus.controllers.AbstractController;

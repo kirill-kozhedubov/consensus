@@ -33,11 +33,12 @@ public class Issue extends Base {
 
     private Date dueDate;
 
-    //issue type
+    private IssueTypes type;
 
-    //issue priority
+    private IssuePriorities priority;//issue priority
 
-    //issue status
+    private IssueStatuses status;//issue status
+
 
 
     // Use the sequence that is defined above:
@@ -52,7 +53,35 @@ public class Issue extends Base {
 
         return sb.toString();
     }
+
     public void setIssueKey(String issueKey) {
         this.issueKey = issueKey;
+    }
+
+    @Enumerated(EnumType.STRING)
+    public IssueTypes getType() {
+        return type;
+    }
+
+    public void setType(IssueTypes type) {
+        this.type = type;
+    }
+
+    @Enumerated(EnumType.STRING)
+    public IssuePriorities getPriority() {
+        return priority;
+    }
+
+    public void setPriority(IssuePriorities priority) {
+        this.priority = priority;
+    }
+
+    @Enumerated(EnumType.STRING)
+    public IssueStatuses getStatus() {
+        return status;
+    }
+
+    public void setStatus(IssueStatuses status) {
+        this.status = status;
     }
 }

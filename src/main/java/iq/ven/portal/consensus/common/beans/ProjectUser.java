@@ -1,5 +1,6 @@
 package iq.ven.portal.consensus.common.beans;
 
+import iq.ven.portal.consensus.common.model.base.UserData;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
@@ -11,11 +12,6 @@ import java.io.Serializable;
 public class ProjectUser implements Serializable {
 
    private UserData userData;
-
-
-
-
-
 
    public UserData getUserData() {
       return userData;
