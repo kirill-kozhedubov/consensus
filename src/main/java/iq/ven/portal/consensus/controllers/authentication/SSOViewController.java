@@ -2,6 +2,7 @@ package iq.ven.portal.consensus.controllers.authentication;
 
 import iq.ven.portal.consensus.common.beans.ProjectUser;
 import iq.ven.portal.consensus.common.beans.UserState;
+import iq.ven.portal.consensus.common.util.TemplatesHelper;
 import iq.ven.portal.consensus.database.user.model.User;
 import iq.ven.portal.consensus.services.data.RolesDataService;
 import iq.ven.portal.consensus.services.data.UserDataService;
@@ -40,6 +41,7 @@ public class SSOViewController {
     @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
     public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView("auth/login");
+        modelAndView.addObject(TemplatesHelper.PAGE_TITLE,"Login page");
         return modelAndView;
     }
 
@@ -50,25 +52,20 @@ public class SSOViewController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/admin/home", method = RequestMethod.GET)
-    public ModelAndView home() {
-        ModelAndView modelAndView = new ModelAndView();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findUserByEmail(auth.getName());
-        modelAndView.addObject("userName", "Welcome " + user.getFirstName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-        modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
-        modelAndView.setViewName("admin/home");
-        return modelAndView;
-    }
-
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public ModelAndView logout(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
-        userState.clear();
+        clearUserParametersAfterLogin();
         session.invalidate();
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("auth/login");
         return modelAndView;
     }
+
+    private void clearUserParametersAfterLogin() {
+        userState.clear();
+        projectUser.clear();
+    }
+
 }

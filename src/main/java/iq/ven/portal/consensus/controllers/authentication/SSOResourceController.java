@@ -1,8 +1,8 @@
 package iq.ven.portal.consensus.controllers.authentication;
 
 import iq.ven.portal.consensus.common.beans.ProjectUser;
-import iq.ven.portal.consensus.common.model.base.UserData;
 import iq.ven.portal.consensus.common.beans.UserState;
+import iq.ven.portal.consensus.common.model.base.UserData;
 import iq.ven.portal.consensus.common.validators.UserValidator;
 import iq.ven.portal.consensus.controllers.AbstractController;
 import iq.ven.portal.consensus.controllers.authentication.model.UserForRegistration;
@@ -45,19 +45,7 @@ public class SSOResourceController extends AbstractController {
         if (userDetails != null) {
             BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
             if (userDetails.getUsername().equals(email) && bCryptPasswordEncoder.matches(password, userDetails.getPassword())) {
-
-                UserData userData = UserData.UserDataBuilder.anUserData()
-                        .withEmail(userDetails.getEmail())
-                        .withFirstName(userDetails.getFirstName())
-                        .withLastName(userDetails.getLastName())
-                        .withUsername(userDetails.getUsername())
-                        .build();
-                projectUser.setUserData(userData);
-                userState.setUserRole(userDetails.getRoles());
-                userState.setLogInDate(new Date());
-
-
-
+                setUserParametersAfterLogin(userDetails);
 
                 result.put("success", true);
             } else {
@@ -109,6 +97,18 @@ public class SSOResourceController extends AbstractController {
             }
         }
         return result;
+    }
+
+    private void setUserParametersAfterLogin(User userDetails) {
+        UserData userData = UserData.UserDataBuilder.anUserData()
+                .withEmail(userDetails.getEmail())
+                .withFirstName(userDetails.getFirstName())
+                .withLastName(userDetails.getLastName())
+                .withUsername(userDetails.getUsername())
+                .build();
+        projectUser.setUserData(userData);
+        userState.setUserRole(userDetails.getRoles());
+        userState.setLogInDate(new Date());
     }
 
 

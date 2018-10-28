@@ -20,4 +20,8 @@ public class ProjectUser implements Serializable {
    public void setUserData(UserData userData) {
       this.userData = userData;
    }
+
+   public void clear() {
+
+   }
 }

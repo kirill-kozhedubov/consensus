@@ -2,25 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<head>
-    <title>Registration</title>
+<head lang="en" th:replace="fragments/head :: header">
     <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="icon" href="https://static.twitchcdn.net/assets/favicon-75270f9df2b07174c23c.ico">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script th:src="@{/js/authentication.js}"></script>
-    <script th:src="@{/js/consensus.ven.lib.js}"></script>
 </head>
-<!--
-<head>
-    <div th:replace="headerfragment :: header"></div>
-    <title>Example</title>
-    <script src="customStuff"></script>
-</head>
--->
-
-
 
 
 <body>
