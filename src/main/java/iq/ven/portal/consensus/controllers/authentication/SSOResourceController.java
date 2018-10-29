@@ -39,13 +39,15 @@ public class SSOResourceController extends AbstractController {
 
     @RequestMapping(path = "/login/request", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> loginRequest(@RequestParam(value = "email") String email, @RequestParam(value = "password") String password) {
+    public Map<String, Object> loginRequest(HttpServletResponse response, HttpServletRequest request,
+                                            @RequestParam(value = "email") String email, @RequestParam(value = "password") String password) {
         Map<String, Object> result = new HashMap<>();
         User userDetails = userDataService.findUserByEmail(email);
         if (userDetails != null) {
             BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
             if (userDetails.getUsername().equals(email) && bCryptPasswordEncoder.matches(password, userDetails.getPassword())) {
                 setUserParametersAfterLogin(userDetails);
+                request.getSession(true);
 
                 result.put("success", true);
             } else {

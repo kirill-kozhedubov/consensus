@@ -44,9 +44,9 @@ public class UserDataServiceImpl implements UserDataService, UserDetailsService 
         user.setActive(true);
         Role role = rolesDataService.findRoleByName("USER");
         if (role == null) {
-            Role roleUser = new Role();
-            roleUser.setRole("USER");
-            rolesDataService.saveRole(roleUser);
+            Role userRole = new Role();
+            userRole.setRole("USER");
+            rolesDataService.saveRole(userRole);
             role = rolesDataService.findRoleByName("USER");
         }
         user.setRoles(Arrays.asList(role));

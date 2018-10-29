@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments/head :: header"></head>
+
+<body>
+
+<nav th:replace="fragments/header-component :: header-component"></nav>
+
+
+<div> <!--head continue-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/issue.css}"/>
+    <script th:src="@{/js/issue.js}"></script>
+</div>
+
+
+
+<div th:each="i : ${#numbers.sequence( 1, 300/1)}">
+
+    xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd
+</div>
+
+
+
+
+
+</body>
+</html>
