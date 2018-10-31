@@ -17,7 +17,7 @@ public class IssueComment extends Base {
     @JoinColumn(name = "issue_id")
     private Issue issue;
 
-
+    @Column(columnDefinition = "text")
     private String text;
 
 }

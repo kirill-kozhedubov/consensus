@@ -4,7 +4,11 @@ import iq.ven.portal.consensus.common.beans.ProjectUser;
 import iq.ven.portal.consensus.common.beans.UserState;
 import iq.ven.portal.consensus.common.model.base.UserData;
 import iq.ven.portal.consensus.common.util.TemplatesHelper;
+import iq.ven.portal.consensus.database.issue.model.Issue;
+import iq.ven.portal.consensus.database.project.model.Project;
 import iq.ven.portal.consensus.database.user.model.User;
+import iq.ven.portal.consensus.services.data.IssueDataService;
+import iq.ven.portal.consensus.services.data.ProjectDataService;
 import iq.ven.portal.consensus.services.data.RolesDataService;
 import iq.ven.portal.consensus.services.data.UserDataService;
 import org.slf4j.Logger;
@@ -36,6 +40,12 @@ public class SSOViewController {
     @Autowired
     private UserState userState;
 
+    @Autowired
+    private IssueDataService issueDataService;
+
+    @Autowired
+    private ProjectDataService projectDataService;
+
     private static final Logger logger = LoggerFactory.getLogger(SSOViewController.class);
 
     @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
@@ -44,9 +54,11 @@ public class SSOViewController {
         modelAndView.addObject(TemplatesHelper.PAGE_TITLE,"Login page");
 
 
-
-
 //--------------------------------START OF TEST-------------------------------------
+
+        User userr = createUser();
+        Project project = createProject(userr);
+        Issue issue = createIssue(project, userr);
 
 //--------------------------------EMD OF TEST-------------------------------------
 
@@ -55,7 +67,7 @@ public class SSOViewController {
     }
 
 
-    private void createUser() {
+    private User createUser() {
         User userExists = null;
         User user = null;
 
@@ -83,7 +95,24 @@ public class SSOViewController {
                 logger.error("Error in saving user", e);
             }
             //   modelAndView.setViewName("redirect:sso/login");
+            return user;
+        } else {
+
+            return userExists;
         }
+    }
+
+    Project createProject(User user) {
+
+
+
+        return null;
+    }
+
+    Issue createIssue(Project project, User user) {
+
+
+        return null;
     }
 
 

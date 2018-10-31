@@ -18,7 +18,6 @@ public class IssueHistoryEntry extends Base {
     @JoinColumn(name = "issue_id")
     private Issue issue;
 
-
     private String changeItself;//maybe rework maybe DB maybe from and to
 
 

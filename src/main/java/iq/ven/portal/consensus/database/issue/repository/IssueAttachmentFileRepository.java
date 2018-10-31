@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository("issueAttachmentFileRepository")
 public interface IssueAttachmentFileRepository extends JpaRepository<IssueAttachmentFile, String> {
 
-    IssueAttachmentFile findById(String id);
+    IssueAttachmentFile findByUuid(String uuid);
 }

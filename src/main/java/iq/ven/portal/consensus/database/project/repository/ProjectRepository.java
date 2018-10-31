@@ -6,4 +6,10 @@ import org.springframework.stereotype.Repository;
 
 @Repository("projectRepository")
 public interface ProjectRepository extends JpaRepository<Project, Long> {
+
+    Project findById(long id);
+
+    Project findByName(String name);
+
+    Project findByAbbreviation(String abbreviation);
 }

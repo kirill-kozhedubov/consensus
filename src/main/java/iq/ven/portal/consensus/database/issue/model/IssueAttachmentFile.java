@@ -10,7 +10,7 @@ public class IssueAttachmentFile {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
+    private String uuid;
 
     private String fileName;
 
@@ -29,12 +29,12 @@ public class IssueAttachmentFile {
         this.data = data;
     }
 
-    public String getId() {
-        return id;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public String getFileName() {

@@ -1,7 +1,7 @@
 package iq.ven.portal.consensus.database.project.model;
 
 import iq.ven.portal.consensus.database.Base;
-import iq.ven.portal.consensus.database.board.model.Board;
+import iq.ven.portal.consensus.database.board.model.main.Board;
 import iq.ven.portal.consensus.database.issue.model.Issue;
 import iq.ven.portal.consensus.database.user.model.User;
 
@@ -17,7 +17,7 @@ public class Project extends Base {
     private String abbreviation;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "manager_id")
     private User manager;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -27,6 +27,9 @@ public class Project extends Base {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "project_boards")
     private List<Board> boards;
+
+    public Project() {
+    }
 
     public String getAbbreviation() {
         return abbreviation;

@@ -36,7 +36,7 @@ public class IssueAttachmentFileDataServiceImpl implements IssueAttachmentFileDa
     }
 
     public IssueAttachmentFile getFile(String fileId) {
-        IssueAttachmentFile issueAttachmentFile = issueAttachmentFileRepository.findById(fileId);
+        IssueAttachmentFile issueAttachmentFile = issueAttachmentFileRepository.findByUuid(fileId);
         if (issueAttachmentFile == null) {
             throw new RuntimeException("File not found with id " + fileId);
         }

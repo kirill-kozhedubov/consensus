@@ -14,6 +14,7 @@ import java.util.List;
 @Table(name = "issues")
 @PrimaryKeyJoinColumn(name = "id")
 @SequenceGenerator(name="key_sequence", initialValue=1, allocationSize=1)
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Issue extends Base {
 
     private String issueKey;
@@ -33,10 +34,13 @@ public class Issue extends Base {
     @Column(name = "due_date")
     private Date dueDate;
 
+    @Enumerated(EnumType.STRING)
     private IssueTypes type;
 
+    @Enumerated(EnumType.STRING)
     private IssuePriorities priority;
 
+    @Enumerated(EnumType.STRING)
     private IssueStatuses status;//IssueStatuses.values();
 
 
@@ -66,7 +70,6 @@ public class Issue extends Base {
         this.issueKey = issueKey;
     }
 
-    @Enumerated(EnumType.STRING)
     public IssueTypes getType() {
         return type;
     }
@@ -75,7 +78,6 @@ public class Issue extends Base {
         this.type = type;
     }
 
-    @Enumerated(EnumType.STRING)
     public IssuePriorities getPriority() {
         return priority;
     }
@@ -84,7 +86,6 @@ public class Issue extends Base {
         this.priority = priority;
     }
 
-    @Enumerated(EnumType.STRING)
     public IssueStatuses getStatus() {
         return status;
     }

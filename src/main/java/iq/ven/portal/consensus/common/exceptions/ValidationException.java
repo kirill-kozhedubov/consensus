@@ -1,4 +1,4 @@
 package iq.ven.portal.consensus.common.exceptions;
 
-public class ValidationException extends Exception{
+public class ValidationException extends Exception {
 }

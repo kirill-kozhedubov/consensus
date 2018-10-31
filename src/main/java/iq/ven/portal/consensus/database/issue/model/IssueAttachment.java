@@ -18,13 +18,9 @@ public class IssueAttachment extends Base {
     @JoinColumn(name = "issue_id")
     private Issue issue;
 
-
-    private String commentContent;
-
-    private boolean isImage;
-
-    private String attachmentLink;
-
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "attachment_file_id")
+    private IssueAttachmentFile issueAttachmentFile;
 
 
 
