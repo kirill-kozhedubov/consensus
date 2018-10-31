@@ -8,38 +8,46 @@ import org.hibernate.annotations.GenerationTime;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "issues")
 @PrimaryKeyJoinColumn(name = "id")
-@SequenceGenerator(name="key_sequence", initialValue=1, allocationSize=100)
+@SequenceGenerator(name="key_sequence", initialValue=1, allocationSize=1)
 public class Issue extends Base {
 
     private String issueKey;
 
-    private String description;
-
+    @Column(name = "assignee")
     private User assignee;
 
-    private User reporter;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<User> reporters;
 
     private Issue parentIssue;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "project_id")
     private Project project;
 
-    private Date createdDate;
-
-    private Date updatedDate;
-
+    @Column(name = "due_date")
     private Date dueDate;
 
     private IssueTypes type;
 
-    private IssuePriorities priority;//issue priority
+    private IssuePriorities priority;
 
-    private IssueStatuses status;//issue status
+    private IssueStatuses status;//IssueStatuses.values();
 
 
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<IssueAttachment> attachments;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<IssueComment> comments;
+
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<IssueHistoryEntry> history;
 
     // Use the sequence that is defined above:
     @Column(name = "issue_key", nullable = false, insertable = false/*, updatable = false*/)
@@ -84,4 +92,6 @@ public class Issue extends Base {
     public void setStatus(IssueStatuses status) {
         this.status = status;
     }
+
+
 }

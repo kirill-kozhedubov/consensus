@@ -3,18 +3,20 @@ package iq.ven.portal.consensus.database.issue.model;
 import iq.ven.portal.consensus.database.Base;
 import iq.ven.portal.consensus.database.user.model.User;
 
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
-import java.util.Date;
+import javax.persistence.*;
 @Entity
 @Table(name = "issue_comments")
 @PrimaryKeyJoinColumn(name="id")
 public class IssueComment extends Base {
 
-    private User commentator;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    private Date addedDate;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "issue_id")
+    private Issue issue;
+
 
     private String text;
 

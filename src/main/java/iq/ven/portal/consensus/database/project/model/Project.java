@@ -1,20 +1,32 @@
 package iq.ven.portal.consensus.database.project.model;
 
 import iq.ven.portal.consensus.database.Base;
+import iq.ven.portal.consensus.database.board.model.Board;
 import iq.ven.portal.consensus.database.issue.model.Issue;
+import iq.ven.portal.consensus.database.user.model.User;
 
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "projects")
-@PrimaryKeyJoinColumn(name="id")
+@PrimaryKeyJoinColumn(name = "id")
 public class Project extends Base {
 
+    @Column(name = "abbreviation")
     private String abbreviation;
 
-    private Issue baseIssue;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User manager;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "project_issues")
+    private List<Issue> issues;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "project_boards")
+    private List<Board> boards;
 
     public String getAbbreviation() {
         return abbreviation;
@@ -22,5 +34,29 @@ public class Project extends Base {
 
     public void setAbbreviation(String abbreviation) {
         this.abbreviation = abbreviation;
+    }
+
+    public User getManager() {
+        return manager;
+    }
+
+    public void setManager(User manager) {
+        this.manager = manager;
+    }
+
+    public List<Issue> getIssues() {
+        return issues;
+    }
+
+    public void setIssues(List<Issue> issues) {
+        this.issues = issues;
+    }
+
+    public List<Board> getBoards() {
+        return boards;
+    }
+
+    public void setBoards(List<Board> boards) {
+        this.boards = boards;
     }
 }

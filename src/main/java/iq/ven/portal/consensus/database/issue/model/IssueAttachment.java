@@ -3,23 +3,29 @@ package iq.ven.portal.consensus.database.issue.model;
 import iq.ven.portal.consensus.database.Base;
 import iq.ven.portal.consensus.database.user.model.User;
 
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.Table;
-import java.util.Date;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "issue_attachments")
 @PrimaryKeyJoinColumn(name = "id")
 public class IssueAttachment extends Base {
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
-    private String comment;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "issue_id")
+    private Issue issue;
 
-    private String attachmentLink; //?
 
-    private Date addedDate;
+    private String commentContent;
+
+    private boolean isImage;
+
+    private String attachmentLink;
+
+
 
 
 }

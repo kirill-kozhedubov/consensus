@@ -10,7 +10,14 @@ import javax.persistence.*;
 @PrimaryKeyJoinColumn(name="id")
 public class IssueHistoryEntry extends Base {
 
-    private User changedBy;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "issue_id")
+    private Issue issue;
+
 
     private String changeItself;//maybe rework maybe DB maybe from and to
 
