@@ -1,4 +1,4 @@
-package iq.ven.portal.consensus.controllers.issues.attachments;
+package iq.ven.portal.consensus.controllers.issues.attachments.payload;
 
 public class UploadFileResponse {
     private String fileName;

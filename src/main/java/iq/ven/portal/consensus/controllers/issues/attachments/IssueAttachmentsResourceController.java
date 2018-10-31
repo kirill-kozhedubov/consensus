@@ -2,6 +2,7 @@ package iq.ven.portal.consensus.controllers.issues.attachments;
 
 
 import iq.ven.portal.consensus.controllers.AbstractController;
+import iq.ven.portal.consensus.controllers.issues.attachments.payload.UploadFileResponse;
 import iq.ven.portal.consensus.database.issue.model.IssueAttachmentFile;
 import iq.ven.portal.consensus.services.data.IssueAttachmentDataService;
 import iq.ven.portal.consensus.services.data.IssueAttachmentFileDataService;

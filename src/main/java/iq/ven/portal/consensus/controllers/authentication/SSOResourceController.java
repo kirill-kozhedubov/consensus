@@ -5,7 +5,7 @@ import iq.ven.portal.consensus.common.beans.UserState;
 import iq.ven.portal.consensus.common.model.base.UserData;
 import iq.ven.portal.consensus.common.validators.UserValidator;
 import iq.ven.portal.consensus.controllers.AbstractController;
-import iq.ven.portal.consensus.controllers.authentication.model.UserForRegistration;
+import iq.ven.portal.consensus.controllers.authentication.payload.UserForRegistration;
 import iq.ven.portal.consensus.database.user.model.User;
 import iq.ven.portal.consensus.services.data.RolesDataService;
 import iq.ven.portal.consensus.services.data.UserDataService;

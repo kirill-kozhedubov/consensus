@@ -1,4 +1,4 @@
-package iq.ven.portal.consensus.controllers.authentication.model;
+package iq.ven.portal.consensus.controllers.authentication.payload;
 
 public class UserForRegistration {
     private String firstName;

@@ -1,6 +1,6 @@
 package iq.ven.portal.consensus.common.validators;
 
-import iq.ven.portal.consensus.controllers.authentication.model.UserForRegistration;
+import iq.ven.portal.consensus.controllers.authentication.payload.UserForRegistration;
 
 public class UserValidator {
 
