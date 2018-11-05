@@ -17,6 +17,18 @@ public class ProjectDataServiceImpl implements ProjectDataService{
         return projectRepository.save(project);
     }
 
+    @Override
+    public Project getProjectByAbbreviation(String abbreviation) {
+        Project project = projectRepository.findByAbbreviation(abbreviation);
+        return project;
+    }
+
+    @Override
+    public Project getProjectById(long projectId) {
+        Project project = projectRepository.findById(projectId);
+        return project;
+    }
+
     public Project saveProject(ProjectCreationRequest projectRequest) {
         Project project = new Project();
         return projectRepository.save(project);

@@ -10,4 +10,7 @@ public interface UserDataService {
     void saveUser(User user);
 
     UserDetails loadUserByUsername(String userName);
+
+    User getUserByUsername(String userName);
+
 }

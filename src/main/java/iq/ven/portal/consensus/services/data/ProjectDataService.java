@@ -6,4 +6,7 @@ public interface ProjectDataService {
 
     Project saveProject(Project project);
 
+    Project getProjectByAbbreviation(String abbreviation);
+
+    Project getProjectById(long projectId);
 }

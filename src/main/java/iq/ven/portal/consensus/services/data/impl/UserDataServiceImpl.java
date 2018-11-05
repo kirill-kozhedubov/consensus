@@ -56,12 +56,19 @@ public class UserDataServiceImpl implements UserDataService, UserDetailsService 
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        User user = userRepository.findByEmail(userName);
+        User user = userRepository.findByUsername(userName);
         if (user != null) {
             List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
             return buildUserForAuthentication(user, authorities);
         } else
             return null;
+    }
+
+    @Override
+    public User getUserByUsername(String userName) {
+        User user = userRepository.findByUsername(userName);
+
+        return user;
     }
 
     private List<GrantedAuthority> getUserAuthority(List<Role> userRoles) {

@@ -65,6 +65,12 @@ public class SSOViewController {
         Project project = createProject(userr);
         Issue issue = createIssue(project, userr);
 
+
+
+
+
+
+
 //--------------------------------EMD OF TEST-------------------------------------
 
 
@@ -133,13 +139,13 @@ public class SSOViewController {
         issue.setStatus(IssueStatuses.CLOSED);
         issue.setType(IssueTypes.BUG);
         issue.setDescription("desc 1324");
-        issue.setAttachments(Collections.EMPTY_LIST);
-        issue.setComments();
-        issue.setHistory();
+        issue.setAttachments(Collections.emptyList());
+        issue.setComments(Collections.emptyList());
+        issue.setHistory(Collections.emptyList());
 
 
 
-        return null;
+        return issue;
     }
 
 

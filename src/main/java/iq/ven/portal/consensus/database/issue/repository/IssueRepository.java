@@ -6,4 +6,13 @@ import org.springframework.stereotype.Repository;
 
 @Repository("issueRepository")
 public interface IssueRepository extends JpaRepository<Issue, Long> {
+
+    Issue findById(long id);
+
+    Issue findByName(String name);
+
+    Issue findByIssueKey(String issueKey);
+
+
+
 }
