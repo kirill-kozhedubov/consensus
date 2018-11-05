@@ -6,5 +6,5 @@ public interface IssueAttachmentDataService {
 
     IssueAttachment storeIssueAttachment(IssueAttachment attachment);
 
-    IssueAttachment getIssueAttachment(long issueId);
+    IssueAttachment getIssueAttachment(String issueKey);
 }
