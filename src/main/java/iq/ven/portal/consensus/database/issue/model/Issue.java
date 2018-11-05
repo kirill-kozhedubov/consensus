@@ -94,5 +94,67 @@ public class Issue extends Base {
         this.status = status;
     }
 
+    public User getAssignee() {
+        return assignee;
+    }
 
+    public void setAssignee(User assignee) {
+        this.assignee = assignee;
+    }
+
+    public List<User> getReporters() {
+        return reporters;
+    }
+
+    public void setReporters(List<User> reporters) {
+        this.reporters = reporters;
+    }
+
+    public Issue getParentIssue() {
+        return parentIssue;
+    }
+
+    public void setParentIssue(Issue parentIssue) {
+        this.parentIssue = parentIssue;
+    }
+
+    public Project getProject() {
+        return project;
+    }
+
+    public void setProject(Project project) {
+        this.project = project;
+    }
+
+    public Date getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(Date dueDate) {
+        this.dueDate = dueDate;
+    }
+
+    public List<IssueAttachment> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(List<IssueAttachment> attachments) {
+        this.attachments = attachments;
+    }
+
+    public List<IssueComment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<IssueComment> comments) {
+        this.comments = comments;
+    }
+
+    public List<IssueHistoryEntry> getHistory() {
+        return history;
+    }
+
+    public void setHistory(List<IssueHistoryEntry> history) {
+        this.history = history;
+    }
 }

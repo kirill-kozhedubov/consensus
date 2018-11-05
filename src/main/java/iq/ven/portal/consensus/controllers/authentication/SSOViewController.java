@@ -5,6 +5,9 @@ import iq.ven.portal.consensus.common.beans.UserState;
 import iq.ven.portal.consensus.common.model.base.UserData;
 import iq.ven.portal.consensus.common.util.TemplatesHelper;
 import iq.ven.portal.consensus.database.issue.model.Issue;
+import iq.ven.portal.consensus.database.issue.model.IssuePriorities;
+import iq.ven.portal.consensus.database.issue.model.IssueStatuses;
+import iq.ven.portal.consensus.database.issue.model.IssueTypes;
 import iq.ven.portal.consensus.database.project.model.Project;
 import iq.ven.portal.consensus.database.user.model.User;
 import iq.ven.portal.consensus.services.data.IssueDataService;
@@ -22,6 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.Date;
 
 @Controller
@@ -103,13 +108,35 @@ public class SSOViewController {
     }
 
     Project createProject(User user) {
+        Project project = new Project();
+        project.setName("Test project");
+        project.setAbbreviation("PROJ");
+        project.setIssues(Collections.emptyList());
+        project.setBoards(Collections.emptyList());
+        project.setManager(user);
+        project.setDescription("lyl descrtiption");
 
+        project = projectDataService.saveProject(project);
 
-
-        return null;
+        return project;
     }
 
     Issue createIssue(Project project, User user) {
+        Issue issue = new Issue();
+        issue.setName("Issue ly123");
+        issue.setAssignee(user);
+        issue.setDueDate(new Date());
+        issue.setPriority(IssuePriorities.CRITICAL);
+        issue.setProject(project);
+        issue.setParentIssue(null);
+        issue.setReporters(Arrays.asList(user));
+        issue.setStatus(IssueStatuses.CLOSED);
+        issue.setType(IssueTypes.BUG);
+        issue.setDescription("desc 1324");
+        issue.setAttachments(Collections.EMPTY_LIST);
+        issue.setComments();
+        issue.setHistory();
+
 
 
         return null;
