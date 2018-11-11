@@ -23,7 +23,7 @@ public class IssueDataServiceImpl implements IssueDataService {
 
 
     @Override
-    public Issue storeIssue(Issue issue) {
+    public Issue saveIssue(Issue issue) {
         return issueRepository.save(issue);
     }
 

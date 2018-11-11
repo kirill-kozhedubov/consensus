@@ -36,7 +36,7 @@ public class IssueAttachmentsResourceController extends AbstractController{
 
     @PostMapping("/uploadFile")
     public UploadFileResponse uploadFile(@RequestParam("file") MultipartFile file) {
-        IssueAttachmentFile dbFile = issueAttachmentFileDataService.storeFile(file);
+        IssueAttachmentFile dbFile = issueAttachmentFileDataService.saveFile(file);
 
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")

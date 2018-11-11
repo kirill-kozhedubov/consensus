@@ -3,6 +3,7 @@ package iq.ven.portal.consensus.database.user.model;
 import iq.ven.portal.consensus.database.Base;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "roles")
@@ -37,8 +38,8 @@ public class Role extends Base {
     }
 */
 
-    @ManyToOne
-    private User user;
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+    private List<User> user;
 
 
 }

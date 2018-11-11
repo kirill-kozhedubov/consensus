@@ -19,7 +19,7 @@ public class Issue extends Base {
 
     private String issueKey;
 
-    @Column(name = "assignee")
+    @ManyToOne(cascade = CascadeType.ALL)
     private User assignee;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

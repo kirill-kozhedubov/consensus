@@ -13,8 +13,9 @@ import java.util.Date;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Base implements Serializable{
     @Id
-    @Column(name = "id")
-    private int id;
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    @Column(name = "id", updatable = false, nullable = false)
+    private long id;
 
     @Column(name = "name")
     private String name;
@@ -32,7 +33,7 @@ public class Base implements Serializable{
     @Column(name = "created", nullable = false)
     private Date updatedDate;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

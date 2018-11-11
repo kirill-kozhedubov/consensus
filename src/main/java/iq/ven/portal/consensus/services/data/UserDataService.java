@@ -7,7 +7,9 @@ public interface UserDataService {
 
     User findUserByEmail(String email);
 
-    void saveUser(User user);
+    User saveUser(User user, String roleName);
+
+    User saveUser(User user);
 
     UserDetails loadUserByUsername(String userName);
 

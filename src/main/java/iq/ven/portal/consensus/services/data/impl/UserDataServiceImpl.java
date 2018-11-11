@@ -39,7 +39,7 @@ public class UserDataServiceImpl implements UserDataService, UserDetailsService 
     }
 
     @Override
-    public void saveUser(User user) {
+    public User saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(true);
         Role role = rolesDataService.findRoleByName("USER");
@@ -50,7 +50,22 @@ public class UserDataServiceImpl implements UserDataService, UserDetailsService 
             role = rolesDataService.findRoleByName("USER");
         }
         user.setRoles(Arrays.asList(role));
-        userRepository.save(user);
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User saveUser(User user, String roleName) {
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setActive(true);
+        Role role = rolesDataService.findRoleByName(roleName);
+        if (role == null) {
+            Role userRole = new Role();
+            userRole.setRole("USER");
+            rolesDataService.saveRole(userRole);
+            role = rolesDataService.findRoleByName("USER");
+        }
+        user.setRoles(Arrays.asList(role));
+        return userRepository.save(user);
     }
 
     @Override

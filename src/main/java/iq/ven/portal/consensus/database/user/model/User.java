@@ -1,6 +1,7 @@
 package iq.ven.portal.consensus.database.user.model;
 
 import iq.ven.portal.consensus.database.Base;
+import iq.ven.portal.consensus.database.issue.model.Issue;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -20,7 +21,6 @@ public class User extends Base {
     private String email;
 
     @Column(name = "username", unique = true)
-    @Email(message = "*Please provide a valid Username")
     @NotEmpty(message = "*Please provide a username")
     private String username;
 
@@ -45,9 +45,14 @@ public class User extends Base {
         return password;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(name = "roles")
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "user_with_role",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
     private List<Role> roles;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Issue> issues;
 
     public void setPassword(String password) {
         this.password = password;

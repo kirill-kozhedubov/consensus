@@ -56,7 +56,7 @@ public class SSOViewController {
     @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
     public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject(TemplatesHelper.PAGE_TITLE,"Login page");
+        modelAndView.addObject(TemplatesHelper.PAGE_TITLE, "Login page");
 
 
 //--------------------------------START OF TEST-------------------------------------
@@ -66,14 +66,10 @@ public class SSOViewController {
         Issue issue = createIssue(project, userr);
 
 
-
-
-
-
-
 //--------------------------------EMD OF TEST-------------------------------------
 
-
+        modelAndView.setViewName("auth/login");
+        //modelAndView.setViewName("redirect:sso/login");
         return modelAndView;
     }
 
@@ -91,6 +87,13 @@ public class SSOViewController {
             user.setEmail("user@com.com");
             user.setPassword("user");
 
+            userState.setLogInDate(new Date());
+            try {
+                user = userService.saveUser(user);
+            } catch (Exception e) {
+                logger.error("Error in saving user", e);
+            }
+
             UserData userData = UserData.UserDataBuilder.anUserData()
                     .withEmail(user.getEmail())
                     .withFirstName(user.getFirstName())
@@ -99,16 +102,10 @@ public class SSOViewController {
                     .build();
             projectUser.setUserData(userData);
             userState.setUserRole(user.getRoles());
-            userState.setLogInDate(new Date());
-            try {
-                userService.saveUser(user);
-            } catch (Exception e) {
-                logger.error("Error in saving user", e);
-            }
-            //   modelAndView.setViewName("redirect:sso/login");
+
+
             return user;
         } else {
-
             return userExists;
         }
     }
@@ -119,7 +116,9 @@ public class SSOViewController {
         project.setAbbreviation("PROJ");
         project.setIssues(Collections.emptyList());
         project.setBoards(Collections.emptyList());
-        project.setManager(user);
+
+
+        project.setManager(userService.findUserByEmail(user.getEmail()));
         project.setDescription("lyl descrtiption");
 
         project = projectDataService.saveProject(project);
@@ -130,12 +129,12 @@ public class SSOViewController {
     Issue createIssue(Project project, User user) {
         Issue issue = new Issue();
         issue.setName("Issue ly123");
-        issue.setAssignee(user);
+        issue.setAssignee(userService.findUserByEmail(user.getEmail()));
         issue.setDueDate(new Date());
         issue.setPriority(IssuePriorities.CRITICAL);
-        issue.setProject(project);
+        issue.setProject(projectDataService.getProjectByAbbreviation(project.getAbbreviation()));
         issue.setParentIssue(null);
-        issue.setReporters(Arrays.asList(user));
+        issue.setReporters(Arrays.asList(userService.findUserByEmail(user.getEmail())));
         issue.setStatus(IssueStatuses.CLOSED);
         issue.setType(IssueTypes.BUG);
         issue.setDescription("desc 1324");
@@ -143,13 +142,10 @@ public class SSOViewController {
         issue.setComments(Collections.emptyList());
         issue.setHistory(Collections.emptyList());
 
-
+        issue = issueDataService.saveIssue(issue);
 
         return issue;
     }
-
-
-
 
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)

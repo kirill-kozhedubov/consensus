@@ -14,7 +14,7 @@ public class IssueAttachmentDataServiceImpl implements IssueAttachmentDataServic
     IssueAttachmentsRepository issueAttachmentsRepository;
 
     @Override
-    public IssueAttachment storeIssueAttachment(IssueAttachment attachment) {
+    public IssueAttachment saveIssueAttachment(IssueAttachment attachment) {
         IssueAttachment issueAttachment = issueAttachmentsRepository.save(attachment);
 
         return issueAttachment;

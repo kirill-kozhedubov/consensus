@@ -17,7 +17,7 @@ public class IssueAttachmentFileDataServiceImpl implements IssueAttachmentFileDa
     private IssueAttachmentFileRepository issueAttachmentFileRepository;
 
 
-    public IssueAttachmentFile storeFile(MultipartFile file) {
+    public IssueAttachmentFile saveFile(MultipartFile file) {
         // Normalize file name
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
 
@@ -31,7 +31,7 @@ public class IssueAttachmentFileDataServiceImpl implements IssueAttachmentFileDa
 
             return issueAttachmentFileRepository.save(issueAttachmentFile);
         } catch (IOException ex) {
-            throw new RuntimeException("Could not store file " + fileName + ". Please try again!", ex);
+            throw new RuntimeException("Could not save file " + fileName + ". Please try again!", ex);
         }
     }
 
