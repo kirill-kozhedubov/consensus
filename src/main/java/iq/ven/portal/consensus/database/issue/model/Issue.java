@@ -3,7 +3,6 @@ package iq.ven.portal.consensus.database.issue.model;
 import iq.ven.portal.consensus.database.Base;
 import iq.ven.portal.consensus.database.project.model.Project;
 import iq.ven.portal.consensus.database.user.model.User;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,9 +15,7 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Issue extends Base {
 
-    @Column(name = "issue_key")
-    @GeneratedValue(generator = "issue-key-uuid")
-    @GenericGenerator(name = "UUID", strategy = "iq.ven.portal.consensus.database.issue.model.IssueKeyUUIDGenerator")
+    @Transient
     private String issueKey;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -58,7 +55,12 @@ public class Issue extends Base {
     private List<IssueComment> comments;
 
     public String getIssueKey() {
-        return this.issueKey;
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.project.getAbbreviation())
+                .append("-")
+                .append(getId());
+
+        return sb.toString();
     }
 
     public void setIssueKey(String issueKey) {

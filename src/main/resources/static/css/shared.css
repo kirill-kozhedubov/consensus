@@ -26,6 +26,10 @@
     border-bottom: 1px solid lightgrey;
 }
 
+.border-link-bottom {
+    border-bottom: 1px solid lightseagreen;
+}
+
 .border-grey-top {
     border-top: 1px solid lightgrey;
 }
@@ -36,4 +40,14 @@
 
 .border-grey-left {
     border-left: 1px solid lightgrey;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.profile-img {
+    background: url(http://svgur.com/i/65U.svg);
+    background-size: cover;
+    margin-left: 15px;
 }

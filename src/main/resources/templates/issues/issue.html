@@ -44,22 +44,22 @@
                 <div>
                     <div class="toolbar-buttons-issue">
                         <div class="issue-button">
-                            <button class="edit-issue-button">Edit</button>
+                            <button type="button"  class="edit-issue-button btn btn-secondary js-edit-button">Edit</button>
                         </div>
                         <div class="issue-button">
-                            <button class="comment-issue-button">Comment</button>
+                            <button type="button" class="comment-issue-button btn btn-secondary js-comment-button">Comment</button>
                         </div>
                         <div class="issue-button">
-                            <button class="assign-issue-button">Assign</button>
+                            <button type="button" class="assign-issue-button btn btn-secondary js-assign-button">Assign</button>
                         </div>
                         <div class="issue-button">
-                            <button class="move-issue-button">Move</button>
+                            <button type="button" class="move-issue-button btn btn-secondary js-move-button">Move</button>
                         </div>
                         <div class="issue-button">
-                            <button class="change-issue-status-button">Change status</button>
+                            <button type="button" class="change-issue-status-button btn btn-secondary js-change-status-button">Change status</button>
                         </div>
                         <div class="issue-button">
-                            <button class="change-issue-status-button">Attach</button>
+                            <button type="button" class="change-issue-status-button btn btn-secondary js-attach-button">Attach</button>
                         </div>
                     </div>
                 </div>
@@ -71,12 +71,12 @@
             <div class="col-lg-4">
                 <div class="issue-people-and-dates">
                     <div class="issue-people">
-                        <h1>People</h1>
+                        <h5>People</h5>
                         <div class="people-subtitle">Assignee:</div>
                         <div class="assignee row">
                             <div class="profile-img col-md-1"></div>
                             <div class="user-name col-md-6">Name Female</div>
-                            <div class="change-assignee col-md-3">change</div>
+                            <div class="change-assignee js-change-assignee col-md-3">change</div>
                         </div>
                         <div class="people-subtitle">Reporters:</div>
 
@@ -96,13 +96,13 @@
                             </div>
                         </div>
 
-                        <div class="become-reporter" href="#">become reporter</div>
+                        <div class="become-reporter js-become-reporter" href="#">become reporter</div>
 
                         <!--  reporters end-->
 
                     </div>
                     <div class="issue-dates">
-                        <h1>Dates</h1>
+                        <h5>Dates</h5>
                         <div class="created-date">
                             <div class="col-md-5 date-row">Created:</div>
                             <div class="col-md-7 date-row">21.03.2018 23:36</div>
@@ -122,7 +122,7 @@
 
             <div class="col-lg-8 border-grey-left">
                 <div class="issue-details">
-                    <div class="issue-sub-title"><h1>Issue details</h1></div>
+                    <div class="issue-sub-title"><h5>Issue details</h5></div>
                     <div class="issue-details-content">
                         <div class="col-md-6 issue-details-left">
                             <div class="_issue-detail issue-type">
@@ -156,32 +156,98 @@
 
         <div class="row">
             <div class="col-lg-4"></div>
-            <div class="col-lg-8 border-grey-left">
-                <h1>Description</h1>
-                <p>Resize the browser to see the container go from 1170px (LG) > 970px (MD) > 750px (SM) and then break
-                    at XS
-                    where each column will take 12 columns</p>
+            <div class="col-lg-8 border-grey-left border-grey-top">
+                <div class="issue-sub-title"><h5>Description</h5></div>
+                <div class="issue-description-content">
+                    <p>Resize the browser to see the container go from 1170px (LG) > 970px (MD) > 750px (SM) and then
+                        break
+                        at XS
+                        where each column will take 12 columns</p>
+                    <p>Resize the browser to see the container go from 1170px (LG) > 970px (MD) > 750px (SM) and then
+                        break
+                        at XS
+                        where each column will take 12 columns</p>
+                </div>
             </div>
         </div>
 
 
         <div class="row">
             <div class="col-lg-4"></div>
-            <div class="col-lg-8 border-grey-left">
-                <h1>Attachments</h1>
-                <p>Resize the browser to see the container go from 1170px (LG) > 970px (MD) > 750px (SM) and then break
-                    at XS
-                    where each column will take 12 columns</p>
+            <div class="col-lg-8 border-grey-left border-grey-top ">
+                <div class="issue-sub-title"><h5>Attachments</h5></div>
+                <div class="issue-attachments-content">
+
+                    <div class="attachment-entry row">
+                        <div class="_attachment attachment-name col-md-9">file_123214.pdf</div>
+                        <div class="_attachment attachment-size col-md-3">35676 kb</div>
+                    </div>
+
+                    <div class="attachment-entry row">
+                        <div class="_attachment attachment-name col-md-9">file_123214.pdf</div>
+                        <div class="_attachment attachment-size col-md-3">35676 kb</div>
+                    </div>
+
+                </div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-lg-4"></div>
             <div class="col-lg-8 border-grey-left">
-                <h1>Comments/History</h1>
-                <p>Resize the browser to see the container go from 1170px (LG) > 970px (MD) > 750px (SM) and then break
-                    at XS
-                    where each column will take 12 columns</p>
+
+                <div class="tabs-pills top-wrapper">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="js-comments-tab nav-link active">Comments</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="js-history-tab nav-link">History</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div class="issue-comments-tab-content">
+
+                    <div class="issue-action-entry">
+                        <div class="action-header">
+                            <div class="_action-header action-author float-left">Kyrylo Lyllyl</div>
+                            <div class="_action-header action-date  float-right">23.05.2018 11:34</div>
+                            <br>
+                        </div>
+                        <div class="action-text-wrapper float-none">
+                            <div class="action-text">
+                                asdsadasdas asdsadasdas asdsadasdas asdsadasdassdsadasdas asdsadasdas
+                                asdsadasdassdsadasdas
+                                asdsadasdas asdsadasdas
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="issue-action-entry">
+                        <div class="action-header">
+                            <div class="_action-header action-author float-left">Kyrylo Lyllyl</div>
+                            <div class="_action-header action-date  float-right">23.05.2018 11:34</div>
+                            <br>
+                        </div>
+                        <div class="action-text-wrapper float-none border">
+                            <div class="action-text">
+                                asdsadasdas asdsadasdas asdsadasdas asdsadasdassdsadasdas asdsadasdas
+                                asdsadasdassdsadasdas
+                                asdsadasdas asdsadasdas
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="issue-history-tab-content js-history-tab-content hidden">
+
+
+                </div>
+
+
             </div>
         </div>
 

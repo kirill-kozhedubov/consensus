@@ -51,11 +51,6 @@
     padding: 5px;
 }
 
-.profile-img {
-    background: url(http://svgur.com/i/65U.svg);
-    background-size: cover;
-}
-
 .user-name {
 
 }
@@ -83,4 +78,46 @@
 
 ._detail {
     float: left;
+}
+
+.attachment-entry {
+    color: lightseagreen;
+    font-style: italic;
+    text-decoration: underline;
+    border: 1px solid black;
+}
+
+._attachment {
+    float: left;
+}
+
+.top-wrapper {
+   padding-top: 15px;
+}
+
+.issue-sub-title {
+    padding-top: 15px;
+}
+
+.action-author {
+
+}
+.action-date {
+
+}
+
+.issue-action-entry {
+    padding: 10px;
+    background-color: #eeeeee;
+    margin: 5px 0px;
+}
+
+.action-text-wrapper {
+    padding: 5px 5px;
+    border: 1px solid #dee2e6;
+
+}
+
+._action-header {
+    font-weight: bold;
 }
