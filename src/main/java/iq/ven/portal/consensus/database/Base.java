@@ -7,6 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "base")
@@ -33,13 +34,8 @@ public class Base implements Serializable{
     @Column(name = "created", nullable = false)
     private Date updatedDate;
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<HistoryEntry> history;
 
     public String getName() {
         return name;
@@ -57,6 +53,14 @@ public class Base implements Serializable{
         this.description = description;
     }
 
+    public List<HistoryEntry> getHistory() {
+        return history;
+    }
+
+    public void setHistory(List<HistoryEntry> history) {
+        this.history = history;
+    }
+
     @PrePersist
     protected void onCreate() {
 
@@ -67,5 +71,27 @@ public class Base implements Serializable{
 
     }
 
+    public long getId() {
+        return id;
+    }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public Date getUpdatedDate() {
+        return updatedDate;
+    }
+
+    public void setUpdatedDate(Date updatedDate) {
+        this.updatedDate = updatedDate;
+    }
 }

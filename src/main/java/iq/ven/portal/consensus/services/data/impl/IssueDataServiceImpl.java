@@ -6,20 +6,13 @@ import iq.ven.portal.consensus.services.data.IssueDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("issuesService")
 public class IssueDataServiceImpl implements IssueDataService {
 
     @Autowired
     private IssueRepository issueRepository;
-
- /*   @Autowired
-    private Issue Repository;
-
-    @Autowired
-    private Issue Repository;
-
-    @Autowired
-    private Issue Repository;*/
 
 
     @Override
@@ -28,15 +21,22 @@ public class IssueDataServiceImpl implements IssueDataService {
     }
 
     @Override
-    public Issue getIssueByKey(String issueKey) {
+    public Issue findIssueByKey(String issueKey) {
         Issue issue = issueRepository.findByIssueKey(issueKey);
 
         return issue;
     }
 
     @Override
-    public Issue getIssueById(long id) {
+    public Issue findIssueById(long id) {
         Issue issue = issueRepository.findById(id);
+
+        return issue;
+    }
+
+    @Override
+    public List<Issue> findIssueByNameIgnoreCaseContaining(String namePart) {
+        List<Issue> issue = issueRepository.findByNameContainingIgnoreCase(namePart);
 
         return issue;
     }

@@ -28,13 +28,14 @@ import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/sso")
 public class SSOViewController {
 
     @Autowired
-    private UserDataService userService;
+    private UserDataService userDataService;
 
     @Autowired
     private RolesDataService rolesDataService;
@@ -61,11 +62,14 @@ public class SSOViewController {
 
 //--------------------------------START OF TEST-------------------------------------
 
-        User userr = createUser();
-        Project project = createProject(userr);
-        Issue issue = createIssue(project, userr);
-
-
+        User checker = userDataService.findUserByEmail("user@com.com");
+        if (checker == null) {
+            User userr = createUser();
+            Project project = createProject(userr);
+            Issue issue = createIssue(project, userr);
+        }
+        List<Issue> foundIssue = issueDataService.findIssueByNameIgnoreCaseContaining("Issue ly");
+        System.out.println(foundIssue);
 //--------------------------------EMD OF TEST-------------------------------------
 
         modelAndView.setViewName("auth/login");
@@ -78,7 +82,7 @@ public class SSOViewController {
         User userExists = null;
         User user = null;
 
-        userExists = userService.findUserByEmail("user@com.com");
+        userExists = userDataService.findUserByEmail("user@com.com");
         if (userExists == null) {
             user = new User();
             user.setUsername("user");
@@ -89,7 +93,7 @@ public class SSOViewController {
 
             userState.setLogInDate(new Date());
             try {
-                user = userService.saveUser(user);
+                user = userDataService.saveUser(user);
             } catch (Exception e) {
                 logger.error("Error in saving user", e);
             }
@@ -118,7 +122,7 @@ public class SSOViewController {
         project.setBoards(Collections.emptyList());
 
 
-        project.setManager(userService.findUserByEmail(user.getEmail()));
+        project.setManager(userDataService.findUserByEmail(user.getEmail()));
         project.setDescription("lyl descrtiption");
 
         project = projectDataService.saveProject(project);
@@ -129,12 +133,12 @@ public class SSOViewController {
     Issue createIssue(Project project, User user) {
         Issue issue = new Issue();
         issue.setName("Issue ly123");
-        issue.setAssignee(userService.findUserByEmail(user.getEmail()));
+        issue.setAssignee(userDataService.findUserByEmail(user.getEmail()));
         issue.setDueDate(new Date());
         issue.setPriority(IssuePriorities.CRITICAL);
         issue.setProject(projectDataService.getProjectByAbbreviation(project.getAbbreviation()));
         issue.setParentIssue(null);
-        issue.setReporters(Arrays.asList(userService.findUserByEmail(user.getEmail())));
+        issue.setReporters(Arrays.asList(userDataService.findUserByEmail(user.getEmail())));
         issue.setStatus(IssueStatuses.CLOSED);
         issue.setType(IssueTypes.BUG);
         issue.setDescription("desc 1324");

@@ -4,6 +4,8 @@ import iq.ven.portal.consensus.database.issue.model.Issue;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository("issueRepository")
 public interface IssueRepository extends JpaRepository<Issue, Long> {
 
@@ -13,6 +15,7 @@ public interface IssueRepository extends JpaRepository<Issue, Long> {
 
     Issue findByIssueKey(String issueKey);
 
+    List<Issue> findByNameContainingIgnoreCase(String namePart);
 
 
 }

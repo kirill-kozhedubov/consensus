@@ -12,3 +12,28 @@
     0%    { transform: rotate(0deg); }
     100%  { transform: rotate(360deg); }
 }
+
+.bg-green {
+    background-color: darkorange;
+}
+
+.border-grey {
+    border: 1px solid lightgrey;
+    padding: 20px;
+}
+
+.border-grey-bottom {
+    border-bottom: 1px solid lightgrey;
+}
+
+.border-grey-top {
+    border-top: 1px solid lightgrey;
+}
+
+.border-grey-right {
+    border-right: 1px solid lightgrey;
+}
+
+.border-grey-left {
+    border-left: 1px solid lightgrey;
+}

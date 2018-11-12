@@ -15,15 +15,179 @@
 </div>
 
 
-
-<div th:each="i : ${#numbers.sequence( 1, 300/1)}">
-
-    xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd xdxdxd
+<div class="container">
+    <div class="row ">
+    </div>
 </div>
 
 
+<div class="background">
+    <div class="container border-grey">
 
 
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="border-grey-bottom">
+                    <div class="hierarchy-of-issues">
+                        <span href="" class="proj-abbr">PROJ-ABBR</span>
+                        <span> / </span>
+                        <span href="" class="issue-link">PARNT-ISSUE-132</span>
+                        <span> / </span>
+                        <span href="" class="issue-link">ISSUE-1437</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div>
+                    <div class="toolbar-buttons-issue">
+                        <div class="issue-button">
+                            <button class="edit-issue-button">Edit</button>
+                        </div>
+                        <div class="issue-button">
+                            <button class="comment-issue-button">Comment</button>
+                        </div>
+                        <div class="issue-button">
+                            <button class="assign-issue-button">Assign</button>
+                        </div>
+                        <div class="issue-button">
+                            <button class="move-issue-button">Move</button>
+                        </div>
+                        <div class="issue-button">
+                            <button class="change-issue-status-button">Change status</button>
+                        </div>
+                        <div class="issue-button">
+                            <button class="change-issue-status-button">Attach</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row border-grey-top">
+            <div class="col-lg-4">
+                <div class="issue-people-and-dates">
+                    <div class="issue-people">
+                        <h1>People</h1>
+                        <div class="people-subtitle">Assignee:</div>
+                        <div class="assignee row">
+                            <div class="profile-img col-md-1"></div>
+                            <div class="user-name col-md-6">Name Female</div>
+                            <div class="change-assignee col-md-3">change</div>
+                        </div>
+                        <div class="people-subtitle">Reporters:</div>
+
+                        <!--  reporters start-->
+
+                        <div class="reporter-entry">
+                            <div class="reporter-entity row">
+                                <div class="profile-img col-md-1"></div>
+                                <div class="user-name   col-md-8">Name Female</div>
+                            </div>
+                        </div>
+
+                        <div class="reporter-entry">
+                            <div class="reporter-entity row">
+                                <div class="profile-img col-md-1"></div>
+                                <div class="user-name   col-md-8">Name Female2</div>
+                            </div>
+                        </div>
+
+                        <div class="become-reporter" href="#">become reporter</div>
+
+                        <!--  reporters end-->
+
+                    </div>
+                    <div class="issue-dates">
+                        <h1>Dates</h1>
+                        <div class="created-date">
+                            <div class="col-md-5 date-row">Created:</div>
+                            <div class="col-md-7 date-row">21.03.2018 23:36</div>
+                        </div>
+                        <div class="updated-date">
+                            <div class="col-md-5 date-row">Updated:</div>
+                            <div class="col-md-7 date-row">21.03.2018 23:36</div>
+                        </div>
+                        <div class="due-date">
+                            <div class="col-md-5 date-row">Due date:</div>
+                            <div class="col-md-7 date-row">21.03.2018 23:36</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-8 border-grey-left">
+                <div class="issue-details">
+                    <div class="issue-sub-title"><h1>Issue details</h1></div>
+                    <div class="issue-details-content">
+                        <div class="col-md-6 issue-details-left">
+                            <div class="_issue-detail issue-type">
+                                <div class="_detail issue-type-title    col-md-6">Type:</div>
+                                <div class="_detail issue-type-content  col-md-6">Bug</div>
+                            </div>
+                            <div class="_issue-detail issue-priority">
+                                <div class="_detail issue-priority-title    col-md-6">Priority:</div>
+                                <div class="_detail issue-priority-content  col-md-6">High</div>
+                            </div>
+                            <div class="_issue-detail issue-tags">
+                                <div class="_detail issue-tags-title    col-md-6">Tags:</div>
+                                <div class="_detail issue-tags-content  col-md-6">Lul, lylyl</div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 issue-details-left">
+                            <div class="_issue-detail issue-status">
+                                <div class="_detail issue-status-title      col-md-6">Status:</div>
+                                <div class="_detail issue-status-content    col-md-6">IN PROGRESS</div>
+                            </div>
+                            <div class="_issue-detail issue-resolution">
+                                <div class="_detail issue-resolution-title      col-md-6">Resolution:</div>
+                                <div class="_detail issue-resolution-content    col-md-6">Unresolved</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-8 border-grey-left">
+                <h1>Description</h1>
+                <p>Resize the browser to see the container go from 1170px (LG) > 970px (MD) > 750px (SM) and then break
+                    at XS
+                    where each column will take 12 columns</p>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-8 border-grey-left">
+                <h1>Attachments</h1>
+                <p>Resize the browser to see the container go from 1170px (LG) > 970px (MD) > 750px (SM) and then break
+                    at XS
+                    where each column will take 12 columns</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-8 border-grey-left">
+                <h1>Comments/History</h1>
+                <p>Resize the browser to see the container go from 1170px (LG) > 970px (MD) > 750px (SM) and then break
+                    at XS
+                    where each column will take 12 columns</p>
+            </div>
+        </div>
+
+
+    </div>
+</div>
 
 </body>
 </html>

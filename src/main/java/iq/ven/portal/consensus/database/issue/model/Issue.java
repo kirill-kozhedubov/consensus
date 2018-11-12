@@ -3,8 +3,7 @@ package iq.ven.portal.consensus.database.issue.model;
 import iq.ven.portal.consensus.database.Base;
 import iq.ven.portal.consensus.database.project.model.Project;
 import iq.ven.portal.consensus.database.user.model.User;
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,6 +16,9 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Issue extends Base {
 
+    @Column(name = "issue_key")
+    @GeneratedValue(generator = "issue-key-uuid")
+    @GenericGenerator(name = "UUID", strategy = "iq.ven.portal.consensus.database.issue.model.IssueKeyUUIDGenerator")
     private String issueKey;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -25,7 +27,12 @@ public class Issue extends Base {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<User> reporters;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="parent_issue")
     private Issue parentIssue;
+
+    @OneToMany
+    private List<Issue> childIssues;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")
@@ -50,20 +57,8 @@ public class Issue extends Base {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<IssueComment> comments;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<IssueHistoryEntry> history;
-
-    // Use the sequence that is defined above:
-    @Column(name = "issue_key", nullable = false, insertable = false/*, updatable = false*/)
-    @Generated(GenerationTime.ALWAYS)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
     public String getIssueKey() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(this.project.getAbbreviation())
-                .append("-")
-                .append(issueKey);
-
-        return sb.toString();
+        return this.issueKey;
     }
 
     public void setIssueKey(String issueKey) {
@@ -150,11 +145,11 @@ public class Issue extends Base {
         this.comments = comments;
     }
 
-    public List<IssueHistoryEntry> getHistory() {
-        return history;
+    public List<Issue> getChildIssues() {
+        return childIssues;
     }
 
-    public void setHistory(List<IssueHistoryEntry> history) {
-        this.history = history;
+    public void setChildIssues(List<Issue> childIssues) {
+        this.childIssues = childIssues;
     }
 }

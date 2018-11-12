@@ -52,4 +52,16 @@ public class IssueViewController extends AbstractController{
         return modelAndView;
     }
 
+    //TODO REMOVE BECAUSE IT FOR TEST
+    @RequestMapping(value = {"/issue"}, method = RequestMethod.GET)
+    public ModelAndView issuegetlul() {
+        ModelAndView modelAndView = new ModelAndView();
+
+
+        modelAndView.addObject(TemplatesHelper.PAGE_TITLE, "Issue");
+        modelAndView.setViewName("issues/issue");
+        return modelAndView;
+    }
+
+
 }

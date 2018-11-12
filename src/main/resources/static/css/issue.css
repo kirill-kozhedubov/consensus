@@ -1,0 +1,86 @@
+.issue-people-and-dates {
+
+}
+
+.issue-people {
+
+}
+
+.issue-dates {
+
+}
+
+.issue-details {
+
+}
+
+.issue-description {
+
+}
+
+.issue-attachments {
+
+}
+
+.issue-comments {
+
+}
+
+.issue-history {
+
+}
+
+.issue-button {
+    margin: 10px;
+    float: left;
+}
+
+.toolbar-buttons-issue {
+    padding: 10px;
+}
+
+.date-row {
+    float: left;
+}
+
+.assignee {
+    padding: 5px;
+}
+
+.reporter-entry {
+    padding: 5px;
+}
+
+.profile-img {
+    background: url(http://svgur.com/i/65U.svg);
+    background-size: cover;
+}
+
+.user-name {
+
+}
+
+.change-assignee {
+    color: blue;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.become-reporter {
+    margin: 10px;
+    color: blue;
+    font-style: italic;
+    text-decoration: underline;
+}
+
+.issue-details-left {
+    float: left;
+}
+
+._issue-detail {
+
+}
+
+._detail {
+    float: left;
+}
