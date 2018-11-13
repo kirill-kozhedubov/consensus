@@ -25,10 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping("/sso")
@@ -68,8 +65,11 @@ public class SSOViewController {
             Project project = createProject(userr);
             Issue issue = createIssue(project, userr);
         }
-        List<Issue> foundIssue = issueDataService.findIssueByNameIgnoreCaseContaining("Issue ly");
-        System.out.println(foundIssue);
+        for (int i = 0; i < 50; i++) {
+            generateAndSaveUser();
+        }
+     //   List<Issue> foundIssue = issueDataService.findIssueByNameIgnoreCaseContaining("Issue ly");
+     //   System.out.println(foundIssue);
 //--------------------------------EMD OF TEST-------------------------------------
 
         modelAndView.setViewName("auth/login");
@@ -77,6 +77,64 @@ public class SSOViewController {
         return modelAndView;
     }
 
+
+    private User generateAndSaveUser() {
+        User userExists = null;
+        User user = null;
+        String generatedEmail = generateString(randomNumber(5,14)) + "@com.com";
+        userExists = userDataService.findUserByEmail(generatedEmail);
+        if (userExists == null) {
+            user = new User();
+            user.setUsername(generateString(randomNumber(5,14)));
+            user.setFirstName(generateString(randomNumber(5,14)));
+            user.setLastName(generateString(randomNumber(5,14)));
+            user.setEmail(generatedEmail);
+            user.setPassword("user");
+
+            userState.setLogInDate(new Date());
+            try {
+                user = userDataService.saveUser(user);
+            } catch (Exception e) {
+                logger.error("Error in saving user", e);
+            }
+
+        //    UserData userData = UserData.UserDataBuilder.anUserData()
+        //            .withEmail(user.getEmail())
+        //            .withFirstName(user.getFirstName())
+        //            .withLastName(user.getLastName())
+        //            .withUsername(user.getUsername())
+        //            .build();
+        //    projectUser.setUserData(userData);
+        //    userState.setUserRole(user.getRoles());
+
+           logger.info("USERGEN::::::::::::::" + user.getEmail() + "   " + user.getFullName() + "    usernaem::" +  user.getUsername() + "  :::::::::::");
+            System.out.println("USERGEN::::::::::::::" + user.getEmail() + "   " + user.getFullName() + "    usernaem::" +  user.getUsername() + "  :::::::::::");
+            return user;
+        } else {
+            return userExists;
+        }
+    }
+
+    private static String generateString(int lengthOfStr) {
+        int leftLimit = 97; // letter 'a'
+        int rightLimit = 122; // letter 'z'
+        Random random = new Random();
+        StringBuilder buffer = new StringBuilder(lengthOfStr);
+        for (int i = 0; i < lengthOfStr; i++) {
+            int randomLimitedInt = leftLimit + (int)
+                    (random.nextFloat() * (rightLimit - leftLimit + 1));
+            buffer.append((char) randomLimitedInt);
+        }
+        String generatedString = buffer.toString();
+
+        return generatedString;
+    }
+
+    private static int randomNumber(int min, int max) {
+        Random rand = new Random();
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+        return randomNum;
+    }
 
     private User createUser() {
         User userExists = null;

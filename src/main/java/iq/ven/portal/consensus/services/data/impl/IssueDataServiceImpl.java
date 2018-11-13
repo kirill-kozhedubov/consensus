@@ -20,12 +20,6 @@ public class IssueDataServiceImpl implements IssueDataService {
         return issueRepository.save(issue);
     }
 
-    @Override
-    public Issue findIssueByKey(String issueKey) {
-        Issue issue = issueRepository.findByIssueKey(issueKey);
-
-        return issue;
-    }
 
     @Override
     public Issue findIssueById(long id) {

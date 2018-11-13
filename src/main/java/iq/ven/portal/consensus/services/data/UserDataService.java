@@ -3,6 +3,8 @@ package iq.ven.portal.consensus.services.data;
 import iq.ven.portal.consensus.database.user.model.User;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.List;
+
 public interface UserDataService {
 
     User findUserByEmail(String email);
@@ -14,5 +16,7 @@ public interface UserDataService {
     UserDetails loadUserByUsername(String userName);
 
     User getUserByUsername(String userName);
+
+    List<User> findUsersForAssigneeChange(String searchInput);
 
 }

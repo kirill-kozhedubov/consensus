@@ -20,11 +20,4 @@ public class IssueAttachmentDataServiceImpl implements IssueAttachmentDataServic
         return issueAttachment;
     }
 
-    @Override
-    public IssueAttachment getIssueAttachment(String issueKey) {
-        IssueAttachment issueAttachment = issueAttachmentsRepository.findByIssue_IssueKey(issueKey);
-
-
-        return null;
-    }
 }

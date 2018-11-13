@@ -54,6 +54,14 @@ public class User extends Base {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Issue> issues;
 
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
+    public String getAvatar() { //!TODO Add avatars
+        return null;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }

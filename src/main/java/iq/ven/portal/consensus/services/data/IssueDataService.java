@@ -8,8 +8,6 @@ public interface IssueDataService {
 
     Issue saveIssue(Issue issue);
 
-    Issue findIssueByKey(String issueKey);
-
     Issue findIssueById(long id);
 
     List<Issue> findIssueByNameIgnoreCaseContaining(String namePart);

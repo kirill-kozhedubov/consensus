@@ -13,9 +13,6 @@ public interface IssueRepository extends JpaRepository<Issue, Long> {
 
     Issue findByName(String name);
 
-    Issue findByIssueKey(String issueKey);
-
     List<Issue> findByNameContainingIgnoreCase(String namePart);
-
 
 }

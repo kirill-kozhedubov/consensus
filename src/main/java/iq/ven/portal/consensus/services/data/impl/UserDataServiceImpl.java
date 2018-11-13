@@ -98,4 +98,14 @@ public class UserDataServiceImpl implements UserDataService, UserDetailsService 
     private UserDetails buildUserForAuthentication(User user, List<GrantedAuthority> authorities) {
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), user.isActive(), true, true, true, authorities);
     }
+
+
+    @Override
+    public List<User> findUsersForAssigneeChange(String searchInput) {
+        List<User> usersFound = userRepository.findByUsernameContainingIgnoreCase(searchInput);
+
+
+        return usersFound;
+    }
+
 }

@@ -9,5 +9,4 @@ public interface IssueAttachmentsRepository extends JpaRepository<IssueAttachmen
 
     IssueAttachment findById(long id);
 
-    IssueAttachment findByIssue_IssueKey(String issueKey);
 }
