@@ -7,11 +7,13 @@
 <body>
 
 <nav th:replace="fragments/header-component :: header-component"></nav>
-
+<div th:replace="/issues/change-assignee-popup :: change-assignee-component"></div>
 
 <div> <!--head continue-->
     <link rel="stylesheet" type="text/css" th:href="@{/css/issue.css}"/>
     <script th:src="@{/js/issue.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/changeassignee.css}"/>
+    <script th:src="@{/js/changeassignee.js}"></script>
 </div>
 
 

@@ -1,0 +1,44 @@
+<!-- Change assignee -->
+
+<div> <!--head continue-->
+
+</div>
+
+
+<div class="modal fade js-change-assignee-popup" id="changeAssignee" tabindex="-1" role="dialog"
+     aria-labelledby="changeAssigneeTitle" aria-hidden="true" th:fragment="change-assignee-component">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Change assignee to:</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+
+                <div class="dropdown">
+                    <div id="searchDropdown" class="dropdown-content show">
+                        <input type="text" placeholder="Search.." id="searchInput">
+                        <span class="hidden">
+                        <div href="#about">About</div>
+                        <div href="#base">Base</div>
+                        <div href="#blog">Blog</div>
+                        <div href="#contact">Contact</div>
+                        <div href="#custom">Custom</div>
+                        <div href="#support">Support</div>
+                        <div href="#tools">Tools</div>
+                        </span>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>

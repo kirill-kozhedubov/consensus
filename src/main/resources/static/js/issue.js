@@ -58,7 +58,7 @@
 
     function changeAssignee() {
         console.log("IssuePage.changeAssignee start");
-
+        $(".js-change-assignee-popup").modal();
 
         console.log("IssuePage.changeAssignee end");
     }
