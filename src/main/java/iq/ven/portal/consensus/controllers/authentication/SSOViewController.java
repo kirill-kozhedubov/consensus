@@ -161,6 +161,7 @@ public class SSOViewController {
                     .withFirstName(user.getFirstName())
                     .withLastName(user.getLastName())
                     .withUsername(user.getUsername())
+                    .withUserId(user.getId())
                     .build();
             projectUser.setUserData(userData);
             userState.setUserRole(user.getRoles());

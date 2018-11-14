@@ -107,6 +107,7 @@ public class SSOResourceController extends AbstractController {
                 .withFirstName(userDetails.getFirstName())
                 .withLastName(userDetails.getLastName())
                 .withUsername(userDetails.getUsername())
+                .withUserId(userDetails.getId())
                 .build();
         projectUser.setUserData(userData);
         userState.setUserRole(userDetails.getRoles());

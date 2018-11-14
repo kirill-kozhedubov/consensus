@@ -10,7 +10,7 @@
         page.find("#searchInput").bind("blur", blurSearchInput);
         page.find("#searchInput").bind("focus", focusSearchInput);
 
-
+        page.find(".js-assignee-save").bind("click",selectAssigneeOnBE);
 
         console.log("Issue.init end");
     });
@@ -105,15 +105,25 @@
         var username = target.find(".js-username").text();
         var fullName = target.find(".js-full-name").text();
 
+        var searchInput = page.find("#searchInput");
+        searchInput.val(fullName + username);
+
 
     }
 
-    function selectAssigneeOnBE(username, fullName) {
-        var issueKey = page.find(".js-issue-key");
+    function selectAssigneeOnBE() {
 
-        $.ajax({
+        $(".js-change-assignee-popup").modal("hide"); //TODO REMOVE
+
+
+
+        var issueKey = page.find(".js-issue-key");
+        var username = null;
+        var fullName = null;
+
+      /*  $.ajax({
             type: "GET",
-            url: "http://" + location.host + "/issue/setUserOnIssue",
+            url: "http://" + location.host + "/issue/update-assignee-on-issue",
             data: {usename: username, fullName: fullName, issueKey: issueKey},
             success: function (data) {
                 console.log(data);
@@ -121,11 +131,13 @@
                 if (data.data && data.data.foundUsers) {
 
                 }
+                $(".js-change-assignee-popup").modal("hide");
+
             },
             error: function (e) {
                 console.log(e);
             }
-        });
+        });*/
     }
 
 

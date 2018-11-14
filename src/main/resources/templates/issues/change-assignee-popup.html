@@ -1,10 +1,4 @@
 <!-- Change assignee -->
-
-<div> <!--head continue-->
-
-</div>
-
-
 <div class="modal fade js-change-assignee-popup" id="changeAssignee" tabindex="-1" role="dialog"
      aria-labelledby="changeAssigneeTitle" aria-hidden="true" th:fragment="change-assignee-component">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -20,15 +14,7 @@
                     <div class="dropdown">
                         <div id="searchDropdown" class="dropdown-content show">
                             <input type="text" placeholder="Search.." id="searchInput">
-                            <span class="assignee-search-container hidden">
-                        <div class="js-search-user-entry">About</div>
-                        <div class="js-search-user-entry">Base</div>
-                        <div class="js-search-user-entry">Blog</div>
-                        <div class="js-search-user-entry">Contact</div>
-                        <div class="js-search-user-entry">Custom</div>
-                        <div class="js-search-user-entry">Support</div>
-                        <div class="js-search-user-entry">Tools</div>
-                        </span>
+                            <span class="assignee-search-container hidden"></span>
                         </div>
                     </div>
 
@@ -36,7 +22,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-primary js-assignee-save">Save</button>
             </div>
         </div>
     </div>

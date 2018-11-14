@@ -7,8 +7,17 @@ public class UserData {
     private String lastName;
     private String username;
     private String password;
+    private long userId;
 
     public UserData() {
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 
     public String getEmail() {
@@ -58,6 +67,7 @@ public class UserData {
         private String lastName;
         private String username;
         private String password;
+        private long userId;
 
         private UserDataBuilder() {
         }
@@ -91,6 +101,11 @@ public class UserData {
             return this;
         }
 
+        public UserDataBuilder withUserId(long userId) {
+            this.userId = userId;
+            return this;
+        }
+
         public UserData build() {
             UserData userData = new UserData();
             userData.setEmail(email);
@@ -98,6 +113,7 @@ public class UserData {
             userData.setLastName(lastName);
             userData.setUsername(username);
             userData.setPassword(password);
+            userData.setUserId(userId);
             return userData;
         }
     }

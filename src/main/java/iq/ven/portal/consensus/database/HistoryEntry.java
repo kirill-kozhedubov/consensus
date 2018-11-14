@@ -19,6 +19,27 @@ public class HistoryEntry extends Base {
 
     private String changeItself;//maybe rework maybe DB maybe from and to
 
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 
+    public Base getEntity() {
+        return entity;
+    }
+
+    public void setEntity(Base entity) {
+        this.entity = entity;
+    }
+
+    public String getChangeItself() {
+        return changeItself;
+    }
+
+    public void setChangeItself(String changeItself) {
+        this.changeItself = changeItself;
+    }
 }
