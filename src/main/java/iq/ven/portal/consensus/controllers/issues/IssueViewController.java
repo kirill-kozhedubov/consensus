@@ -2,7 +2,7 @@ package iq.ven.portal.consensus.controllers.issues;
 
 import iq.ven.portal.consensus.common.beans.ProjectUser;
 import iq.ven.portal.consensus.common.beans.UserState;
-import iq.ven.portal.consensus.common.util.TemplatesHelper;
+import iq.ven.portal.consensus.common.util.helpers.TemplatesHelper;
 import iq.ven.portal.consensus.controllers.AbstractController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

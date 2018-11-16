@@ -62,24 +62,24 @@ public class SSOResourceController extends AbstractController {
 
 
     @RequestMapping(value = "/registration/request", method = RequestMethod.POST)
-    public Map<String, Object> createNewUser(@Valid UserForRegistration userData, BindingResult bindingResult,
+    public Map<String, Object> createNewUser(@Valid UserForRegistration userDataRequest, BindingResult bindingResult,
                                              HttpServletRequest request, HttpServletResponse response) {
         Map<String, Object> result = new HashMap<String, Object>();
         User userExists = null;
         User user = null;
-        if (userData != null) {
-            userExists = userDataService.findUserByEmail(userData.getEmail());
+        if (userDataRequest != null) {
+            userExists = userDataService.findUserByEmail(userDataRequest.getEmail());
         }
         if (userExists != null) {
             result.put("errorMessage", "There is error in your registration try again");
         } else {
-            if (UserValidator.validateUserDataForRegistration(userData)) {
+            if (UserValidator.validateUserDataForRegistration(userDataRequest)) {
                 user = new User();
-                user.setUsername(userData.getUsername());
-                user.setFirstName(userData.getFirstName());
-                user.setLastName(userData.getLastName());
-                user.setEmail(userData.getEmail());
-                user.setPassword(userData.getPassword());
+                user.setUsername(userDataRequest.getUsername());
+                user.setFirstName(userDataRequest.getFirstName());
+                user.setLastName(userDataRequest.getLastName());
+                user.setEmail(userDataRequest.getEmail());
+                user.setPassword(userDataRequest.getPassword());
             }
 
         }

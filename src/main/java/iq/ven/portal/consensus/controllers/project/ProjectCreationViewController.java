@@ -1,6 +1,6 @@
 package iq.ven.portal.consensus.controllers.project;
 
-import iq.ven.portal.consensus.common.util.TemplatesHelper;
+import iq.ven.portal.consensus.common.util.helpers.TemplatesHelper;
 import iq.ven.portal.consensus.controllers.AbstractController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

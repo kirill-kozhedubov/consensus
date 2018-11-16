@@ -7,6 +7,8 @@ import iq.ven.portal.consensus.services.data.ProjectDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service("projectDataService")
 public class ProjectDataServiceImpl implements ProjectDataService{
 
@@ -18,15 +20,22 @@ public class ProjectDataServiceImpl implements ProjectDataService{
     }
 
     @Override
-    public Project getProjectByAbbreviation(String abbreviation) {
+    public Project findProjectByAbbreviation(String abbreviation) {
         Project project = projectRepository.findByAbbreviation(abbreviation);
         return project;
     }
 
     @Override
-    public Project getProjectById(long projectId) {
+    public Project findProjectById(long projectId) {
         Project project = projectRepository.findById(projectId);
         return project;
+    }
+
+    @Override
+    public List<Project> findAllProjects() {
+        List<Project> projects = projectRepository.findAll();
+
+        return projects;
     }
 
     public Project saveProject(ProjectCreationRequest projectRequest) {

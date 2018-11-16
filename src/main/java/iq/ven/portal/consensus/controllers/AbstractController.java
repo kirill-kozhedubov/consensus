@@ -2,6 +2,9 @@ package iq.ven.portal.consensus.controllers;
 
 import iq.ven.portal.consensus.common.beans.ProjectUser;
 import iq.ven.portal.consensus.common.beans.UserState;
+import iq.ven.portal.consensus.services.data.IssueDataService;
+import iq.ven.portal.consensus.services.data.ProjectDataService;
+import iq.ven.portal.consensus.services.data.UserDataService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,15 @@ public class AbstractController {
 
     @Autowired
     protected UserState userState;
+
+    @Autowired
+    protected UserDataService userDataService;
+
+    @Autowired
+    protected IssueDataService issueDataService;
+
+    @Autowired
+    protected ProjectDataService projectDataService;
 
 
     @ExceptionHandler

@@ -3,7 +3,7 @@ package iq.ven.portal.consensus.controllers.authentication;
 import iq.ven.portal.consensus.common.beans.ProjectUser;
 import iq.ven.portal.consensus.common.beans.UserState;
 import iq.ven.portal.consensus.common.model.base.UserData;
-import iq.ven.portal.consensus.common.util.TemplatesHelper;
+import iq.ven.portal.consensus.common.util.helpers.TemplatesHelper;
 import iq.ven.portal.consensus.database.issue.model.Issue;
 import iq.ven.portal.consensus.database.issue.model.IssuePriorities;
 import iq.ven.portal.consensus.database.issue.model.IssueStatuses;
@@ -195,7 +195,7 @@ public class SSOViewController {
         issue.setAssignee(userDataService.findUserByEmail(user.getEmail()));
         issue.setDueDate(new Date());
         issue.setPriority(IssuePriorities.CRITICAL);
-        issue.setProject(projectDataService.getProjectByAbbreviation(project.getAbbreviation()));
+        issue.setProject(projectDataService.findProjectByAbbreviation(project.getAbbreviation()));
         issue.setParentIssue(null);
         issue.setReporters(Arrays.asList(userDataService.findUserByEmail(user.getEmail())));
         issue.setStatus(IssueStatuses.CLOSED);

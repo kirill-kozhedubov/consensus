@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments/head :: header"></head>
+
+<body>
+
+<nav th:replace="fragments/header-component :: header-component"></nav>
+<div th:replace="/issues/change-assignee-popup :: change-assignee-component"></div>
+
+<div> <!--head continue-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/createissue.css}"/>
+    <script th:src="@{/js/createissue.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/changeassignee.css}"/>
+    <script th:src="@{/js/changeassignee.js}"></script>
+</div>
+
+<div class="background">
+    <div class="container border-grey">
+        <div class="form-create-issue">
+            <div class="form-create-issue-head">
+                <div class="head-message">Create Issue</div>
+            </div>
+
+            <div class="form-create-issue-body">
+
+                <div>
+                    Project
+
+                    project drop down list
+                </div>
+                <div>
+                    Issue type
+
+                    issue type drop down list
+                </div>
+                <div>
+                    Name
+                </div>
+                <div>
+                    Priority
+
+                    priotity drop down list
+                </div>
+                <div>
+                    Tags
+
+                    tags text input
+                </div>
+                <div>
+                    Description
+
+                    description textarea
+                </div>
+                <div>
+                    Assignee: [Assignee name (username)]
+                    button
+                    <div th:replace="/issues/change-assignee-popup :: change-assignee-component"></div>
+                </div>
+                <div>
+                    Attachments
+                </div>
+                <div>
+                    Due date
+                </div>
+                <div>
+                    Parent Issue
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
