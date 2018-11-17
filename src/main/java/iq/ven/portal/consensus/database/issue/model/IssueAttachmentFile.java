@@ -16,6 +16,8 @@ public class IssueAttachmentFile {
 
     private String fileType;
 
+    private String fileSize;
+
     @Lob
     private byte[] data;
 
@@ -26,6 +28,13 @@ public class IssueAttachmentFile {
     public IssueAttachmentFile(String fileName, String fileType, byte[] data) {
         this.fileName = fileName;
         this.fileType = fileType;
+        this.data = data;
+    }
+
+    public IssueAttachmentFile(String fileName, String fileType, String fileSize, byte[] data) {
+        this.fileName = fileName;
+        this.fileType = fileType;
+        this.fileSize = fileSize;
         this.data = data;
     }
 
@@ -59,5 +68,13 @@ public class IssueAttachmentFile {
 
     public void setData(byte[] data) {
         this.data = data;
+    }
+
+    public String getFileSize() {
+        return fileSize;
+    }
+
+    public void setFileSize(String fileSize) {
+        this.fileSize = fileSize;
     }
 }

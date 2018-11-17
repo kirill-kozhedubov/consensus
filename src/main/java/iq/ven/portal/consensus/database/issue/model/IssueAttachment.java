@@ -18,10 +18,31 @@ public class IssueAttachment extends Base {
     @JoinColumn(name = "issue_id")
     private Issue issue;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "attachment_file_id")
     private IssueAttachmentFile issueAttachmentFile;
 
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 
+    public Issue getIssue() {
+        return issue;
+    }
+
+    public void setIssue(Issue issue) {
+        this.issue = issue;
+    }
+
+    public IssueAttachmentFile getIssueAttachmentFile() {
+        return issueAttachmentFile;
+    }
+
+    public void setIssueAttachmentFile(IssueAttachmentFile issueAttachmentFile) {
+        this.issueAttachmentFile = issueAttachmentFile;
+    }
 }

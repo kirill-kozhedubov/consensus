@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "roles")
-@PrimaryKeyJoinColumn(name="id")
+@PrimaryKeyJoinColumn(name = "id")
 public class Role extends Base {
 
     public Role() {
@@ -15,6 +15,9 @@ public class Role extends Base {
 
     @Column(name = "role")
     private String role;
+
+    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
+    private List<User> user;
 
     public String getRole() {
         return role;
@@ -24,22 +27,11 @@ public class Role extends Base {
         this.role = role;
     }
 
-/*
-
-    @ManyToMany(mappedBy = "roles",fetch = FetchType.LAZY)
-    private Set<User> users;
-
-    public Set<User> getUsers() {
-        return users;
+    public List<User> getUser() {
+        return user;
     }
 
-    public void setUser(Set<User> users) {
-        this.users = users;
+    public void setUser(List<User> user) {
+        this.user = user;
     }
-*/
-
-    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
-    private List<User> user;
-
-
 }
