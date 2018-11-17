@@ -23,17 +23,31 @@
                 <div class="head-message">Create Issue</div>
             </div>
 
-            <div class="form-create-issue-body">
+     <!--    <div class="form-create-issue-body">
 
                 <div>
                     Project
 
                     project drop down list
+
+                    <tr th:each="project : ${projects}">
+                        <td th:text="${project.id}">1</td>
+                        <td><a href="#" th:text="${project.title}">Title ...</a></td>
+                        <td th:text="${project.text}">Text ...</td>
+                    </tr>
+
+
                 </div>
                 <div>
                     Issue type
 
                     issue type drop down list
+
+                    <tr th:each="issueType : ${issue.issusTypes}">
+                        <td th:text="${issueType.id}">1</td>
+                        <td><a href="#" th:text="${issueType.title}">Title ...</a></td>
+                        <td th:text="${issueType.text}">Text ...</td>
+                    </tr>
                 </div>
                 <div>
                     Name
@@ -42,6 +56,12 @@
                     Priority
 
                     priotity drop down list
+
+                    <tr th:each="issueType : ${issue.issusTypes}">
+                        <td th:text="${issueType.id}">1</td>
+                        <td><a href="#" th:text="${issueType.title}">Title ...</a></td>
+                        <td th:text="${issueType.text}">Text ...</td>
+                    </tr>
                 </div>
                 <div>
                     Tags
@@ -67,9 +87,9 @@
                 <div>
                     Parent Issue
                 </div>
+ -->
 
-
-            </div>
+        </div>
         </div>
     </div>
 </div>
