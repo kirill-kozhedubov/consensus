@@ -42,6 +42,8 @@ public class IssueViewController extends AbstractController{
         return modelAndView;
     }
 
+
+    //TODO REMOVE IT // dont know what to do with it
     @RequestMapping(value = {"/"}, method = RequestMethod.GET)
     public ModelAndView issue() {
         ModelAndView modelAndView = new ModelAndView();

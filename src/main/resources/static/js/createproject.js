@@ -5,7 +5,9 @@
         projectNameInput: ".js-project-name",
         descriptionInput: ".js-project-description",
         abbreviationInput: ".js-project-abbreviation",
-        createProjectButton: ".js-create-project-button"
+        createProjectButton: ".js-create-project-button",
+        errorMessageContainer: ".js-error-message-container",
+        errorMessage: ".js-error-message"
     };
 
 
@@ -44,6 +46,11 @@
     }
 
     function sendCreateProjectRequestToBE(request) {
+        var errorContainer = page.find(jsClasses.errorMessageContainer);
+        var errorMessage = errorContainer.find(jsClasses.errorMessage);
+        errorContainer.addClass("hidden");
+        errorMessage.text("");
+
         $.ajax({
             type: "POST",
             url: "http://" + location.host + "/projects/create-project-request",
@@ -51,12 +58,11 @@
             success: function (data) {
                 console.log(data);
 
-                if (data.data && data.success) {
-
-                    if (data.redirectURL) {
-                        window.location.href = "http://" + location.host + data.redirectURL;
-                    }
-
+                if (data.redirectURL && data.success) {
+                    window.location.href = "http://" + location.host + data.redirectURL;
+                } else if (data.error) {
+                    errorMessage.text(data.errorMessage);
+                    errorContainer.removeClass("hidden");
                 }
 
             },

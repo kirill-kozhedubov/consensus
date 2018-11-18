@@ -21,7 +21,9 @@
         individualAttachment: ".js-attachment",
         tagsInput: ".js-tags",
         boardInput: ".js-board-select",
-        assigneeSaveButton: ".js-assignee-save"
+        assigneeSaveButton: ".js-assignee-save",
+        errorMessageContainer: ".js-error-message-container",
+        errorMessage: ".js-error-message"
     };
 
 
@@ -84,6 +86,13 @@
     }
 
     function createIssueSendRequestToBE(request) {
+        var errorContainer = page.find(jsClasses.errorMessageContainer);
+        var errorMessage = errorContainer.find(jsClasses.errorMessage);
+        errorContainer.addClass("hidden");
+        errorMessage.text("");
+
+
+
         $.ajax({
             type: "POST",
             url: "http://" + location.host + "/issue/create-issue-request",
@@ -93,8 +102,11 @@
 
                 if (data.data && data.success) {
 
-                    if (data.redirectURL) {
+                    if (data.redirectURL && data.success) {
                         window.location.href = "http://" + location.host + data.redirectURL;
+                    } else if (data.error) {
+                        errorMessage.text(data.errorMessage);
+                        errorContainer.removeClass("hidden");
                     }
 
                 }

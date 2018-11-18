@@ -1,6 +1,7 @@
 package iq.ven.portal.consensus.controllers.project;
 
 import iq.ven.portal.consensus.common.util.helpers.TemplatesHelper;
+import iq.ven.portal.consensus.common.viewconvertors.ProjectViewConverter;
 import iq.ven.portal.consensus.controllers.AbstractController;
 import iq.ven.portal.consensus.database.project.model.Project;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,7 @@ public class ProjectViewController extends AbstractController {
 
 
         Project projectFromDB = projectDataService.findProjectByAbbreviation(projectAbbr);
-
+        modelAndView.addObject("project", ProjectViewConverter.convertProject(projectFromDB, false));
 
         String projectName = projectFromDB.getName();
         String projectAbbreviation = projectFromDB.getAbbreviation();

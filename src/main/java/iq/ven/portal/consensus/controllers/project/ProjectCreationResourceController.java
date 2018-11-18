@@ -31,7 +31,8 @@ public class ProjectCreationResourceController extends AbstractController {
         project.setName(createProjectRequest.getName());
         project.setAbbreviation(createProjectRequest.getAbbreviation().toUpperCase());
         project.setDescription(createProjectRequest.getDescription());
-        //project.setManager(userDataService.findUserById(projectUser.getUserData().getUserId()));
+        // project.setManager(userDataService.findUserById(projectUser.getUserData().getUserId())); //TODO use in final version
+        project.setManager(userDataService.findUsersForAssigneeChange("user").get(0)); //TODO remove
         project.setBoards(Collections.emptyList());
         project.setIssues(Collections.emptyList());
 
@@ -39,9 +40,13 @@ public class ProjectCreationResourceController extends AbstractController {
         Project savedProject = projectDataService.saveProject(project);
         Project savedProjectFromDB = projectDataService.findProjectByAbbreviation(project.getAbbreviation());
 
-        if (savedProject != null && !StringUtils.isEmpty(savedProject.getAbbreviation())) {
+        if (savedProjectFromDB != null && !StringUtils.isEmpty(savedProjectFromDB.getAbbreviation())) {
             String redirectUrl = "/project/" + savedProjectFromDB.getAbbreviation();
             result.put("redirectURL", redirectUrl);
+            result.put("success", true);
+        } else {
+            result.put("error", true);
+            result.put("errorMessage", "Project isn't created, probably Abbreviation already exists.");
         }
 
 

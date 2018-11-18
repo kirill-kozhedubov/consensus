@@ -1,5 +1,6 @@
 package iq.ven.portal.consensus.database.user.model;
 
+import iq.ven.portal.consensus.common.util.utils.UserUtils;
 import iq.ven.portal.consensus.database.Base;
 import iq.ven.portal.consensus.database.issue.model.Issue;
 import org.hibernate.validator.constraints.Email;
@@ -56,6 +57,10 @@ public class User extends Base {
 
     public String getFullName() {
         return firstName + " " + lastName;
+    }
+
+    public String getFullNameWithUsername() {
+        return UserUtils.convertUserFullNameWithUsername(this);
     }
 
     public String getAvatar() { //!TODO Add avatars
