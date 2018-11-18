@@ -1,5 +1,8 @@
 package iq.ven.portal.consensus.database.issue.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum IssueStatuses {
     CLOSED("CLOSED"),
     IN_PROGRESS("IN PROGRESS"),
@@ -25,6 +28,15 @@ public enum IssueStatuses {
         }
         return null;// not found
     }
+
+    public static List<String> getIssueStatusesStringsList() {
+        List<String> list = new ArrayList<>();
+        for (IssueStatuses e : IssueStatuses.values()) {
+            list.add(e.getDisplayName());
+        }
+        return list;
+    }
+
 
     public String getDisplayName() {
         return displayName;

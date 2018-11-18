@@ -1,5 +1,8 @@
 package iq.ven.portal.consensus.database.issue.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum IssueTypes {
     USER_STORY("USER STORY"),
     BUG("BUG"),
@@ -22,6 +25,14 @@ public enum IssueTypes {
             }
         }
         return null;// not found
+    }
+
+    public static List<String> getIssueTypesStringsList() {
+        List<String> list = new ArrayList<>();
+        for (IssueTypes e : IssueTypes.values()) {
+            list.add(e.getDisplayName());
+        }
+        return list;
     }
 
     public String getDisplayName() {

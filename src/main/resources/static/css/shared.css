@@ -46,8 +46,17 @@
     display: none !important;
 }
 
+.float-left {
+    float: left;
+}
+
 .profile-img {
     background: url(http://svgur.com/i/65U.svg);
     background-size: cover;
     margin-left: 15px;
+}
+
+.required-field:after {
+    content:"*";
+    color:red;
 }

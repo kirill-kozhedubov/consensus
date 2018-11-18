@@ -1,5 +1,8 @@
 package iq.ven.portal.consensus.database.issue.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public enum IssuePriorities {
     CRITICAL("CRITICAL"),
     HIGH("HIGH"),
@@ -20,6 +23,14 @@ public enum IssuePriorities {
             }
         }
         return null;// not found
+    }
+
+    public static List<String> getIssuePrioritiesStringsList() {
+        List<String> list = new ArrayList<>();
+        for (IssuePriorities e : IssuePriorities.values()) {
+            list.add(e.getDisplayName());
+        }
+        return list;
     }
 
     public String getDisplayName() {

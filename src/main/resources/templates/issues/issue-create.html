@@ -17,81 +17,129 @@
 </div>
 
 <div class="background">
-    <div class="container border-grey">
-        <div class="form-create-issue">
-            <div class="form-create-issue-head">
-                <div class="head-message">Create Issue</div>
+    <div class="container">
+        <div class="form-create-issue  border-grey">
+            <div class="row form-create-issue-head d-flex justify-content-center">
+                <div class="head-message"><h1>Create Issue</h1></div>
             </div>
 
-     <!--    <div class="form-create-issue-body">
+            <div class="form-create-issue-body">
 
-                <div>
-                    Project
-
-                    project drop down list
-
-                    <tr th:each="project : ${projects}">
-                        <td th:text="${project.id}">1</td>
-                        <td><a href="#" th:text="${project.title}">Title ...</a></td>
-                        <td th:text="${project.text}">Text ...</td>
-                    </tr>
-
-
+                <div class="form-group row">
+                    <label for="project-select" class="col-sm-2 col-form-label required-field">Project</label>
+                    <div class="col-sm-10">
+                        <select class="form-control js-project-select" id="project-select">
+                            <option class="js-project-select-option" th:each="project : ${projects}"
+                                    th:value="${project.id}"
+                                    th:text="${project.abbreviation} - ${project.name}"></option>
+                        </select>
+                    </div>
                 </div>
-                <div>
-                    Issue type
+            </div>
 
-                    issue type drop down list
+            <div>
+                <div class="form-group row">
+                    <label for="issueName" class="col-sm-2 col-form-label required-field">Issue Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control js-issue-name" id="issueName"
+                               placeholder="Specify Issue Name">
+                    </div>
+                </div>
+            </div>
 
-                    <tr th:each="issueType : ${issue.issusTypes}">
-                        <td th:text="${issueType.id}">1</td>
-                        <td><a href="#" th:text="${issueType.title}">Title ...</a></td>
-                        <td th:text="${issueType.text}">Text ...</td>
-                    </tr>
+            <div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label required-field" for="issue-types">Issue Type</label>
+                    <div class="col-sm-10">
+                        <select class="form-control js-type-select" id="issue-types">
+                            <option class="js-type-select-option" th:each="type : ${types}" th:value="${type}"
+                                    th:selected="${type == 'BUG'}" th:text="${type}"></option>
+                        </select>
+                    </div>
                 </div>
-                <div>
-                    Name
-                </div>
-                <div>
-                    Priority
+            </div>
 
-                    priotity drop down list
+            <div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label required-field" for="issue-priorities">Issue Priority</label>
+                    <div class="col-sm-10">
+                        <select class="form-control js-priority-select" id="issue-priorities">
+                            <option class="js-priority-select" th:each="priority : ${priorities}" th:value="${priority}"
+                                    th:selected="${priority == 'NORMAL'}" th:text="${priority}"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
 
-                    <tr th:each="issueType : ${issue.issusTypes}">
-                        <td th:text="${issueType.id}">1</td>
-                        <td><a href="#" th:text="${issueType.title}">Title ...</a></td>
-                        <td th:text="${issueType.text}">Text ...</td>
-                    </tr>
+            <div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="issue-tags">Tags</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control js-tags" id="issue-tags"
+                               placeholder="Tags divided by coma">
+                    </div>
                 </div>
-                <div>
-                    Tags
+            </div>
 
-                    tags text input
-                </div>
-                <div>
-                    Description
 
-                    description textarea
+            <div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="description">Description</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control js-description" id="description" rows="4"></textarea>
+                    </div>
                 </div>
-                <div>
-                    Assignee: [Assignee name (username)]
-                    button
-                    <div th:replace="/issues/change-assignee-popup :: change-assignee-component"></div>
-                </div>
-                <div>
-                    Attachments
-                </div>
-                <div>
-                    Due date
-                </div>
-                <div>
-                    Parent Issue
-                </div>
- -->
+            </div>
 
-        </div>
+
+            <div>
+                <div class="form-group row">
+                    <label for="changeAssignee" class="col-sm-2 col-form-label">Assignee</label>
+                    <div class="col-sm-4">
+                        <input disabled type="text" class="form-control js-issue-name" id="changeAssignee"
+                               placeholder="Default: Automatic">
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-secondary js-change-assignee-button form-control">Change
+                        </button>
+                    </div>
+                    <div class="col-sm-4"></div>
+                </div>
+                <div th:replace="/issues/change-assignee-popup :: change-assignee-component"></div>
+            </div>
+
+
+            <div>
+                Attachments
+            </div>
+
+
+            <div>
+                Due date
+            </div>
+
+
+            <div>
+                Parent Issue
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-5">
+                </div>
+
+                <div class="content-justify-center col-sm-2">
+                    <button type="button" class="btn btn-secondary js-create-issue-button form-control">Create</button>
+                </div>
+
+                <div class="col-sm-5">
+                </div>
+            </div>
+
+
         </div>
     </div>
+</div>
 </div>
 
 </body>
