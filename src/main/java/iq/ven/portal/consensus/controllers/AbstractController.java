@@ -2,6 +2,7 @@ package iq.ven.portal.consensus.controllers;
 
 import iq.ven.portal.consensus.common.beans.ProjectUser;
 import iq.ven.portal.consensus.common.beans.UserState;
+import iq.ven.portal.consensus.common.util.helpers.TemplatesHelper;
 import iq.ven.portal.consensus.services.data.IssueDataService;
 import iq.ven.portal.consensus.services.data.ProjectDataService;
 import iq.ven.portal.consensus.services.data.UserDataService;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -71,6 +73,14 @@ public class AbstractController {
             return isCausedBy(exception.getCause(), cause_class);
         }
         return false;
+    }
+
+    private static ModelAndView redirectToPageNotFound() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:error/not-found");
+        modelAndView.addObject(TemplatesHelper.PAGE_TITLE, "Page not found");
+
+        return modelAndView;
     }
 
 

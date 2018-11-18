@@ -80,7 +80,7 @@ public class UserDataServiceImpl implements UserDataService, UserDetailsService 
     }
 
     @Override
-    public User getUserByUsername(String userName) {
+    public User findUserByUsername(String userName) {
         User user = userRepository.findByUsername(userName);
 
         return user;
@@ -107,5 +107,13 @@ public class UserDataServiceImpl implements UserDataService, UserDetailsService 
 
         return usersFound;
     }
+
+    @Override
+    public User findUserById(long id) {
+        User user = userRepository.findById(id);
+
+        return user;
+    }
+
 
 }

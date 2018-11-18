@@ -34,7 +34,7 @@ public class IssueResourceController extends AbstractController {
                                                      @RequestParam(value = "issueKey") String issueKey) {
         Map<String, Object> result = new HashMap<>();
 
-        User user = userDataService.getUserByUsername(username);
+        User user = userDataService.findUserByUsername(username);
         Issue issue = issueDataService.findIssueByIssueKey(issueKey);
 
         Issue updatedIssue = issueDataService.updateIssueAssignee(issue, user, projectUser.getUserData().getUserId());

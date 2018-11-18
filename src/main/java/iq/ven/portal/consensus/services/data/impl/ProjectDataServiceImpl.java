@@ -2,7 +2,7 @@ package iq.ven.portal.consensus.services.data.impl;
 
 import iq.ven.portal.consensus.common.util.utils.UserUtils;
 import iq.ven.portal.consensus.controllers.issues.create.payload.ProjectAvailableForIssue;
-import iq.ven.portal.consensus.controllers.project.payload.ProjectCreationRequest;
+import iq.ven.portal.consensus.controllers.project.payload.CreateProjectRequest;
 import iq.ven.portal.consensus.database.project.model.Project;
 import iq.ven.portal.consensus.database.project.repository.ProjectRepository;
 import iq.ven.portal.consensus.services.data.ProjectDataService;
@@ -61,7 +61,7 @@ public class ProjectDataServiceImpl implements ProjectDataService {
         return projectsAvailableForIssue;
     }
 
-    public Project saveProject(ProjectCreationRequest projectRequest) {
+    public Project saveProject(CreateProjectRequest projectRequest) {
         Project project = new Project();
         return projectRepository.save(project);
     }

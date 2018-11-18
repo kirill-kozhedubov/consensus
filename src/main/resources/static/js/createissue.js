@@ -70,21 +70,45 @@
             boardId: null,
             type: selectedType,
             priority: selectedPriority,
-            tags: tagsText
+            tags: tagsText,
+            parentIssue: null
         };
 
         var isRequestValid = validateCreateIssueRequest(request);
         if (isRequestValid) {
-
+            createIssueSendRequestToBE(request)
         } else {
 
         }
 
     }
 
+    function createIssueSendRequestToBE(request) {
+        $.ajax({
+            type: "POST",
+            url: "http://" + location.host + "/issue/create-issue-request",
+            data: request,
+            success: function (data) {
+                console.log(data);
+
+                if (data.data && data.success) {
+
+                    if (data.redirectURL) {
+                        window.location.href = "http://" + location.host + data.redirectURL;
+                    }
+
+                }
+
+            },
+            error: function (e) {
+                console.log(e);
+            }
+        });
+    }
+
 
     function validateCreateIssueRequest(request) {
-        if (!request.project || !request.name || !request.type || !request.priority) {
+        if (/*!request.project TODO REMOVE ||*/ !request.name || !request.type || !request.priority) {
             return false;
         }
         return true;

@@ -15,8 +15,10 @@ public interface UserDataService {
 
     UserDetails loadUserByUsername(String userName);
 
-    User getUserByUsername(String userName);
+    User findUserByUsername(String userName);
 
     List<User> findUsersForAssigneeChange(String searchInput);
+
+    User findUserById(long id);
 
 }

@@ -18,6 +18,8 @@ public class CreateIssueRequest {
 
     private String tags;
 
+    private String parentIssue;
+
     public CreateIssueRequest() {
     }
 
@@ -83,5 +85,13 @@ public class CreateIssueRequest {
 
     public void setTags(String tags) {
         this.tags = tags;
+    }
+
+    public String getParentIssue() {
+        return parentIssue;
+    }
+
+    public void setParentIssue(String parentIssue) {
+        this.parentIssue = parentIssue;
     }
 }

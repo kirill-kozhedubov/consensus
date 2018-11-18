@@ -9,6 +9,7 @@ import iq.ven.portal.consensus.database.issue.model.IssueTypes;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,7 +21,9 @@ import java.util.List;
 public class CreateIssueViewController extends AbstractController {
 
     @RequestMapping(value = {"/create"}, method = RequestMethod.GET)
-    public ModelAndView issue(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+    public ModelAndView issue(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
+                              @RequestParam(required = false, value = "boardId") String boardId,
+                              @RequestParam(required = false, value = "projectId") String projectId) {
         ModelAndView modelAndView = new ModelAndView();
 
         List<ProjectAvailableForIssue> projects = projectDataService.getProjectsAvailableForIssue();
