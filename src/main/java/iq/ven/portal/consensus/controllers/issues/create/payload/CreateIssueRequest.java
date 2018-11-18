@@ -12,6 +12,14 @@ public class CreateIssueRequest {
 
     private String boardId;
 
+    private String type;
+
+    private String priority;
+
+    private String tags;
+
+    public CreateIssueRequest() {
+    }
 
     public String getName() {
         return name;
@@ -51,5 +59,29 @@ public class CreateIssueRequest {
 
     public void setBoardId(String boardId) {
         this.boardId = boardId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
     }
 }

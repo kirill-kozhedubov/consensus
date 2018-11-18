@@ -63,7 +63,7 @@
         var userName = assignee.username;
 
         var spanFullName = "<span class='js-full-name'>" + fullName + "</span>";
-        var spanUsername = "<span class='js-username'> (" + userName + ") </span>";
+        var spanUsername = "<span class='js-username'> (" + userName + ")</span>";
         var div = "<div class='js-search-user-entry  _userName_" + userName + "'>" + spanFullName + spanUsername + "</div>";
 
         return div;
@@ -112,7 +112,7 @@
     }
 
     function selectAssigneeOnBE() {
-
+        console.log("ChangeAssignee.selectAssigneeOnBE::::::::::::::::::wrapper");
         $(".js-change-assignee-popup").modal("hide"); //TODO REMOVE
 
 

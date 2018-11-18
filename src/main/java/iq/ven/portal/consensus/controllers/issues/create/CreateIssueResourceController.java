@@ -2,6 +2,7 @@ package iq.ven.portal.consensus.controllers.issues.create;
 
 import iq.ven.portal.consensus.controllers.AbstractController;
 import iq.ven.portal.consensus.controllers.issues.create.payload.CreateIssueRequest;
+import iq.ven.portal.consensus.database.issue.model.Issue;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +25,8 @@ public class CreateIssueResourceController extends AbstractController {
                                                      HttpServletResponse httpServletResponse,
                                                      @Valid CreateIssueRequest createIssueRequest) {
         Map<String, Object> result = new HashMap<>();
+
+        Issue issue = new Issue();
 
 
         return result;

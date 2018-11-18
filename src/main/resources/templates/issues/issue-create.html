@@ -96,7 +96,7 @@
                 <div class="form-group row">
                     <label for="changeAssignee" class="col-sm-2 col-form-label">Assignee</label>
                     <div class="col-sm-4">
-                        <input disabled type="text" class="form-control js-issue-name" id="changeAssignee"
+                        <input disabled type="text" class="form-control js-assignee-name" id="changeAssignee"
                                placeholder="Default: Automatic">
                     </div>
                     <div class="col-sm-2">
@@ -105,22 +105,28 @@
                     </div>
                     <div class="col-sm-4"></div>
                 </div>
-                <div th:replace="/issues/change-assignee-popup :: change-assignee-component"></div>
             </div>
 
 
             <div>
                 Attachments
+
+
+                js-attachments js-attachment
             </div>
 
 
             <div>
                 Due date
+
+                js-due-date js-due-date-input
             </div>
 
 
             <div>
                 Parent Issue
+
+                js-parent-issue
             </div>
 
 
