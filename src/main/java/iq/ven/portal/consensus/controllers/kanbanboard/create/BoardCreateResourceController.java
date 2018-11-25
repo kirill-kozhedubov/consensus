@@ -45,6 +45,7 @@ public class BoardCreateResourceController extends AbstractController {
 
 
         Board savedBoard = boardsDataService.save(board);
+
         if (savedBoard != null) {
             result.put("success", true);
             result.put("boardId", savedBoard.getId());
