@@ -29,7 +29,7 @@
         if (searchInput.val().length > 2) {
             $.ajax({
                 type: "GET",
-                url: "http://" + location.host + "/issue/find-user",
+                url: "http://" + location.host + "/issues/find-user",
                 data: {searchInput: searchText},
                 success: function (data) {
                     console.log(data);
@@ -123,7 +123,7 @@
 
       /*  $.ajax({
             type: "GET",
-            url: "http://" + location.host + "/issue/update-assignee-on-issue",
+            url: "http://" + location.host + "/issues/update-assignee-on-issue",
             data: {usename: username, fullName: fullName, issueKey: issueKey},
             success: function (data) {
                 console.log(data);

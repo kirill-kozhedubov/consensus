@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/issue")
+@RequestMapping("/issues")
 public class IssueResourceController extends AbstractController {
 
 

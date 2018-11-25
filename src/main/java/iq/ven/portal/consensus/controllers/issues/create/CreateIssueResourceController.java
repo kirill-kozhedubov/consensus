@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("/issue")
+@RequestMapping("/issues")
 public class CreateIssueResourceController extends AbstractController {
 
 

@@ -73,7 +73,7 @@
 
         $.ajax({
             type: "POST",
-            url: "http://" + location.host + "/issue/create-issue-request",
+            url: "http://" + location.host + "/boards/create-board-request",
             data: request,
             success: function (data) {
                 console.log(data);

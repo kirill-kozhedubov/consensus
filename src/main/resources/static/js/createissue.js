@@ -95,7 +95,7 @@
 
         $.ajax({
             type: "POST",
-            url: "http://" + location.host + "/issue/create-issue-request",
+            url: "http://" + location.host + "/issues/create-issue-request",
             data: request,
             success: function (data) {
                 console.log(data);

@@ -3,6 +3,7 @@ package iq.ven.portal.consensus.controllers;
 import iq.ven.portal.consensus.common.beans.ProjectUser;
 import iq.ven.portal.consensus.common.beans.UserState;
 import iq.ven.portal.consensus.common.util.helpers.TemplatesHelper;
+import iq.ven.portal.consensus.services.data.BoardsDataService;
 import iq.ven.portal.consensus.services.data.IssueDataService;
 import iq.ven.portal.consensus.services.data.ProjectDataService;
 import iq.ven.portal.consensus.services.data.UserDataService;
@@ -37,6 +38,9 @@ public class AbstractController {
 
     @Autowired
     protected ProjectDataService projectDataService;
+
+    @Autowired
+    protected BoardsDataService boardsDataService;
 
 
     @ExceptionHandler

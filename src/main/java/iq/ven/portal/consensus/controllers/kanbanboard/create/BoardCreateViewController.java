@@ -1,11 +1,8 @@
-package iq.ven.portal.consensus.controllers.issues.create;
+package iq.ven.portal.consensus.controllers.kanbanboard.create;
 
 import iq.ven.portal.consensus.common.util.helpers.TemplatesHelper;
 import iq.ven.portal.consensus.controllers.AbstractController;
 import iq.ven.portal.consensus.controllers.issues.create.payload.ProjectAvailableForIssue;
-import iq.ven.portal.consensus.database.issue.model.IssuePriorities;
-import iq.ven.portal.consensus.database.issue.model.IssueStatuses;
-import iq.ven.portal.consensus.database.issue.model.IssueTypes;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,13 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+
 @Controller
-@RequestMapping("/issues")
-public class CreateIssueViewController extends AbstractController {
+@RequestMapping("/boards")
+public class BoardCreateViewController extends AbstractController {
 
     @RequestMapping(value = {"/create"}, method = RequestMethod.GET)
     public ModelAndView issue(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
-                              @RequestParam(required = false, value = "boardId") String boardId,
                               @RequestParam(required = false, value = "projectId") String projectId) {
         ModelAndView modelAndView = new ModelAndView();
 
@@ -30,14 +27,9 @@ public class CreateIssueViewController extends AbstractController {
         modelAndView.addObject("projects", projects);
         modelAndView.addObject("projectId", TemplatesHelper.transformStringToLong(projectId));
 
-        modelAndView.addObject("priorities", IssuePriorities.getIssuePrioritiesStringsList());
-        modelAndView.addObject("types", IssueTypes.getIssueTypesStringsList());
-        modelAndView.addObject("statuses", IssueStatuses.getIssueStatusesStringsList());
-
-        modelAndView.addObject(TemplatesHelper.PAGE_TITLE, "Create new Issue");
-        modelAndView.setViewName("issues/issue-create");
+        modelAndView.addObject(TemplatesHelper.PAGE_TITLE, "Create new Board");
+        modelAndView.setViewName("kanban-board/kanban-board-create");
         return modelAndView;
     }
-
 
 }

@@ -9,7 +9,7 @@
 
 
     function createIssue() {
-        window.location.href = "http://" + location.host + "/issue/create";
+        window.location.href = "http://" + location.host + "/issues/create";
     }
 
 
