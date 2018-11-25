@@ -29,6 +29,10 @@ public class CreateIssueViewController extends AbstractController {
         List<ProjectAvailableForIssue> projects = projectDataService.getProjectsAvailableForIssue();
         modelAndView.addObject("projects", projects);
 
+        if (projectId.matches("[0-9]+") && projectId.length() > 0) {
+            modelAndView.addObject("projectId", Long.parseLong(projectId));
+        }
+
         modelAndView.addObject("priorities", IssuePriorities.getIssuePrioritiesStringsList());
         modelAndView.addObject("types", IssueTypes.getIssueTypesStringsList());
         modelAndView.addObject("statuses", IssueStatuses.getIssueStatusesStringsList());

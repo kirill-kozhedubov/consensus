@@ -68,8 +68,12 @@ public class SSOViewController {
         for (int i = 0; i < 50; i++) {
             generateAndSaveUser();
         }
-     //   List<Issue> foundIssue = issueDataService.findIssueByNameIgnoreCaseContaining("Issue ly");
-     //   System.out.println(foundIssue);
+
+        for (int i = 0; i < 50; i++) {
+            createProject(checker);
+        }
+        //   List<Issue> foundIssue = issueDataService.findIssueByNameIgnoreCaseContaining("Issue ly");
+        //   System.out.println(foundIssue);
 //--------------------------------EMD OF TEST-------------------------------------
 
         modelAndView.setViewName("auth/login");
@@ -81,13 +85,13 @@ public class SSOViewController {
     private User generateAndSaveUser() {
         User userExists = null;
         User user = null;
-        String generatedEmail = generateString(randomNumber(5,14)) + "@com.com";
+        String generatedEmail = generateString(randomNumber(5, 14)) + "@com.com";
         userExists = userDataService.findUserByEmail(generatedEmail);
         if (userExists == null) {
             user = new User();
-            user.setUsername(generateString(randomNumber(5,14)));
-            user.setFirstName(generateString(randomNumber(5,14)));
-            user.setLastName(generateString(randomNumber(5,14)));
+            user.setUsername(generateString(randomNumber(5, 14)));
+            user.setFirstName(generateString(randomNumber(5, 14)));
+            user.setLastName(generateString(randomNumber(5, 14)));
             user.setEmail(generatedEmail);
             user.setPassword("user");
 
@@ -98,17 +102,17 @@ public class SSOViewController {
                 logger.error("Error in saving user", e);
             }
 
-        //    UserData userData = UserData.UserDataBuilder.anUserData()
-        //            .withEmail(user.getEmail())
-        //            .withFirstName(user.getFirstName())
-        //            .withLastName(user.getLastName())
-        //            .withUsername(user.getUsername())
-        //            .build();
-        //    projectUser.setUserData(userData);
-        //    userState.setUserRole(user.getRoles());
+            //    UserData userData = UserData.UserDataBuilder.anUserData()
+            //            .withEmail(user.getEmail())
+            //            .withFirstName(user.getFirstName())
+            //            .withLastName(user.getLastName())
+            //            .withUsername(user.getUsername())
+            //            .build();
+            //    projectUser.setUserData(userData);
+            //    userState.setUserRole(user.getRoles());
 
-           logger.info("USERGEN::::::::::::::" + user.getEmail() + "   " + user.getFullName() + "    usernaem::" +  user.getUsername() + "  :::::::::::");
-            System.out.println("USERGEN::::::::::::::" + user.getEmail() + "   " + user.getFullName() + "    usernaem::" +  user.getUsername() + "  :::::::::::");
+            logger.info("USERGEN::::::::::::::" + user.getEmail() + "   " + user.getFullName() + "    usernaem::" + user.getUsername() + "  :::::::::::");
+            System.out.println("USERGEN::::::::::::::" + user.getEmail() + "   " + user.getFullName() + "    usernaem::" + user.getUsername() + "  :::::::::::");
             return user;
         } else {
             return userExists;
@@ -175,8 +179,11 @@ public class SSOViewController {
 
     Project createProject(User user) {
         Project project = new Project();
-        project.setName("Test project");
-        project.setAbbreviation("PROJ");
+
+        String randNum = randomNumber(0,1000000) + " " + randomNumber(0,1000000);
+
+        project.setName("Test project" + randNum);
+        project.setAbbreviation("PROJ" + randNum);
         project.setIssues(Collections.emptyList());
         project.setBoards(Collections.emptyList());
 

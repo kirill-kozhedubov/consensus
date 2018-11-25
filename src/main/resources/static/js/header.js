@@ -4,9 +4,13 @@
 
     $(function () {//init
         page = $(this);
-        page.find("#js-authorize-user").bind("click", authorize);
+        page.find(".js-create-issue-header").bind("click", createIssue);
     });
 
+
+    function createIssue() {
+        window.location.href = "http://" + location.host + "/issue/create";
+    }
 
 
 }(window, jQuery));

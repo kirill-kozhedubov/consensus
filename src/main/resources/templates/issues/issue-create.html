@@ -24,14 +24,14 @@
             </div>
 
             <div class="form-create-issue-body">
-
                 <div class="form-group row">
                     <label for="project-select" class="col-sm-2 col-form-label required-field">Project</label>
                     <div class="col-sm-10">
                         <select class="form-control js-project-select" id="project-select">
                             <option class="js-project-select-option" th:each="project : ${projects}"
                                     th:value="${project.id}"
-                                    th:text="${project.abbreviation} - ${project.name}"></option>
+                                    th:selected="${projectId == project.id}"
+                                    th:text="${'[' + project.abbreviation + ']' + ' - ' + project.name}"></option>
                         </select>
                     </div>
                 </div>
