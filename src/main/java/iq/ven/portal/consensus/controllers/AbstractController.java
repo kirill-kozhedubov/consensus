@@ -79,9 +79,9 @@ public class AbstractController {
         return false;
     }
 
-    private static ModelAndView redirectToPageNotFound() {
+    protected static ModelAndView redirectToPageNotFound() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("redirect:error/not-found");
+        modelAndView.setViewName(TemplatesHelper.PAGE_NOT_FOUND_REDIRECT);
         modelAndView.addObject(TemplatesHelper.PAGE_TITLE, "Page not found");
 
         return modelAndView;

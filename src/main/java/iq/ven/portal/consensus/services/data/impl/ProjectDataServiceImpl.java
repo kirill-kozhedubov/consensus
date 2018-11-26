@@ -6,6 +6,8 @@ import iq.ven.portal.consensus.controllers.project.payload.CreateProjectRequest;
 import iq.ven.portal.consensus.database.project.model.Project;
 import iq.ven.portal.consensus.database.project.repository.ProjectRepository;
 import iq.ven.portal.consensus.services.data.ProjectDataService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,8 @@ public class ProjectDataServiceImpl implements ProjectDataService {
 
     @Autowired
     private ProjectRepository projectRepository;
+
+    private static final Logger logger = LoggerFactory.getLogger(ProjectDataServiceImpl.class);
 
     public Project saveProject(Project project) {
         return projectRepository.save(project);

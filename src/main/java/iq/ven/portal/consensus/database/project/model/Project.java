@@ -13,7 +13,7 @@ import java.util.List;
 @PrimaryKeyJoinColumn(name = "id")
 public class Project extends Base {
 
-    @Column(name = "abbreviation", unique = true)
+    @Column(name = "abbreviation", unique = true, nullable = false)
     private String abbreviation;
 
     @OneToOne(fetch = FetchType.LAZY)

@@ -13,6 +13,8 @@ public interface IssueDataService {
 
     Issue findIssueByIssueKey(String issueKey);
 
+    Issue findIssueByIssueKey(String projectAbbr, Long issueId);
+
     List<Issue> findIssueByNameIgnoreCaseContaining(String namePart);
 
     Issue updateIssueAssignee(Issue issue, User userChangedTo, Long userIdWhoChanged);

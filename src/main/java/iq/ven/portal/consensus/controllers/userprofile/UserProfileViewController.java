@@ -24,11 +24,16 @@ public class UserProfileViewController extends AbstractController {
         ModelAndView modelAndView = new ModelAndView("user/profile");
 
         User user = userDataService.findUserByUsername(username);
+        if (user != null) {
 
-        modelAndView.addObject("user", UserViewConverter.convertUser(user, false));
+            modelAndView.addObject("user", UserViewConverter.convertUser(user, false));
+            modelAndView.addObject(TemplatesHelper.PAGE_TITLE, username + "'s Profile");
 
-        modelAndView.addObject(TemplatesHelper.PAGE_TITLE, username + "'s Profile");
-        return modelAndView;
+
+            return modelAndView;
+        } else {
+            return redirectToPageNotFound();
+        }
     }
 
 

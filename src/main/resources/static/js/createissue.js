@@ -50,6 +50,7 @@
         var issueName = page.find(jsClasses.nameInput);
         var tags = page.find(jsClasses.tagsInput);
         var parentIssue = page.find(jsClasses.parentIssueInput);
+        var dueDate = page.find(jsClasses.dueDate);
         var attachments = page.find(jsClasses.attachments);
         var attachmentsList = attachments.find(jsClasses.individualAttachment);
         var boardSelect = page.find(jsClasses.boardInput);
@@ -63,7 +64,7 @@
         var descriptionText = description.val();
         var tagsText = tags.val();
         var issueNameValue = issueName.val();
-
+        var dueDateValue = dueDate.val();
         var request = {
             project: selectedProject,
             name: issueNameValue,
@@ -73,6 +74,7 @@
             type: selectedType,
             priority: selectedPriority,
             tags: tagsText,
+            dueDate: dueDateValue,
             parentIssue: null
         };
 
@@ -90,7 +92,6 @@
         var errorMessage = errorContainer.find(jsClasses.errorMessage);
         errorContainer.addClass("hidden");
         errorMessage.text("");
-
 
 
         $.ajax({

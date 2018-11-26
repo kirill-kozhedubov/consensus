@@ -20,6 +20,8 @@ public class CreateIssueRequest {
 
     private String parentIssue;
 
+    private String dueDate;
+
     public CreateIssueRequest() {
     }
 
@@ -93,5 +95,13 @@ public class CreateIssueRequest {
 
     public void setParentIssue(String parentIssue) {
         this.parentIssue = parentIssue;
+    }
+
+    public String getDueDate() {
+        return dueDate;
+    }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
     }
 }

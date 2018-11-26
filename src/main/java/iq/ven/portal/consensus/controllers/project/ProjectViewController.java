@@ -23,14 +23,18 @@ public class ProjectViewController extends AbstractController {
                                     @PathVariable String projectAbbr) {
         ModelAndView modelAndView = new ModelAndView("projects/project");
 
-
         Project projectFromDB = projectDataService.findProjectByAbbreviation(projectAbbr);
-        modelAndView.addObject("project", ProjectViewConverter.convertProject(projectFromDB, false));
 
-        String projectName = projectFromDB.getName();
-        String projectAbbreviation = projectFromDB.getAbbreviation();
-        modelAndView.addObject(TemplatesHelper.PAGE_TITLE, "[" + projectAbbreviation + "] " + projectName);
-        return modelAndView;
+        if (projectFromDB != null) {
+            modelAndView.addObject("project", ProjectViewConverter.convertProject(projectFromDB, false));
+
+            String projectName = projectFromDB.getName();
+            String projectAbbreviation = projectFromDB.getAbbreviation();
+            modelAndView.addObject(TemplatesHelper.PAGE_TITLE, "[" + projectAbbreviation + "] " + projectName);
+            return modelAndView;
+        } else {
+            return redirectToPageNotFound();
+        }
     }
 
 

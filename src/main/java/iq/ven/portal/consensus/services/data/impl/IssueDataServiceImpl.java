@@ -4,9 +4,13 @@ import iq.ven.portal.consensus.database.HistoryEntry;
 import iq.ven.portal.consensus.database.HistoryRepository;
 import iq.ven.portal.consensus.database.issue.model.Issue;
 import iq.ven.portal.consensus.database.issue.repository.IssueRepository;
+import iq.ven.portal.consensus.database.project.model.Project;
 import iq.ven.portal.consensus.database.user.model.User;
 import iq.ven.portal.consensus.database.user.repository.UserRepository;
 import iq.ven.portal.consensus.services.data.IssueDataService;
+import iq.ven.portal.consensus.services.data.ProjectDataService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +18,8 @@ import java.util.List;
 
 @Service("issuesService")
 public class IssueDataServiceImpl implements IssueDataService {
+
+    private static final Logger logger = LoggerFactory.getLogger(IssueDataServiceImpl.class);
 
     @Autowired
     private IssueRepository issueRepository;
@@ -24,6 +30,8 @@ public class IssueDataServiceImpl implements IssueDataService {
     @Autowired
     private HistoryRepository historyRepository;
 
+    @Autowired
+    private ProjectDataService projectDataService;
 
 
     @Override
@@ -46,6 +54,20 @@ public class IssueDataServiceImpl implements IssueDataService {
         try {
             Long issueId = Long.parseLong(issueIdString);
             issue = issueRepository.findById(issueId);
+            return issue;
+        } catch (Exception e) {
+            System.out.println(e.getStackTrace());
+            return null;
+        }
+    }
+
+    @Override
+    public Issue findIssueByIssueKey(String projectAbbr, Long issueId) {
+
+        Project project = projectDataService.findProjectByAbbreviation(projectAbbr);
+        Issue issue;
+        try {
+            issue = issueRepository.findByIdAndProject(issueId, project);
             return issue;
         } catch (Exception e) {
             System.out.println(e.getStackTrace());

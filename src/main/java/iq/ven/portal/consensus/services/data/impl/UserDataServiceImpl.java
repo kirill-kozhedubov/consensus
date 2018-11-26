@@ -6,6 +6,8 @@ import iq.ven.portal.consensus.database.user.repository.RoleRepository;
 import iq.ven.portal.consensus.database.user.repository.UserRepository;
 import iq.ven.portal.consensus.services.data.RolesDataService;
 import iq.ven.portal.consensus.services.data.UserDataService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -32,6 +34,8 @@ public class UserDataServiceImpl implements UserDataService, UserDetailsService 
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    private static final Logger logger = LoggerFactory.getLogger(UserDataServiceImpl.class);
 
     @Override
     public User findUserByEmail(String email) {

@@ -32,13 +32,13 @@ public class BoardViewController extends AbstractController {
 
             modelAndView.addObject(TemplatesHelper.PAGE_TITLE, boardName);
             modelAndView.setViewName("board/board");
+
+            return modelAndView;
         } else {
-            modelAndView.setViewName(TemplatesHelper.PAGE_NOT_FOUND_REDIRECT);
-            modelAndView.addObject(TemplatesHelper.PAGE_TITLE, "Page not found");
+            return redirectToPageNotFound();
         }
 
 
-        return modelAndView;
     }
 
 }

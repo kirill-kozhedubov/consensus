@@ -4,6 +4,7 @@ import iq.ven.portal.consensus.common.beans.ProjectUser;
 import iq.ven.portal.consensus.common.beans.UserState;
 import iq.ven.portal.consensus.common.util.helpers.TemplatesHelper;
 import iq.ven.portal.consensus.controllers.AbstractController;
+import iq.ven.portal.consensus.database.issue.model.Issue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("/issues")
-public class IssueViewController extends AbstractController{
+public class IssueViewController extends AbstractController {
 
     @Autowired
     private ProjectUser projectUser;
@@ -25,21 +26,26 @@ public class IssueViewController extends AbstractController{
     private UserState userState;
 
 
-    @RequestMapping(value = {"/{projectKey}-{issueId}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/issue/{projectKey}-{issueId}"}, method = RequestMethod.GET)
     public ModelAndView issue(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
                               @PathVariable String projectKey, @PathVariable Long issueId) {
         ModelAndView modelAndView = new ModelAndView();
 
+        Issue issue = issueDataService.findIssueById(issueId);
+        if (issue != null) {
+            //find issue in db
+            String issueKey = "[" + projectKey + "-" + issueId + "] ";
+            String issueName = "";
 
 
-        //find issue in db
-        String issueKey = "[" + projectKey + "-" + issueId + "] ";
-        String issueName = "";
+            modelAndView.addObject(TemplatesHelper.PAGE_TITLE, issueKey + issueName);
+            modelAndView.setViewName("issues/issue");
+            return modelAndView;
 
+        } else {
+            return redirectToPageNotFound();
+        }
 
-        modelAndView.addObject(TemplatesHelper.PAGE_TITLE, issueKey + issueName);
-        modelAndView.setViewName("issues/issue");
-        return modelAndView;
     }
 
 

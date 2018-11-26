@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Controller
 @RequestMapping("/issues")
@@ -65,6 +65,18 @@ public class CreateIssueResourceController extends AbstractController {
             }
         }
 
+
+        if (!StringUtils.isEmpty(createIssueRequest.getDueDate()) && createIssueRequest.getDueDate().length() == 10) {
+            String pattern = "MM.dd.yyyy";
+            DateFormat dateFormat = new SimpleDateFormat(pattern);
+            try {
+                Date date = dateFormat.parse(createIssueRequest.getDueDate());
+                issue.setDueDate(date);
+            } catch (ParseException e) {
+                logger.error("Error in date format", e);
+            }
+
+        }
 
         return result;
     }
