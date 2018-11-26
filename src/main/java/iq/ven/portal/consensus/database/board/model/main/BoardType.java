@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public enum BoardType {
-    KANBAN("Kanban"),
-    AGILE("Kanban");
+    KANBAN("KANBAN"),
+    AGILE("AGILE");
 
     String displayName;
 

@@ -3,6 +3,7 @@ package iq.ven.portal.consensus.controllers.kanbanboard.create;
 import iq.ven.portal.consensus.common.util.helpers.TemplatesHelper;
 import iq.ven.portal.consensus.controllers.AbstractController;
 import iq.ven.portal.consensus.controllers.issues.create.payload.ProjectAvailableForIssue;
+import iq.ven.portal.consensus.database.board.model.main.BoardType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,8 +28,10 @@ public class BoardCreateViewController extends AbstractController {
         modelAndView.addObject("projects", projects);
         modelAndView.addObject("projectId", TemplatesHelper.transformStringToLong(projectId));
 
+        modelAndView.addObject("boardTypes", BoardType.getBoardTypesStringsList());
+
         modelAndView.addObject(TemplatesHelper.PAGE_TITLE, "Create new Board");
-        modelAndView.setViewName("kanban-board/kanban-board-create");
+        modelAndView.setViewName("board/board-create");
         return modelAndView;
     }
 

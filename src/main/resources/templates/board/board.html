@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments/head :: header"></head>
+
+<body>
+
+<nav th:replace="fragments/header-component :: header-component"></nav>
+
+<div> <!--head continue-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/board.css}"/>
+    <script th:src="@{/js/board.js}"></script>
+</div>
+
+<div class="background">
+    <div class="container">
+        <div class="form-create-board  border-grey">
+            <div class="row form-create-board-head d-flex justify-content-center">
+                <div class="head-message"><h1>Create Board</h1></div>
+            </div>
+
+
+            <div class="select-project-for-board">
+                <div class="form-group row">
+                    <label for="project-select" class="col-sm-2 col-form-label required-field">Project</label>
+                    <div class="col-sm-10">
+                        <select class="form-control js-project-select" id="project-select">
+                            <option class="js-project-select-option" th:each="project : ${projects}"
+                                    th:value="${project.id}"
+                                    th:selected="${projectId == project.id}"
+                                    th:text="${'[' + project.abbreviation + ']' + ' - ' + project.name}"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="select-board-type">
+                <div class="form-group row">
+                    <label for="project-select" class="col-sm-2 col-form-label required-field">Board Type</label>
+                    <div class="col-sm-10">
+                        <select class="form-control js-board-type-select" disabled id="type-select">
+                            <option class="js-board-type-select-option" th:each="boardType : ${boardTypes}"
+                                    th:value="${boardType}"
+                                    th:selected="${boardType == 'KANBAN'}"
+                                    th:text="${boardType}"></option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="form-group row">
+                    <label for="boardName" class="col-sm-2 col-form-label required-field required-field">Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control js-board-name" id="boardName"
+                               placeholder="Specify Board Name">
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="description">Description</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control js-board-description" id="description" rows="4"></textarea>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-5">
+                </div>
+
+                <div class="content-justify-center col-sm-2">
+                    <button type="button" class="btn btn-secondary js-create-board-button form-control">Create
+                    </button>
+                </div>
+
+                <div class="col-sm-5">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="content-justify-center col-sm-12 hidden js-error-message-container">
+                    <div>
+                        <p class="js-error-message"></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
