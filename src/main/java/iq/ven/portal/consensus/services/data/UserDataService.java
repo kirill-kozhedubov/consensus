@@ -19,6 +19,6 @@ public interface UserDataService {
 
     List<User> findUsersForAssigneeChange(String searchInput);
 
-    User findUserById(long id);
+    User findUserById(Long id);
 
 }

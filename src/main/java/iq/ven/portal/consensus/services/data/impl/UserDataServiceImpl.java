@@ -109,7 +109,7 @@ public class UserDataServiceImpl implements UserDataService, UserDetailsService 
     }
 
     @Override
-    public User findUserById(long id) {
+    public User findUserById(Long id) {
         User user = userRepository.findById(id);
 
         return user;

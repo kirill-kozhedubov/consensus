@@ -11,7 +11,7 @@ import java.util.List;
 @Repository("boardRepository")
 public interface BoardRepository extends JpaRepository<Board, Long> {
 
-    Board findById(long id);
+    Board findById(Long id);
 
     List<Board> findByManagers(User managers);
 

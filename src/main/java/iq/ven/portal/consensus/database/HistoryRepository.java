@@ -4,5 +4,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface HistoryRepository  extends JpaRepository<HistoryEntry, Long> {
 
-    HistoryEntry findHistoryEntriesByEntityId(long entityId);
+    HistoryEntry findHistoryEntriesByEntityId(Long entityId);
 }

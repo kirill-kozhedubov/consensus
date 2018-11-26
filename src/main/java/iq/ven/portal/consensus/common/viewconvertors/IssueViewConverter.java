@@ -1,5 +1,6 @@
 package iq.ven.portal.consensus.common.viewconvertors;
 
+import iq.ven.portal.consensus.database.HistoryEntry;
 import iq.ven.portal.consensus.database.issue.model.*;
 import iq.ven.portal.consensus.database.user.model.User;
 
@@ -9,7 +10,7 @@ public class IssueViewConverter {
 
     public static Map<String, Object> convertIssue(Issue issue, boolean isLightweight) {
 
-        long issueId = issue.getId();
+        Long issueId = issue.getId();
         String issueKey = issue.getIssueKey();
         String issueName = issue.getName();
         String issueDescription = issue.getDescription();
@@ -25,21 +26,25 @@ public class IssueViewConverter {
         IssueTypes issueType = issue.getType();
         IssuePriorities issuePriority = issue.getPriority();
         IssueStatuses issueStatus = issue.getStatus();
+        Boolean isVisible = issue.isVisible();
+        List<HistoryEntry> history = issue.getHistory();
 
 
         Map<String, Object> issueMap = new HashMap<>();
         Map<String, Object> assigneeMap = UserViewConverter.convertUser(assignee, true);
         Map<String, Object> parentIssueMap = IssueViewConverter.convertIssue(parentIssue, true);
         if (!isLightweight) {
-            List<Map<String, Object>> reportersMap = UserViewConverter.convertUsers(reporters);
+            List<Map<String, Object>> reportersMap = UserViewConverter.convertUsers(reporters, true);
             List<Map<String, Object>> childIssuesMap = IssueViewConverter.convertIssues(childIssues, true);
             List<Map<String, Object>> attachmentsMap = IssueViewConverter.convertAttachments(attachments);
             List<Map<String, Object>> commentsMap = IssueViewConverter.convertComments(comments);
+            List<Map<String, Object>> historyMap = HistoryViewConverter.convertFullHistory(history, false);
 
             issueMap.put("reporters", reportersMap);
             issueMap.put("childIssues", childIssuesMap);
             issueMap.put("attachments", attachmentsMap);
             issueMap.put("comments", commentsMap);
+            issueMap.put("history", historyMap);
         }
 
         issueMap.put("id", issueId);
@@ -55,7 +60,7 @@ public class IssueViewConverter {
         issueMap.put("issueType", issueType);
         issueMap.put("issuePriority", issuePriority);
         issueMap.put("issueStatus", issueStatus);
-
+        issueMap.put("isVisible", isVisible);
 
         return issueMap;
     }
@@ -75,7 +80,7 @@ public class IssueViewConverter {
     public static Map<String, Object> convertComment(IssueComment comment) {
         String name = comment.getName();
         String description = comment.getDescription();
-        long commentId = comment.getId();
+        Long commentId = comment.getId();
         Date createdDate = comment.getCreatedDate();
         Date updatedDate = comment.getUpdatedDate();
         User commentUser = comment.getUser();

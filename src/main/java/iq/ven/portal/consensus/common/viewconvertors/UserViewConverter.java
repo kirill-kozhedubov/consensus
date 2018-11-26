@@ -3,22 +3,23 @@ package iq.ven.portal.consensus.common.viewconvertors;
 import iq.ven.portal.consensus.database.user.model.Role;
 import iq.ven.portal.consensus.database.user.model.User;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class UserViewConverter {
 
     public static Map<String, Object> convertUser(User user, boolean isLightweight) {
 
+        Long userId = user.getId();
         String username = user.getUsername();
         String firstName = user.getFirstName();
         String lastName = user.getLastName();
         String fullName = user.getLastName();
         String email = user.getEmail();
-        boolean isActive = user.isActive();
+        Boolean isActive = user.isActive();
         List<Role> userRoles = user.getRoles();
+        Boolean isVisible = user.isVisible();
+        Date createdDate = user.getCreatedDate();
+        Date updatedDate = user.getUpdatedDate();
 
 
         Map<String, Object> userMap = new HashMap<>();
@@ -31,19 +32,22 @@ public class UserViewConverter {
         userMap.put("email", email);
         userMap.put("isActive", isActive);
         userMap.put("roles", rolesList);
+        userMap.put("isVisible", isVisible);
+        userMap.put("id", userId);
+        userMap.put("createdDate", createdDate);
+        userMap.put("updatedDate", updatedDate);
 
         return userMap;
     }
 
 
-    public static List<Map<String, Object>> convertUsers(List<User> user) {
+    public static List<Map<String, Object>> convertUsers(List<User> users, boolean isLightweight) {
         List<Map<String, Object>> usersList = new ArrayList<>();
 
-
-
-
-
-
+        for (User user : users) {
+            Map<String, Object> userMap = convertUser(user, isLightweight);
+            usersList.add(userMap);
+        }
 
         return usersList;
     }

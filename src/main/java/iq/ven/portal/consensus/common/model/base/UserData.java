@@ -7,16 +7,16 @@ public class UserData {
     private String lastName;
     private String username;
     private String password;
-    private long userId;
+    private Long userId;
 
     public UserData() {
     }
 
-    public long getUserId() {
+    public Long getUserId() {
         return userId;
     }
 
-    public void setUserId(long userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
@@ -67,7 +67,7 @@ public class UserData {
         private String lastName;
         private String username;
         private String password;
-        private long userId;
+        private Long userId;
 
         private UserDataBuilder() {
         }
@@ -101,7 +101,7 @@ public class UserData {
             return this;
         }
 
-        public UserDataBuilder withUserId(long userId) {
+        public UserDataBuilder withUserId(Long userId) {
             this.userId = userId;
             return this;
         }

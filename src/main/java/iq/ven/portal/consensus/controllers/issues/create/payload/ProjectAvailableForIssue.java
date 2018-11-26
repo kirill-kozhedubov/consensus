@@ -3,12 +3,12 @@ package iq.ven.portal.consensus.controllers.issues.create.payload;
 public class ProjectAvailableForIssue {
 
     private String name;
-    private long id;
+    private Long id;
     private String abbreviation;
     private String description;
     private String managerName;
 
-    public ProjectAvailableForIssue(String name, long id, String abbreviation, String description, String managerName) {
+    public ProjectAvailableForIssue(String name, Long id, String abbreviation, String description, String managerName) {
         this.name = name;
         this.id = id;
         this.abbreviation = abbreviation;
@@ -28,11 +28,11 @@ public class ProjectAvailableForIssue {
         this.name = name;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

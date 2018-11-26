@@ -29,7 +29,7 @@ public class ProjectDataServiceImpl implements ProjectDataService {
     }
 
     @Override
-    public Project findProjectById(long projectId) {
+    public Project findProjectById(Long projectId) {
         Project project = projectRepository.findById(projectId);
         return project;
     }
@@ -66,11 +66,11 @@ public class ProjectDataServiceImpl implements ProjectDataService {
         return projectRepository.save(project);
     }
 
-    public Project loadProjectById(long id) {
+    public Project loadProjectById(Long id) {
         return projectRepository.findById(id);
     }
 
-    public Project loadProjectNyAbbreviation(String abbreviation) {
+    public Project loadProjectByAbbreviation(String abbreviation) {
         return projectRepository.findByAbbreviation(abbreviation);
     }
 

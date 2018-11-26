@@ -9,7 +9,7 @@ import java.util.List;
 @Repository("issueRepository")
 public interface IssueRepository extends JpaRepository<Issue, Long> {
 
-    Issue findById(long id);
+    Issue findById(Long id);
 
     Issue findByName(String name);
 

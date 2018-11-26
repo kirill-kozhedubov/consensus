@@ -16,6 +16,9 @@ public class TemplatesHelper {
     public static final String ISSUE_URL = "/issues/{projectKey}-{issueId}";
     public static final String CREATE_ISSUE_URL = "/issues/create";
 
+    public static final String PAGE_NOT_FOUND_REDIRECT = "redirect:error/not-found";
+    public static final String PAGE_NOT_FOUND_URL = "error/not-found";
+
     public static final String _URL = "/";
 
 

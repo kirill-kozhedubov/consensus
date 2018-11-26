@@ -11,7 +11,7 @@ public interface ProjectDataService {
 
     Project findProjectByAbbreviation(String abbreviation);
 
-    Project findProjectById(long projectId);
+    Project findProjectById(Long projectId);
 
     List<Project> findAllProjects();
 

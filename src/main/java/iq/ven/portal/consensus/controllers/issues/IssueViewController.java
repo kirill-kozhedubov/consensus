@@ -27,7 +27,7 @@ public class IssueViewController extends AbstractController{
 
     @RequestMapping(value = {"/{projectKey}-{issueId}"}, method = RequestMethod.GET)
     public ModelAndView issue(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
-                              @PathVariable String projectKey, @PathVariable long issueId) {
+                              @PathVariable String projectKey, @PathVariable Long issueId) {
         ModelAndView modelAndView = new ModelAndView();
 
 

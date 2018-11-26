@@ -4,18 +4,19 @@ import iq.ven.portal.consensus.database.issue.model.Issue;
 import iq.ven.portal.consensus.database.project.model.Project;
 import iq.ven.portal.consensus.database.user.model.User;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ProjectViewConverter {
 
     public static Map<String, Object> convertProject(Project project, boolean isLightweight) {
 
+        Long projectId = project.getId();
         String name = project.getName();
         String abbr = project.getAbbreviation();
         String description = project.getDescription();
+        Boolean isVisible = project.isVisible();
+        Date createdDate = project.getCreatedDate();
+        Date updatedDate = project.getUpdatedDate();
 
         User manager = project.getManager();
         String managerName = manager.getFullNameWithUsername();
@@ -32,7 +33,10 @@ public class ProjectViewConverter {
         projectMap.put("description", description);
         projectMap.put("abbr", abbr);
         projectMap.put("manager", managerName);
-
+        projectMap.put("isVisible", isVisible);
+        projectMap.put("id", projectId);
+        projectMap.put("createdDate", createdDate);
+        projectMap.put("updatedDate", updatedDate);
         return projectMap;
     }
 

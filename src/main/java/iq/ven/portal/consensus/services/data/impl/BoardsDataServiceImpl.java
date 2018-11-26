@@ -25,7 +25,7 @@ public class BoardsDataServiceImpl implements BoardsDataService {
     }
 
     @Override
-    public Board findBoardById(long id) {
+    public Board findBoardById(Long id) {
         Board boardById = boardRepository.findById(id);
         return boardById;
     }

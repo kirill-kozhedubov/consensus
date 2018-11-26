@@ -33,7 +33,7 @@ public class IssueDataServiceImpl implements IssueDataService {
 
 
     @Override
-    public Issue findIssueById(long id) {
+    public Issue findIssueById(Long id) {
         Issue issue = issueRepository.findById(id);
 
         return issue;
@@ -44,7 +44,7 @@ public class IssueDataServiceImpl implements IssueDataService {
         String issueIdString = issueKey.replaceAll("\\D+", "");
         Issue issue;
         try {
-            long issueId = Long.parseLong(issueIdString);
+            Long issueId = Long.parseLong(issueIdString);
             issue = issueRepository.findById(issueId);
             return issue;
         } catch (Exception e) {
@@ -61,7 +61,7 @@ public class IssueDataServiceImpl implements IssueDataService {
     }
 
     @Override
-    public Issue updateIssueAssignee(Issue issue, User userChangedTo, long userIdWhoChanged) {
+    public Issue updateIssueAssignee(Issue issue, User userChangedTo, Long userIdWhoChanged) {
         issue.setAssignee(userChangedTo);
         User user = userRepository.findById(userIdWhoChanged);
 

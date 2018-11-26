@@ -9,13 +9,13 @@ public interface IssueDataService {
 
     Issue saveIssue(Issue issue);
 
-    Issue findIssueById(long id);
+    Issue findIssueById(Long id);
 
     Issue findIssueByIssueKey(String issueKey);
 
     List<Issue> findIssueByNameIgnoreCaseContaining(String namePart);
 
-    Issue updateIssueAssignee(Issue issue, User userChangedTo, long userIdWhoChanged);
+    Issue updateIssueAssignee(Issue issue, User userChangedTo, Long userIdWhoChanged);
 
 
 }

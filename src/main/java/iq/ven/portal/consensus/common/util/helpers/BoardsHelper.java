@@ -9,7 +9,7 @@ public class BoardsHelper {
     public static List<BoardColumn> generateStandardColumnsForBoard() {
         List<BoardColumn> columns = new ArrayList<>();
 
-        for (long i = 1L; i < 7L; i++) {
+        for (Long i = 1L; i < 7L; i++) {
             BoardColumn column = new BoardColumn();
             column.setPosition(i);
             column.setName(getName(i));
@@ -21,7 +21,7 @@ public class BoardsHelper {
     }
 
 
-    private static String getName(long position) {
+    private static String getName(Long position) {
         Map<Long, String> namesOfPositions = new HashMap<>();
         namesOfPositions.put(1L, "TO DO");
         namesOfPositions.put(2L, "IN PROGRESS");

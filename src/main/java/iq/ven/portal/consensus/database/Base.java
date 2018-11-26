@@ -12,11 +12,11 @@ import java.util.List;
 @Entity
 @Table(name = "base")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Base implements Serializable{
+public class Base implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "id", updatable = false, nullable = false)
-    private long id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
@@ -31,11 +31,14 @@ public class Base implements Serializable{
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created", nullable = false)
+    @Column(name = "created", nullable = false, updatable = false)
     private Date updatedDate;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<HistoryEntry> history;
+
+    @Column(name = "isVisible")
+    private Boolean isVisible;
 
     public String getName() {
         return name;
@@ -71,11 +74,11 @@ public class Base implements Serializable{
 
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -93,5 +96,13 @@ public class Base implements Serializable{
 
     public void setUpdatedDate(Date updatedDate) {
         this.updatedDate = updatedDate;
+    }
+
+    public boolean isVisible() {
+        return isVisible;
+    }
+
+    public void setVisible(boolean visible) {
+        isVisible = visible;
     }
 }

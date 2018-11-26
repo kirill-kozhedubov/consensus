@@ -10,7 +10,7 @@ public interface BoardsDataService {
 
     Board save(Board board);
 
-    Board findBoardById(long id);
+    Board findBoardById(Long id);
 
     List<Board> findBoardsByProject(Project project);
 
