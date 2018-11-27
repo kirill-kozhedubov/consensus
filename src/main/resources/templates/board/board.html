@@ -14,36 +14,81 @@
 </div>
 
 <div class="background">
-    <div class="container">
+    <div class="container-fluid">
 
         <div class="board-background">
             <div class="board-wrapper">
-                <div class="board-columns">
+                <div class="board-columns container-fluid row">
 
-                    <div class="board-column">
+                    <div class="board-column-wrapper  col-2">
 
-                        <div class="board-column-issue" th:class="${'issue-id_' + issueId}">
+                        <div class="board-col-name">Lul</div> <!-- th:text="${}"-->
 
-                            <div class="issue-name" th:text="${}"></div>
+                        <div class="board-column">
+
+
+                            <div class="board-column-issue">  <!-- th:class="${'issue-id_' + issueId}"--> <!-- background according to issue type-->
+
+                                <div class="issue-name"></div>  <!-- th:text="${}"-->
+
+                                <div class="issue-description">
+
+                                    <div class="description"></div>  <!-- th:text="${}"-->
+
+                                    <div class="js-detailed-description-tooltip description-tooltip-dots">...</div>
+                                    <!--th:text="${}" th:if="size > 150"-->
+
+                                    <div class="detailed-description-tooltip hidden"></div>  <!--th:text="${}" th:if="size > 150"
+                                th:class="${'issue-id_' + issueId}"-->
+
+                                </div>
+                                <div class="assignee-container">
+
+                                    <div class="assignee-avatar"></div>
+
+                                    <div class="assignee-hidden-container hidden">
+                                        <div class="assignee-avatar"></div>
+                                        <!--  <a th:href="@{/users/user/${assignee.username}}">-->
+                                        <div class="assignee-name"></div> <!--th:text="${assignee.fullName}"-->
+                                        </a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
+
+
+                    <div class="board-column col-2">
+
+                        <div class="board-column-issue">  <!-- th:class="${'issue-id_' + issueId}"-->
+
+                            <div class="issue-name"></div>  <!-- th:text="${}"-->
 
                             <div class="issue-description">
 
-                                <div class="description" th:text="${}"></div>
+                                <div class="description"></div>  <!-- th:text="${}"-->
 
-                                <div class="js-detailed-description-tooltip" th:text="${}" th:if="size > 150">...</div>
+                                <div class="js-detailed-description-tooltip description-tooltip-dots">...</div>
+                                <!--th:text="${}" th:if="size > 150"-->
 
-                                <div class="detailed-description-tooltip hidden" th:text="${}" th:if="size > 150"
-                                     th:class="${'issue-id_' + issueId}"></div>
+                                <div class="detailed-description-tooltip hidden"></div>  <!--th:text="${}" th:if="size > 150"
+                                th:class="${'issue-id_' + issueId}"-->
 
                             </div>
                             <div class="assignee-container">
 
                                 <div class="assignee-avatar"></div>
 
-                                <div class="assignee-hidden-container">
+                                <div class="assignee-hidden-container hidden">
                                     <div class="assignee-avatar"></div>
-                                    <a th:href="@{/users/user/${assignee.username}}">
-                                        <div class="assignee-name"></div>
+                                    <!--  <a th:href="@{/users/user/${assignee.username}}">-->
+                                    <div class="assignee-name"></div> <!--th:text="${assignee.fullName}"-->
                                     </a>
                                 </div>
                             </div>
@@ -52,6 +97,160 @@
 
 
                     </div>
+                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
+
+
+                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
+
+
+                    <div class="board-column col-2">
+
+                        <div class="board-column-issue">  <!-- th:class="${'issue-id_' + issueId}"-->
+
+                            <div class="issue-name"></div>  <!-- th:text="${}"-->
+
+                            <div class="issue-description">
+
+                                <div class="description"></div>  <!-- th:text="${}"-->
+
+                                <div class="js-detailed-description-tooltip description-tooltip-dots">...</div>
+                                <!--th:text="${}" th:if="size > 150"-->
+
+                                <div class="detailed-description-tooltip hidden"></div>  <!--th:text="${}" th:if="size > 150"
+                                th:class="${'issue-id_' + issueId}"-->
+
+                            </div>
+                            <div class="assignee-container">
+
+                                <div class="assignee-avatar"></div>
+
+                                <div class="assignee-hidden-container hidden">
+                                    <div class="assignee-avatar"></div>
+                                    <!--  <a th:href="@{/users/user/${assignee.username}}">-->
+                                    <div class="assignee-name"></div> <!--th:text="${assignee.fullName}"-->
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
+
+                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
+
+
+                    <div class="board-column col-2">
+
+                        <div class="board-column-issue">  <!-- th:class="${'issue-id_' + issueId}"-->
+
+                            <div class="issue-name"></div>  <!-- th:text="${}"-->
+
+                            <div class="issue-description">
+
+                                <div class="description"></div>  <!-- th:text="${}"-->
+
+                                <div class="js-detailed-description-tooltip description-tooltip-dots">...</div>
+                                <!--th:text="${}" th:if="size > 150"-->
+
+                                <div class="detailed-description-tooltip hidden"></div>  <!--th:text="${}" th:if="size > 150"
+                                th:class="${'issue-id_' + issueId}"-->
+
+                            </div>
+                            <div class="assignee-container">
+
+                                <div class="assignee-avatar"></div>
+
+                                <div class="assignee-hidden-container hidden">
+                                    <div class="assignee-avatar"></div>
+                                    <!--  <a th:href="@{/users/user/${assignee.username}}">-->
+                                    <div class="assignee-name"></div> <!--th:text="${assignee.fullName}"-->
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
+
+                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
+
+
+                    <div class="board-column col-2">
+
+                        <div class="board-column-issue">  <!-- th:class="${'issue-id_' + issueId}"-->
+
+                            <div class="issue-name"></div>  <!-- th:text="${}"-->
+
+                            <div class="issue-description">
+
+                                <div class="description"></div>  <!-- th:text="${}"-->
+
+                                <div class="js-detailed-description-tooltip description-tooltip-dots">...</div>
+                                <!--th:text="${}" th:if="size > 150"-->
+
+                                <div class="detailed-description-tooltip hidden"></div>  <!--th:text="${}" th:if="size > 150"
+                                th:class="${'issue-id_' + issueId}"-->
+
+                            </div>
+                            <div class="assignee-container">
+
+                                <div class="assignee-avatar"></div>
+
+                                <div class="assignee-hidden-container hidden">
+                                    <div class="assignee-avatar"></div>
+                                    <!--  <a th:href="@{/users/user/${assignee.username}}">-->
+                                    <div class="assignee-name"></div> <!--th:text="${assignee.fullName}"-->
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
+
+                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
+
+
+                    <div class="board-column col col-2">
+
+                        <div class="board-column-issue">  <!-- th:class="${'issue-id_' + issueId}"-->
+
+                            <div class="issue-name"></div>  <!-- th:text="${}"-->
+
+                            <div class="issue-description">
+
+                                <div class="description"></div>  <!-- th:text="${}"-->
+
+                                <div class="js-detailed-description-tooltip description-tooltip-dots">...</div>
+                                <!--th:text="${}" th:if="size > 150"-->
+
+                                <div class="detailed-description-tooltip hidden"></div>  <!--th:text="${}" th:if="size > 150"
+                                th:class="${'issue-id_' + issueId}"-->
+
+                            </div>
+                            <div class="assignee-container">
+
+                                <div class="assignee-avatar"></div>
+
+                                <div class="assignee-hidden-container hidden">
+                                    <div class="assignee-avatar"></div>
+                                    <!--  <a th:href="@{/users/user/${assignee.username}}">-->
+                                    <div class="assignee-name"></div> <!--th:text="${assignee.fullName}"-->
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
 
 
                 </div>

@@ -41,4 +41,20 @@ public class BoardViewController extends AbstractController {
 
     }
 
+
+    @RequestMapping(value = {"/boardd"}, method = RequestMethod.GET)
+    public ModelAndView issue(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) {
+        ModelAndView modelAndView = new ModelAndView();
+
+            modelAndView.addObject(TemplatesHelper.PAGE_TITLE, "board");
+            modelAndView.setViewName("board/board");
+
+            return modelAndView;
+
+
+    }
+
+
+
+
 }
