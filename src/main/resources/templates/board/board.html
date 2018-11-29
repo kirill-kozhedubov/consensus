@@ -20,238 +20,75 @@
             <div class="board-wrapper">
                 <div class="board-columns container-fluid row">
 
-                    <div class="board-column-wrapper  col-2">
 
-                        <div class="board-col-name">Lul</div> <!-- th:text="${}"-->
+                    <div class="board-column-wrapper  col-2" th:each="i : ${#numbers.sequence( 1, 6)}">
+
+                        <div class="board-col-name">Column Name</div> <!-- th:text="${}"-->
 
                         <div class="board-column">
 
 
-                            <div class="board-column-issue">  <!-- th:class="${'issue-id_' + issueId}"-->
+                            <div class="board-column-issue _issue-id_12345">  <!-- th:class="${'issue-id_' + issueId}"-->
                                 <!-- background according to issue type-->
+                                <a href="#">
+                                    <div class="issue-full-name-container">
+                                        <div class="issue-key">[IssueKey-021312]</div>
+                                        <div class="issue-divider"></div>
+                                        <div class="issue-name">Issue Name</div>   <!-- th:text="${}"-->
+                                    </div>
+                                </a>
 
-                                <div class="issue-name"></div>  <!-- th:text="${}"-->
+                                <div class="assignee-container">
+
+                                    <div class="assignee-displayed-info">
+                                        <a href="#">
+                                            <div class="assignee-full-name">John Doeboy</div>
+                                            <div class="js-assignee-avatar assignee-avatar"></div>
+                                        </a>
+                                    </div>
+
+                                </div>
 
                                 <div class="issue-description">
 
-                                    <div class="description"></div>  <!-- th:text="${}"-->
+                                    <div class="description">Lorem Ipsum is simply dummy text of the printing and
+                                        typesetting industry.
+                                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                        when an unknown printer took a galley of
+                                        type and scrambled it to make a type specimen book. It has survived not only
+                                        five centuries, but also the leap
+                                        into electronic typesetting, remaining essentially unchanged. It was popularised
+                                        in the 1960s with the release of
+                                        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                                        publishing software like Aldus
+                                        PageMaker including versions of Lorem Ipsum.
+                                    </div>  <!-- th:text="${}"-->
 
                                     <div class="js-detailed-description-tooltip description-tooltip-dots">...</div>
                                     <!--th:text="${}" th:if="size > 150"-->
 
-                                    <div class="detailed-description-tooltip hidden"></div>  <!--th:text="${}" th:if="size > 150"
+                                    <div class="detailed-description-tooltip hidden text-justify">Lorem Ipsum is simply dummy text of
+                                        the printing and typesetting industry.
+                                        Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                        when an unknown printer took a galley of
+                                        type and scrambled it to make a type specimen book. It has survived not only
+                                        five centuries, but also the leap
+                                        into electronic typesetting, remaining essentially unchanged. It was popularised
+                                        in the 1960s with the release of
+                                        Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                                        publishing software like Aldus
+                                        PageMaker including versions of Lorem Ipsum.
+                                    </div>  <!--th:text="${}" th:if="size > 150"
                                 th:class="${'issue-id_' + issueId}"-->
 
                                 </div>
-                                <div class="assignee-container">
 
-                                    <div class="assignee-avatar"></div>
-
-                                    <div class="assignee-hidden-container hidden">
-                                        <div class="assignee-avatar"></div>
-                                        <!--  <a th:href="@{/users/user/${assignee.username}}">-->
-                                        <div class="assignee-name"></div> <!--th:text="${assignee.fullName}"-->
-                                        </a>
-                                    </div>
-                                </div>
 
                             </div>
 
 
                         </div>
                     </div>
-
-
-                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
-
-
-                    <div class="board-column col-2">
-
-                        <div class="board-column-issue">  <!-- th:class="${'issue-id_' + issueId}"-->
-
-                            <div class="issue-name"></div>  <!-- th:text="${}"-->
-
-                            <div class="issue-description">
-
-                                <div class="description"></div>  <!-- th:text="${}"-->
-
-                                <div class="js-detailed-description-tooltip description-tooltip-dots">...</div>
-                                <!--th:text="${}" th:if="size > 150"-->
-
-                                <div class="detailed-description-tooltip hidden"></div>  <!--th:text="${}" th:if="size > 150"
-                                th:class="${'issue-id_' + issueId}"-->
-
-                            </div>
-                            <div class="assignee-container">
-
-                                <div class="assignee-avatar"></div>
-
-                                <div class="assignee-hidden-container hidden">
-                                    <div class="assignee-avatar"></div>
-                                    <!--  <a th:href="@{/users/user/${assignee.username}}">-->
-                                    <div class="assignee-name"></div> <!--th:text="${assignee.fullName}"-->
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
-
-
-                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
-
-
-                    <div class="board-column col-2">
-
-                        <div class="board-column-issue">  <!-- th:class="${'issue-id_' + issueId}"-->
-
-                            <div class="issue-name"></div>  <!-- th:text="${}"-->
-
-                            <div class="issue-description">
-
-                                <div class="description"></div>  <!-- th:text="${}"-->
-
-                                <div class="js-detailed-description-tooltip description-tooltip-dots">...</div>
-                                <!--th:text="${}" th:if="size > 150"-->
-
-                                <div class="detailed-description-tooltip hidden"></div>  <!--th:text="${}" th:if="size > 150"
-                                th:class="${'issue-id_' + issueId}"-->
-
-                            </div>
-                            <div class="assignee-container">
-
-                                <div class="assignee-avatar"></div>
-
-                                <div class="assignee-hidden-container hidden">
-                                    <div class="assignee-avatar"></div>
-                                    <!--  <a th:href="@{/users/user/${assignee.username}}">-->
-                                    <div class="assignee-name"></div> <!--th:text="${assignee.fullName}"-->
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
-
-                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
-
-
-                    <div class="board-column col-2">
-
-                        <div class="board-column-issue">  <!-- th:class="${'issue-id_' + issueId}"-->
-
-                            <div class="issue-name"></div>  <!-- th:text="${}"-->
-
-                            <div class="issue-description">
-
-                                <div class="description"></div>  <!-- th:text="${}"-->
-
-                                <div class="js-detailed-description-tooltip description-tooltip-dots">...</div>
-                                <!--th:text="${}" th:if="size > 150"-->
-
-                                <div class="detailed-description-tooltip hidden"></div>  <!--th:text="${}" th:if="size > 150"
-                                th:class="${'issue-id_' + issueId}"-->
-
-                            </div>
-                            <div class="assignee-container">
-
-                                <div class="assignee-avatar"></div>
-
-                                <div class="assignee-hidden-container hidden">
-                                    <div class="assignee-avatar"></div>
-                                    <!--  <a th:href="@{/users/user/${assignee.username}}">-->
-                                    <div class="assignee-name"></div> <!--th:text="${assignee.fullName}"-->
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
-
-                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
-
-
-                    <div class="board-column col-2">
-
-                        <div class="board-column-issue">  <!-- th:class="${'issue-id_' + issueId}"-->
-
-                            <div class="issue-name"></div>  <!-- th:text="${}"-->
-
-                            <div class="issue-description">
-
-                                <div class="description"></div>  <!-- th:text="${}"-->
-
-                                <div class="js-detailed-description-tooltip description-tooltip-dots">...</div>
-                                <!--th:text="${}" th:if="size > 150"-->
-
-                                <div class="detailed-description-tooltip hidden"></div>  <!--th:text="${}" th:if="size > 150"
-                                th:class="${'issue-id_' + issueId}"-->
-
-                            </div>
-                            <div class="assignee-container">
-
-                                <div class="assignee-avatar"></div>
-
-                                <div class="assignee-hidden-container hidden">
-                                    <div class="assignee-avatar"></div>
-                                    <!--  <a th:href="@{/users/user/${assignee.username}}">-->
-                                    <div class="assignee-name"></div> <!--th:text="${assignee.fullName}"-->
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
-
-                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
-
-
-                    <div class="board-column col col-2">
-
-                        <div class="board-column-issue">  <!-- th:class="${'issue-id_' + issueId}"-->
-
-                            <div class="issue-name"></div>  <!-- th:text="${}"-->
-
-                            <div class="issue-description">
-
-                                <div class="description"></div>  <!-- th:text="${}"-->
-
-                                <div class="js-detailed-description-tooltip description-tooltip-dots">...</div>
-                                <!--th:text="${}" th:if="size > 150"-->
-
-                                <div class="detailed-description-tooltip hidden"></div>  <!--th:text="${}" th:if="size > 150"
-                                th:class="${'issue-id_' + issueId}"-->
-
-                            </div>
-                            <div class="assignee-container">
-
-                                <div class="assignee-avatar"></div>
-
-                                <div class="assignee-hidden-container hidden">
-                                    <div class="assignee-avatar"></div>
-                                    <!--  <a th:href="@{/users/user/${assignee.username}}">-->
-                                    <div class="assignee-name"></div> <!--th:text="${assignee.fullName}"-->
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                    <!--   asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf-->
 
 
                 </div>

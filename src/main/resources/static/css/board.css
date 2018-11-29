@@ -22,7 +22,8 @@
 }
 
 .board-column {
-
+    border: 2px solid blueviolet;
+    padding: 10px;
 }
 
 .board-column-issue {
@@ -30,7 +31,15 @@
 }
 
 .issue-name {
+    display: inline;
+}
 
+.issue-key {
+    display: inline;
+}
+
+.issue-full-name-container {
+    font-weight: bold;
 }
 
 .issue-description {
@@ -38,11 +47,12 @@
 }
 
 .description {
+    display: inline;
 
 }
 
 .description-tooltip-dots {
-
+    display: inline;
 }
 
 .description-tooltip {
@@ -54,40 +64,55 @@
 }
 
 .assignee-avatar {
-
+    background: url("https://st.depositphotos.com/1008939/1880/i/450/depositphotos_18807295-stock-photo-portrait-of-handsome-man.jpg");
+    background-size: cover;
+    width: 40px;
+    height: 40px;
 }
 
-.assignee-hidden-container {
-
+.assignee-container {
+    text-align: right;
+    border: 1px solid lightgrey;
+    margin: 10px;
+    padding: 5px;
 }
 
 .assignee-avatar {
-
+    display: inline-block;
 }
 
-.assignee-name {
-
+.assignee-full-name {
+    display: inline;
+    font-weight: bold;
 }
 
-. {
-
+.issue-divider {
+    display: inline;
 }
 
-. {
-
+.issue-divider::before {
+    content: "//";
 }
 
+.bg-issue-blue {
+    background-color: lightskyblue;
+}
 
+.bg-issue-red {
+    background-color: indianred;
+}
 
+.bg-issue-green {
+    background-color: darkseagreen;
+}
 
+.bg-issue-white {
+    background-color: white;
+}
 
-
-
-
-
-
-
-
+.bg-issue-purple {
+    background-color: mediumpurple;
+}
 
 
 

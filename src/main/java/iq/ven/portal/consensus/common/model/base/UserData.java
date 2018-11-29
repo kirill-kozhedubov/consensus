@@ -60,6 +60,11 @@ public class UserData {
         this.password = password;
     }
 
+    public String getFullName() {
+      //  return getFirstName() + " " + getLastName();
+        return "Firstname" + " LastName";  //!TODO REMOVE ITS FOR TEST
+    }
+
 
     public static final class UserDataBuilder {
         private String email;

@@ -3,8 +3,21 @@
     var page;
 
     var jsClasses = {
-        lul: ".lul",
-        lul: ".lul",
+        detailedDescriptionDots: ".js-detailed-description-tooltip.description-tooltip-dots",
+        detailedDescriptionHidden: ".detailed-description-tooltip",
+        issueIdClassWithoutId: "._issue-id_",
+        lul: ".",
+        lul: ".",
+        lul: ".",
+        lul: ".",
+        lul: ".",
+        lul: ".",
+        lul: ".",
+        lul: ".",
+        lul: ".",
+        lul: ".",
+
+
     };
 
     $(function () {//init

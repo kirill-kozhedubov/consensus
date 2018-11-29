@@ -48,7 +48,6 @@ public class BoardViewController extends AbstractController {
 
             modelAndView.addObject(TemplatesHelper.PAGE_TITLE, "board");
             modelAndView.setViewName("board/board");
-
             return modelAndView;
 
 

@@ -11,6 +11,11 @@ import java.io.Serializable;
 @Scope(value="session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ProjectUser implements Serializable {
 
+   public ProjectUser() {
+      UserData userData = new UserData();
+      setUserData(userData);
+   } //!TODO REMOVE ITS FOR TEST
+
    private UserData userData;
 
    public UserData getUserData() {
