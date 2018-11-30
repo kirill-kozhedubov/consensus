@@ -1,7 +1,10 @@
 package iq.ven.portal.consensus.controllers.issues.create;
 
+import iq.ven.portal.consensus.common.util.helpers.TemplatesHelper;
 import iq.ven.portal.consensus.controllers.AbstractController;
 import iq.ven.portal.consensus.controllers.issues.create.payload.CreateIssueRequest;
+import iq.ven.portal.consensus.database.board.model.main.Board;
+import iq.ven.portal.consensus.database.board.model.main.BoardColumn;
 import iq.ven.portal.consensus.database.issue.model.Issue;
 import iq.ven.portal.consensus.database.issue.model.IssuePriorities;
 import iq.ven.portal.consensus.database.issue.model.IssueStatuses;
@@ -43,7 +46,7 @@ public class CreateIssueResourceController extends AbstractController {
         User assignee = userDataService.findUserByUsername(assigneeUsername);
 
         issue.setAssignee(assignee);
-        issue.setReporters(Arrays.asList(assignee)); //TODO add manager of project
+        issue.setReporters(Arrays.asList(assignee)); //TODO add guy who created of project
         issue.setName(createIssueRequest.getName());
         issue.setPriority(IssuePriorities.getIssuePriorityByName(createIssueRequest.getPriority()));
         issue.setType(IssueTypes.getIssueTypeByName(createIssueRequest.getType()));
@@ -54,8 +57,9 @@ public class CreateIssueResourceController extends AbstractController {
         issue.setAttachments(Collections.emptyList()/* TODO createIssueRequest.getAttachments()*/);
         issue.setComments(Collections.emptyList());
 
-        Project project = projectDataService.findProjectById(Long.parseLong(createIssueRequest.getProject()));
+        Project project = projectDataService.findProjectById(TemplatesHelper.transformStringToLong(createIssueRequest.getProject()));
         issue.setProject(project);
+
 
         if (!StringUtils.isEmpty(createIssueRequest.getParentIssue())) {
             Issue parentIssue = issueDataService.findIssueByIssueKey(createIssueRequest.getParentIssue());
@@ -78,7 +82,19 @@ public class CreateIssueResourceController extends AbstractController {
 
         }
 
+        Issue savedIssue = issueDataService.saveIssue(issue);
+        Board board = boardsDataService.findBoardById(TemplatesHelper.transformStringToLong(createIssueRequest.getBoardId());
+        addNewIssueToBoard(board, savedIssue);
+
+
         return result;
     }
 
+
+    void addNewIssueToBoard(Board board, Issue issue) {
+        List<BoardColumn> boardColumns = board.getColumns();
+        BoardColumn firstCol = boardColumns.get(0);
+        firstCol.getIssues().add(issue);
+        boardsDataService.save(board);
+    }
 }

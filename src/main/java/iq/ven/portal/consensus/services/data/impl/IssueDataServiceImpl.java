@@ -36,6 +36,8 @@ public class IssueDataServiceImpl implements IssueDataService {
 
     @Override
     public Issue saveIssue(Issue issue) {
+        HistoryEntry historyEntry = new HistoryEntry(issue.getReporters().get(0), issue, "Issue created");
+        issue.getHistory().add(historyEntry);
         return issueRepository.save(issue);
     }
 

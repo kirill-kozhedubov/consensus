@@ -17,4 +17,8 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 
     List<Board> findByProject(Project project);
 
+    Board findBoardByName(String name);
+
+
+
 }

@@ -50,4 +50,10 @@ public class BoardsDataServiceImpl implements BoardsDataService {
     public List<Board> findBoardsByManager(User user) {
         return null;
     }
+
+    @Override
+    public Board findBoardByName(String name) {
+        Board boardByName = boardRepository.findBoardByName(name);
+        return boardByName;
+    }
 }

@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository("boardColumnRepository")
 public interface BoardColumnRepository  extends JpaRepository<BoardColumn, Long> {
 
+
+
 }

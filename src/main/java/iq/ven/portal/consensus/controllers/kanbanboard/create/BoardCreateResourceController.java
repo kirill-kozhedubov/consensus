@@ -41,9 +41,9 @@ public class BoardCreateResourceController extends AbstractController {
         board.setColumns(standardColumns);
 
         Project project = projectDataService.findProjectById(TemplatesHelper.transformStringToLong(createBoardRequest.getProjectId()));
+
         board.setProject(project);
-
-
+        //TODO !Add user who created board as manager
         Board savedBoard = boardsDataService.save(board);
 
         if (savedBoard != null) {

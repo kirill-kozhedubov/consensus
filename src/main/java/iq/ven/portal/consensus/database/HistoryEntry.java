@@ -17,6 +17,15 @@ public class HistoryEntry extends Base {
     @JoinColumn(name = "base_entity_id")
     private Base entity;
 
+    public HistoryEntry() {
+    }
+
+    public HistoryEntry(User user, Base entity, String changeItself) {
+        this.user = user;
+        this.entity = entity;
+        this.changeItself = changeItself;
+    }
+
     private String changeItself;//maybe rework maybe DB maybe from and to
 
     public User getUser() {

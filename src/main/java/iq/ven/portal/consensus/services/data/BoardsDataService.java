@@ -18,4 +18,6 @@ public interface BoardsDataService {
 
     List<Board> findBoardsByManager(User user);
 
+    Board findBoardByName(String name);
+
 }

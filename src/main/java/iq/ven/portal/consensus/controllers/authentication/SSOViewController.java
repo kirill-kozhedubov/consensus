@@ -3,7 +3,12 @@ package iq.ven.portal.consensus.controllers.authentication;
 import iq.ven.portal.consensus.common.beans.ProjectUser;
 import iq.ven.portal.consensus.common.beans.UserState;
 import iq.ven.portal.consensus.common.model.base.UserData;
+import iq.ven.portal.consensus.common.util.helpers.BoardsHelper;
 import iq.ven.portal.consensus.common.util.helpers.TemplatesHelper;
+import iq.ven.portal.consensus.controllers.AbstractController;
+import iq.ven.portal.consensus.database.board.model.main.Board;
+import iq.ven.portal.consensus.database.board.model.main.BoardColumn;
+import iq.ven.portal.consensus.database.board.model.main.BoardType;
 import iq.ven.portal.consensus.database.issue.model.Issue;
 import iq.ven.portal.consensus.database.issue.model.IssuePriorities;
 import iq.ven.portal.consensus.database.issue.model.IssueStatuses;
@@ -29,7 +34,7 @@ import java.util.*;
 
 @Controller
 @RequestMapping("/sso")
-public class SSOViewController {
+public class SSOViewController extends AbstractController {
 
     @Autowired
     private UserDataService userDataService;
@@ -65,13 +70,24 @@ public class SSOViewController {
             Project project = createProject(userr);
             Issue issue = createIssue(project, userr);
         }
+
+        User genUser = null;
         for (int i = 0; i < 50; i++) {
-            generateAndSaveUser();
+            genUser = generateAndSaveUser();
+        }
+        Project genProj = null;
+        for (int i = 0; i < 50; i++) {
+            genProj = createProject(checker);
+        }
+        Issue genIssue = null;
+        for (int i = 0; i < 50; i++) {
+            genIssue = createIssue(genProj, genUser);
+        }
+        Board genBoard = null;
+        for (int i = 0; i < 50; i++) {
+            genBoard = createBoard(genProj, genUser);
         }
 
-        for (int i = 0; i < 50; i++) {
-            createProject(checker);
-        }
         //   List<Issue> foundIssue = issueDataService.findIssueByNameIgnoreCaseContaining("Issue ly");
         //   System.out.println(foundIssue);
 //--------------------------------EMD OF TEST-------------------------------------
@@ -98,6 +114,7 @@ public class SSOViewController {
             userState.setLogInDate(new Date());
             try {
                 user = userDataService.saveUser(user);
+                user = userDataService.findUserByEmail(generatedEmail);
             } catch (Exception e) {
                 logger.error("Error in saving user", e);
             }
@@ -180,7 +197,7 @@ public class SSOViewController {
     Project createProject(User user) {
         Project project = new Project();
 
-        String randNum = randomNumber(0,1000000) + " " + randomNumber(0,1000000);
+        String randNum = randomNumber(0, 1000000) + " " + randomNumber(0, 1000000);
 
         project.setName("Test project" + randNum);
         project.setAbbreviation("PROJ" + randNum);
@@ -189,25 +206,30 @@ public class SSOViewController {
 
 
         project.setManager(userDataService.findUserByEmail(user.getEmail()));
-        project.setDescription("lyl descrtiption");
+        project.setDescription(generateDescription());
 
         project = projectDataService.saveProject(project);
-
+        String projABr = project.getAbbreviation();
+        project = projectDataService.findProjectByAbbreviation(projABr);
         return project;
     }
 
     Issue createIssue(Project project, User user) {
         Issue issue = new Issue();
-        issue.setName("Issue ly123");
-        issue.setAssignee(userDataService.findUserByEmail(user.getEmail()));
+        issue.setName("Issue" + generateString(10));
+        issue.setAssignee(user);
         issue.setDueDate(new Date());
         issue.setPriority(IssuePriorities.CRITICAL);
-        issue.setProject(projectDataService.findProjectByAbbreviation(project.getAbbreviation()));
+        issue.setProject(project);
         issue.setParentIssue(null);
-        issue.setReporters(Arrays.asList(userDataService.findUserByEmail(user.getEmail())));
-        issue.setStatus(IssueStatuses.CLOSED);
+        issue.setReporters(Arrays.asList(user));
+        issue.setStatus(IssueStatuses.OPEN);
         issue.setType(IssueTypes.BUG);
-        issue.setDescription("desc 1324");
+
+
+        issue.setDescription(generateDescription());
+
+
         issue.setAttachments(Collections.emptyList());
         issue.setComments(Collections.emptyList());
         issue.setHistory(Collections.emptyList());
@@ -217,6 +239,36 @@ public class SSOViewController {
         return issue;
     }
 
+
+    Board createBoard(Project project, User user) {
+        String randNum = randomNumber(0, 1000000) + " " + randomNumber(0, 1000000);
+
+        Board board = new Board();
+        board.setName("Boar control " + randNum);
+        board.setBoardType(BoardType.KANBAN);
+        board.setDescription(generateDescription());
+
+        List<BoardColumn> standardColumns = BoardsHelper.generateStandardColumnsForBoard();
+        board.setColumns(standardColumns);
+
+        board.setProject(project);
+        board.setManagers(Arrays.asList(user));
+
+        Board savedBoard = boardsDataService.save(board);
+
+        savedBoard = boardsDataService.findBoardByName(board.getName());
+        return savedBoard;
+    }
+
+
+    String generateDescription() {
+        StringBuilder desc = new StringBuilder();
+        for (int i = 0; i < 20; i++) {
+            desc.append(generateString(20)).append(" ");
+        }
+        String descGen = "desc 1324 " + desc.toString();
+        return descGen;
+    }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView registration() {
