@@ -21,7 +21,7 @@ public class Base implements Serializable {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "description")
+    @Column(name = "description", columnDefinition = "text")
     private String description;
 
     @CreationTimestamp
@@ -37,8 +37,12 @@ public class Base implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<HistoryEntry> history;
 
-    @Column(name = "isVisible")
-    private Boolean isVisible;
+    @Column(name = "isVisible", columnDefinition = "boolean default true", nullable = false)
+    private boolean isVisible = true;
+
+
+    public Base() {
+    }
 
     public String getName() {
         return name;
@@ -105,4 +109,5 @@ public class Base implements Serializable {
     public void setVisible(boolean visible) {
         isVisible = visible;
     }
+
 }

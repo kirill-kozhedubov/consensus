@@ -44,4 +44,5 @@ public class IssueComment extends Base {
     public void setText(String text) {
         this.text = text;
     }
+
 }

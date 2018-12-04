@@ -3,6 +3,8 @@ package iq.ven.portal.consensus.services.data.impl;
 import iq.ven.portal.consensus.database.issue.model.IssueAttachmentFile;
 import iq.ven.portal.consensus.database.issue.repository.IssueAttachmentFileRepository;
 import iq.ven.portal.consensus.services.data.IssueAttachmentFileDataService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -15,7 +17,7 @@ public class IssueAttachmentFileDataServiceImpl implements IssueAttachmentFileDa
 
     @Autowired
     private IssueAttachmentFileRepository issueAttachmentFileRepository;
-
+    private static final Logger logger = LoggerFactory.getLogger(IssueAttachmentFileDataServiceImpl.class);
 
     public IssueAttachmentFile saveFile(MultipartFile file) {
         // Normalize file name
@@ -23,8 +25,8 @@ public class IssueAttachmentFileDataServiceImpl implements IssueAttachmentFileDa
 
         try {
             // Check if the file's name contains invalid characters
-            if(fileName.contains("..")) {
-               throw new RuntimeException("Sorry! Filename contains invalid path sequence " + fileName);
+            if (fileName.contains("..")) {
+                throw new RuntimeException("Sorry! Filename contains invalid path sequence " + fileName);
             }
 
             IssueAttachmentFile issueAttachmentFile = new IssueAttachmentFile(fileName, file.getContentType(), file.getBytes());

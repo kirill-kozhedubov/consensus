@@ -83,7 +83,7 @@ public class CreateIssueResourceController extends AbstractController {
         }
 
         Issue savedIssue = issueDataService.saveIssue(issue);
-        Board board = boardsDataService.findBoardById(TemplatesHelper.transformStringToLong(createIssueRequest.getBoardId());
+        Board board = boardsDataService.findBoardById(TemplatesHelper.transformStringToLong(createIssueRequest.getBoardId()));
         addNewIssueToBoard(board, savedIssue);
 
 

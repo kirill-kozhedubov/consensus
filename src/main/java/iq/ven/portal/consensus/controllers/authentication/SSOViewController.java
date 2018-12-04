@@ -6,13 +6,11 @@ import iq.ven.portal.consensus.common.model.base.UserData;
 import iq.ven.portal.consensus.common.util.helpers.BoardsHelper;
 import iq.ven.portal.consensus.common.util.helpers.TemplatesHelper;
 import iq.ven.portal.consensus.controllers.AbstractController;
+import iq.ven.portal.consensus.database.HistoryEntry;
 import iq.ven.portal.consensus.database.board.model.main.Board;
 import iq.ven.portal.consensus.database.board.model.main.BoardColumn;
 import iq.ven.portal.consensus.database.board.model.main.BoardType;
-import iq.ven.portal.consensus.database.issue.model.Issue;
-import iq.ven.portal.consensus.database.issue.model.IssuePriorities;
-import iq.ven.portal.consensus.database.issue.model.IssueStatuses;
-import iq.ven.portal.consensus.database.issue.model.IssueTypes;
+import iq.ven.portal.consensus.database.issue.model.*;
 import iq.ven.portal.consensus.database.project.model.Project;
 import iq.ven.portal.consensus.database.user.model.User;
 import iq.ven.portal.consensus.services.data.IssueDataService;
@@ -71,22 +69,22 @@ public class SSOViewController extends AbstractController {
             Issue issue = createIssue(project, userr);
         }
 
-        User genUser = null;
-        for (int i = 0; i < 50; i++) {
-            genUser = generateAndSaveUser();
-        }
-        Project genProj = null;
-        for (int i = 0; i < 50; i++) {
-            genProj = createProject(checker);
-        }
-        Issue genIssue = null;
-        for (int i = 0; i < 50; i++) {
-            genIssue = createIssue(genProj, genUser);
-        }
-        Board genBoard = null;
-        for (int i = 0; i < 50; i++) {
-            genBoard = createBoard(genProj, genUser);
-        }
+    //    User genUser = null;
+    //    for (int i = 0; i < 50; i++) {
+    //        genUser = generateAndSaveUser();
+    //    }
+    //    Project genProj = null;
+    //    for (int i = 0; i < 50; i++) {
+    //        genProj = createProject(checker);
+    //    }
+    //    Issue genIssue = null;
+    //    for (int i = 0; i < 50; i++) {
+    //        genIssue = createIssue(genProj, genUser);
+    //    }
+    //    Board genBoard = null;
+    //    for (int i = 0; i < 50; i++) {
+    //        genBoard = createBoard(genProj, genUser);
+    //    }
 
         //   List<Issue> foundIssue = issueDataService.findIssueByNameIgnoreCaseContaining("Issue ly");
         //   System.out.println(foundIssue);
@@ -110,6 +108,7 @@ public class SSOViewController extends AbstractController {
             user.setLastName(generateString(randomNumber(5, 14)));
             user.setEmail(generatedEmail);
             user.setPassword("user");
+            user.setVisible(true);
 
             userState.setLogInDate(new Date());
             try {
@@ -201,8 +200,8 @@ public class SSOViewController extends AbstractController {
 
         project.setName("Test project" + randNum);
         project.setAbbreviation("PROJ" + randNum);
-        project.setIssues(Collections.emptyList());
-        project.setBoards(Collections.emptyList());
+        project.setIssues(new ArrayList<Issue>());
+        project.setBoards(new ArrayList<Board>());
 
 
         project.setManager(userDataService.findUserByEmail(user.getEmail()));
@@ -230,9 +229,9 @@ public class SSOViewController extends AbstractController {
         issue.setDescription(generateDescription());
 
 
-        issue.setAttachments(Collections.emptyList());
-        issue.setComments(Collections.emptyList());
-        issue.setHistory(Collections.emptyList());
+        issue.setAttachments(new ArrayList<IssueAttachment>());
+        issue.setComments(new ArrayList<IssueComment>());
+        issue.setHistory(new ArrayList<HistoryEntry>());
 
         issue = issueDataService.saveIssue(issue);
 

@@ -58,4 +58,5 @@ public class Board extends Base implements Serializable {
     public void setProject(Project project) {
         this.project = project;
     }
+
 }

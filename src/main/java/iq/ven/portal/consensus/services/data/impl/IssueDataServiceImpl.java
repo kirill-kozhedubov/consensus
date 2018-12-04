@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 @Service("issuesService")
@@ -36,9 +37,25 @@ public class IssueDataServiceImpl implements IssueDataService {
 
     @Override
     public Issue saveIssue(Issue issue) {
-        HistoryEntry historyEntry = new HistoryEntry(issue.getReporters().get(0), issue, "Issue created");
-        issue.getHistory().add(historyEntry);
-        return issueRepository.save(issue);
+        try {
+            HistoryEntry historyEntry = new HistoryEntry(issue.getReporters().get(0), issue, "Issue created by " + issue.getReporters().get(0));
+            issue.getHistory().add(historyEntry);
+            if (issue.getAssignee() != null && issue.getReporters() != null && issue.getReporters().get(0) != null) {
+                User assignee = userRepository.findById(issue.getAssignee().getId());
+                User reporter = userRepository.findById(issue.getReporters().get(0).getId());
+
+                issue.setAssignee(assignee);
+                issue.setReporters(Arrays.asList(assignee));
+            }
+            Issue savedIssue = issueRepository.save(issue);
+            logger.info("Saved issue:::", savedIssue);
+            Issue savedFetchedIssue = issueRepository.findById(savedIssue.getId());
+            return savedIssue;
+        } catch (Exception e) {
+            return null;
+        }
+
+
     }
 
 

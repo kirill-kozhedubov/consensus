@@ -154,4 +154,5 @@ public class Issue extends Base {
     public void setChildIssues(List<Issue> childIssues) {
         this.childIssues = childIssues;
     }
+
 }

@@ -17,16 +17,11 @@ public class DashboardViewController extends AbstractController {
     public ModelAndView dashboard(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView modelAndView = new ModelAndView();
 
-        if (projectUser.getUserData() != null) {
-            modelAndView.setViewName("redirect:/dashboard");
+        if (!projectUser.getUserData().getFullName().equals("Firstname" + " LastName")) {
+            modelAndView.setViewName("user/dashboard");
         } else {
             modelAndView.setViewName("redirect:sso/login");
         }
-
-
-
-
-
 
 
         return modelAndView;

@@ -45,4 +45,5 @@ public class IssueAttachment extends Base {
     public void setIssueAttachmentFile(IssueAttachmentFile issueAttachmentFile) {
         this.issueAttachmentFile = issueAttachmentFile;
     }
+
 }

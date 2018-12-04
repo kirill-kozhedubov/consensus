@@ -118,4 +118,5 @@ public class User extends Base {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
+
 }

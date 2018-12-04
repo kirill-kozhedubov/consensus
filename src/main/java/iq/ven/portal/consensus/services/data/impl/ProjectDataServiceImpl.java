@@ -23,7 +23,10 @@ public class ProjectDataServiceImpl implements ProjectDataService {
     private static final Logger logger = LoggerFactory.getLogger(ProjectDataServiceImpl.class);
 
     public Project saveProject(Project project) {
-        return projectRepository.save(project);
+
+        Project savedProject = projectRepository.save(project);
+        Project savedFetchedProject = projectRepository.findById(savedProject.getId());
+        return savedFetchedProject;
     }
 
     @Override
@@ -67,7 +70,9 @@ public class ProjectDataServiceImpl implements ProjectDataService {
 
     public Project saveProject(CreateProjectRequest projectRequest) {
         Project project = new Project();
-        return projectRepository.save(project);
+        Project savedProject = projectRepository.save(project);
+        logger.info("Saved project:::", savedProject);
+        return savedProject;
     }
 
     public Project loadProjectById(Long id) {

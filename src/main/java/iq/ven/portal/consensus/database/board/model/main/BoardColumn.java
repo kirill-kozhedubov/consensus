@@ -35,3 +35,4 @@ public class BoardColumn extends Base {
         this.position = position;
     }
 }
+

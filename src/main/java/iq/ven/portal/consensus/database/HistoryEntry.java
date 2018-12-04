@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "history")
-@PrimaryKeyJoinColumn(name="id")
+@PrimaryKeyJoinColumn(name = "id")
 public class HistoryEntry extends Base {
 
     @OneToOne(fetch = FetchType.LAZY)
@@ -51,4 +51,5 @@ public class HistoryEntry extends Base {
     public void setChangeItself(String changeItself) {
         this.changeItself = changeItself;
     }
+
 }

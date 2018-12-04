@@ -62,4 +62,5 @@ public class Project extends Base {
     public void setBoards(List<Board> boards) {
         this.boards = boards;
     }
+
 }

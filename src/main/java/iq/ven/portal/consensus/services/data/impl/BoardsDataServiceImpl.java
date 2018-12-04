@@ -27,6 +27,8 @@ public class BoardsDataServiceImpl implements BoardsDataService {
     @Override
     public Board save(Board board) {
         Board savedBoard = boardRepository.save(board);
+
+        logger.info("Saved Board:::", savedBoard);
         return savedBoard;
     }
 

@@ -39,7 +39,16 @@ public class UserDataServiceImpl implements UserDataService, UserDetailsService 
 
     @Override
     public User findUserByEmail(String email) {
-        return userRepository.findByEmail(email);
+
+        try {
+            User foundUser = userRepository.findByEmail(email);
+            return foundUser;
+        } catch (Exception e) {
+            logger.error("Error fetching user by email::", e);
+            return null;
+        }
+
+
     }
 
     @Override
@@ -54,7 +63,10 @@ public class UserDataServiceImpl implements UserDataService, UserDetailsService 
             role = rolesDataService.findRoleByName("USER");
         }
         user.setRoles(Arrays.asList(role));
-        return userRepository.save(user);
+
+        User savedUser = userRepository.save(user);
+        User savedFetchedUser = userRepository.findById(savedUser.getId());
+        return savedFetchedUser;
     }
 
     @Override
@@ -69,7 +81,12 @@ public class UserDataServiceImpl implements UserDataService, UserDetailsService 
             role = rolesDataService.findRoleByName("USER");
         }
         user.setRoles(Arrays.asList(role));
-        return userRepository.save(user);
+
+        User savedUser = userRepository.save(user);
+
+        logger.info("Saved user:::", user);
+
+        return savedUser;
     }
 
     @Override
