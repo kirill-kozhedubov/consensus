@@ -13,7 +13,6 @@ public class HistoryViewConverter {
 
         String name = historyEntry.getName();
         String description = historyEntry.getDescription();
-        Boolean isVisible = historyEntry.isVisible();
         Long id = historyEntry.getId();
         Date createdDate = historyEntry.getCreatedDate();
         Date updatedDate = historyEntry.getUpdatedDate();
@@ -38,7 +37,6 @@ public class HistoryViewConverter {
 
         historyEntryMap.put("name", name);
         historyEntryMap.put("description", description);
-        historyEntryMap.put("isVisible", isVisible);
         historyEntryMap.put("id", id);
         historyEntryMap.put("createdDate", createdDate);
         historyEntryMap.put("updatedDate", updatedDate);

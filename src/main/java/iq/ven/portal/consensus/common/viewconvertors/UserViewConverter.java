@@ -17,7 +17,6 @@ public class UserViewConverter {
         String email = user.getEmail();
         Boolean isActive = user.isActive();
         List<Role> userRoles = user.getRoles();
-        Boolean isVisible = user.isVisible();
         Date createdDate = user.getCreatedDate();
         Date updatedDate = user.getUpdatedDate();
 
@@ -32,7 +31,6 @@ public class UserViewConverter {
         userMap.put("email", email);
         userMap.put("isActive", isActive);
         userMap.put("roles", rolesList);
-        userMap.put("isVisible", isVisible);
         userMap.put("id", userId);
         userMap.put("createdDate", createdDate);
         userMap.put("updatedDate", updatedDate);

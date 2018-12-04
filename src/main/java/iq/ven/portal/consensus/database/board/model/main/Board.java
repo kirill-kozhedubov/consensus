@@ -15,7 +15,7 @@ public class Board extends Base implements Serializable {
     @Enumerated(EnumType.STRING)
     private BoardType boardType;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.MERGE, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<User> managers;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)

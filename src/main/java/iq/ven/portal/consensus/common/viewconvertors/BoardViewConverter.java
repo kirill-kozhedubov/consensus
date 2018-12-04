@@ -13,7 +13,6 @@ public class BoardViewConverter {
         Long boardId = board.getId();
         String boardName = board.getName();
         String boardDescription = board.getDescription();
-        Boolean isVisible = board.isVisible();
         List<BoardColumn> boardColumns = board.getColumns();
         Date createdDate = board.getCreatedDate();
         Date updatedDate = board.getUpdatedDate();
@@ -33,7 +32,6 @@ public class BoardViewConverter {
         boardMap.put("id", boardId);
         boardMap.put("name", boardName);
         boardMap.put("description", boardDescription);
-        boardMap.put("isVisible", isVisible);
         boardMap.put("columns", boardColumnsList);
         boardMap.put("createdDate", createdDate);
         boardMap.put("updatedDate", updatedDate);
@@ -47,7 +45,6 @@ public class BoardViewConverter {
         Long columnId = boardColumn.getId();
         String columnName = boardColumn.getName();
         String columnDescription = boardColumn.getDescription();
-        Boolean isVisible = boardColumn.isVisible();
         Long position = boardColumn.getPosition();
         Date createdDate = boardColumn.getCreatedDate();
         Date updatedDate = boardColumn.getUpdatedDate();
@@ -61,7 +58,6 @@ public class BoardViewConverter {
         columnMap.put("id", columnId);
         columnMap.put("name", columnName);
         columnMap.put("description", columnDescription);
-        columnMap.put("isVisible", isVisible);
         columnMap.put("issues", issuesList);
         columnMap.put("position", position);
         columnMap.put("createdDate", createdDate);

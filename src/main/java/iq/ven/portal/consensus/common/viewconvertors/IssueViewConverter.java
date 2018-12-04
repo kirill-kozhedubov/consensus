@@ -26,7 +26,6 @@ public class IssueViewConverter {
         IssueTypes issueType = issue.getType();
         IssuePriorities issuePriority = issue.getPriority();
         IssueStatuses issueStatus = issue.getStatus();
-        Boolean isVisible = issue.isVisible();
         List<HistoryEntry> history = issue.getHistory();
 
 
@@ -60,7 +59,6 @@ public class IssueViewConverter {
         issueMap.put("issueType", issueType);
         issueMap.put("issuePriority", issuePriority);
         issueMap.put("issueStatus", issueStatus);
-        issueMap.put("isVisible", isVisible);
 
         return issueMap;
     }

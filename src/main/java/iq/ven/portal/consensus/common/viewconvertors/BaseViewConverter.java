@@ -12,7 +12,6 @@ public class BaseViewConverter {
         Long id = base.getId();
         String baseName = base.getName();
         String baseDescription = base.getDescription();
-        Boolean isVisible = base.isVisible();
         Date createdDate = base.getCreatedDate();
         Date updatedDate = base.getUpdatedDate();
 
@@ -25,7 +24,6 @@ public class BaseViewConverter {
         baseMap.put("id", id);
         baseMap.put("name", baseName);
         baseMap.put("description", baseDescription);
-        baseMap.put("isVisible", isVisible);
         baseMap.put("createdDate", createdDate);
         baseMap.put("updatedDate", updatedDate);
 

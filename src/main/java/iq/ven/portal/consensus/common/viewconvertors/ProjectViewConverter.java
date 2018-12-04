@@ -14,7 +14,6 @@ public class ProjectViewConverter {
         String name = project.getName();
         String abbr = project.getAbbreviation();
         String description = project.getDescription();
-        Boolean isVisible = project.isVisible();
         Date createdDate = project.getCreatedDate();
         Date updatedDate = project.getUpdatedDate();
 
@@ -33,7 +32,6 @@ public class ProjectViewConverter {
         projectMap.put("description", description);
         projectMap.put("abbr", abbr);
         projectMap.put("manager", managerName);
-        projectMap.put("isVisible", isVisible);
         projectMap.put("id", projectId);
         projectMap.put("createdDate", createdDate);
         projectMap.put("updatedDate", updatedDate);
