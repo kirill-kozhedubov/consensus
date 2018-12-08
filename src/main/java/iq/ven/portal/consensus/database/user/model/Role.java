@@ -2,8 +2,10 @@ package iq.ven.portal.consensus.database.user.model;
 
 import iq.ven.portal.consensus.database.Base;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "roles")
@@ -16,9 +18,6 @@ public class Role extends Base {
     @Column(name = "role")
     private String role;
 
-    @ManyToMany(mappedBy = "roles", fetch = FetchType.LAZY)
-    private List<User> user;
-
     public String getRole() {
         return role;
     }
@@ -27,11 +26,4 @@ public class Role extends Base {
         this.role = role;
     }
 
-    public List<User> getUser() {
-        return user;
-    }
-
-    public void setUser(List<User> user) {
-        this.user = user;
-    }
 }

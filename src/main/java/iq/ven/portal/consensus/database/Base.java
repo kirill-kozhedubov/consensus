@@ -2,6 +2,7 @@ package iq.ven.portal.consensus.database;
 
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -18,20 +19,21 @@ public class Base implements Serializable {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "object_name")
     private String name;
 
-    @Column(name = "description", length = 1600, columnDefinition="VARCHAR")
+    @Column(name = "object_description", length = 65535, columnDefinition="TEXT")
+    @Type(type="text")
     private String description;
 
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated", nullable = false)
+    @Column(name = "created_date")
     private Date createdDate;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created", nullable = false, updatable = false)
+    @Column(name = "updated_date")
     private Date updatedDate;
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)

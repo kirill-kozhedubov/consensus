@@ -69,22 +69,22 @@ public class SSOViewController extends AbstractController {
             Issue issue = createIssue(project, userr);
         }
 
-   User genUser = null;
-   for (int i = 0; i < 50; i++) {
-       genUser = generateAndSaveUser();
-   }
-   Project genProj = null;
-   for (int i = 0; i < 50; i++) {
-       genProj = createProject(checker);
-   }
-   Issue genIssue = null;
-   for (int i = 0; i < 50; i++) {
-       genIssue = createIssue(genProj, genUser);
-   }
-   Board genBoard = null;
-   for (int i = 0; i < 1; i++) {
-       genBoard = createBoard(genProj, genUser);
-   }
+        User genUser = null;
+        for (int i = 0; i < 10; i++) {
+            genUser = generateAndSaveUser();
+        }
+        Project genProj = null;
+        for (int i = 0; i < 10; i++) {
+            genProj = createProject(checker);
+        }
+        Issue genIssue = null;
+        for (int i = 0; i < 10; i++) {
+            genIssue = createIssue(genProj, genUser);
+        }
+        Board genBoard = null;
+        for (int i = 0; i < 1; i++) {
+            genBoard = createBoard(genProj, genUser);
+        }
 
         //   List<Issue> foundIssue = issueDataService.findIssueByNameIgnoreCaseContaining("Issue ly");
         //   System.out.println(foundIssue);
@@ -202,8 +202,8 @@ public class SSOViewController extends AbstractController {
         project.setIssues(new ArrayList<Issue>());
         project.setBoards(new ArrayList<Board>());
 
-
-        project.setManager(userDataService.findUserByEmail(user.getEmail()));
+        if (user != null)
+            project.setManager(userDataService.findUserByEmail(user.getEmail()));
         project.setDescription(generateDescription());
 
         project = projectDataService.saveProject(project);

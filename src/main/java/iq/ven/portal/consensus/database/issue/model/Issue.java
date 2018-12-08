@@ -12,7 +12,7 @@ import java.util.List;
 @Table(name = "issues")
 @PrimaryKeyJoinColumn(name = "id")
 @SequenceGenerator(name="key_sequence", initialValue=1, allocationSize=1)
-@Inheritance(strategy = InheritanceType.JOINED)
+
 public class Issue extends Base {
 
     @Transient
