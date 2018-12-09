@@ -3,6 +3,7 @@ package iq.ven.portal.consensus.controllers.issues;
 import iq.ven.portal.consensus.common.beans.ProjectUser;
 import iq.ven.portal.consensus.common.beans.UserState;
 import iq.ven.portal.consensus.common.util.helpers.TemplatesHelper;
+import iq.ven.portal.consensus.common.viewconvertors.IssueViewConverter;
 import iq.ven.portal.consensus.controllers.AbstractController;
 import iq.ven.portal.consensus.database.issue.model.Issue;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/issues")
@@ -54,9 +57,7 @@ public class IssueViewController extends AbstractController {
     public ModelAndView issue() {
         ModelAndView modelAndView = new ModelAndView();
 
-
-        modelAndView.addObject(TemplatesHelper.PAGE_TITLE, "Issue");
-        modelAndView.setViewName("issues/issue");
+        modelAndView.setViewName("redirect:dashboard");
         return modelAndView;
     }
 
@@ -64,6 +65,12 @@ public class IssueViewController extends AbstractController {
     @RequestMapping(value = {"/issue"}, method = RequestMethod.GET)
     public ModelAndView issuegetlul() {
         ModelAndView modelAndView = new ModelAndView();
+
+
+        List<Issue> issues = issueDataService.findIssueByNameIgnoreCaseContaining("Issue");
+        Issue issue = issues.get(0);
+        Map<String, Object> issueMap = IssueViewConverter.convertIssue(issue, false);
+        modelAndView.addObject("issue", issueMap);
 
 
         modelAndView.addObject(TemplatesHelper.PAGE_TITLE, "Issue");

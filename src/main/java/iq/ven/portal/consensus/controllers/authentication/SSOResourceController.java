@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Date;
 import java.util.HashMap;
@@ -47,7 +48,11 @@ public class SSOResourceController extends AbstractController {
             BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
             if (userDetails.getUsername().equals(email) && bCryptPasswordEncoder.matches(password, userDetails.getPassword())) {
                 setUserParametersAfterLogin(userDetails);
-                request.getSession(true);
+
+                HttpSession session = request.getSession();
+                session.setAttribute("user_full_name", userDetails.getFullName());
+                session.setAttribute("user_email", userDetails.getEmail());
+                session.setAttribute("user_is_active", userDetails.isActive());
 
                 result.put("success", true);
             } else {
@@ -71,7 +76,7 @@ public class SSOResourceController extends AbstractController {
             userExists = userDataService.findUserByEmail(userDataRequest.getEmail());
         }
         if (userExists != null) {
-            result.put("errorMessage", "There is error in your registration try again");
+            result.put("errorMessage", "User with this email already exists");
         } else {
             if (UserValidator.validateUserDataForRegistration(userDataRequest)) {
                 user = new User();

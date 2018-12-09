@@ -12,9 +12,9 @@ import java.io.Serializable;
 public class ProjectUser implements Serializable {
 
    public ProjectUser() {
-      UserData userData = new UserData();
-      setUserData(userData);
-   } //!TODO REMOVE ITS FOR TEST
+     // UserData userData = new UserData();
+     // setUserData(userData);
+   }
 
    private UserData userData;
 

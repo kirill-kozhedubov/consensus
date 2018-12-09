@@ -54,6 +54,33 @@ public class SSOViewController extends AbstractController {
 
     private static final Logger logger = LoggerFactory.getLogger(SSOViewController.class);
 
+    @RequestMapping(value = {"/logindummy"}, method = RequestMethod.GET)
+    public ModelAndView loginToDummy(HttpServletResponse response, HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        User checker = userDataService.findUserByEmail("user@com.com");
+        if (checker == null) {
+            User userr = createUser();
+            setUserParametersAfterLogin(userr);
+
+            HttpSession session = request.getSession();
+            session.setAttribute("user_full_name", userr.getFullName());
+            session.setAttribute("user_email", userr.getEmail());
+            session.setAttribute("user_is_active", userr.isActive());
+
+        }
+
+        checker = userDataService.findUserByEmail("user@com.com");
+        Project project = createProject(checker);
+        Issue issue = createIssue(project, checker);
+        Board board = createBoard(project, checker, issue);
+
+
+        modelAndView.setViewName("redirect:/issues/issue");
+        return modelAndView;
+    }
+
+
     @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
     public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView();
@@ -83,7 +110,7 @@ public class SSOViewController extends AbstractController {
         }
         Board genBoard = null;
         for (int i = 0; i < 1; i++) {
-            genBoard = createBoard(genProj, genUser);
+            genBoard = createBoard(genProj, genUser, null);
         }
 
         //   List<Issue> foundIssue = issueDataService.findIssueByNameIgnoreCaseContaining("Issue ly");
@@ -163,8 +190,8 @@ public class SSOViewController extends AbstractController {
         if (userExists == null) {
             user = new User();
             user.setUsername("user");
-            user.setFirstName("Firstname");
-            user.setLastName("Lastname");
+            user.setFirstName("Firname");
+            user.setLastName("Laname");
             user.setEmail("user@com.com");
             user.setPassword("user");
 
@@ -198,7 +225,7 @@ public class SSOViewController extends AbstractController {
         String randNum = randomNumber(0, 1000000) + " " + randomNumber(0, 1000000);
 
         project.setName("Test project" + randNum);
-        project.setAbbreviation("PROJ" + randNum);
+        project.setAbbreviation("PROJ" + randomNumber(0, 1000000));
         project.setIssues(new ArrayList<Issue>());
         project.setBoards(new ArrayList<Board>());
 
@@ -233,12 +260,12 @@ public class SSOViewController extends AbstractController {
         issue.setHistory(new ArrayList<HistoryEntry>());
 
         issue = issueDataService.saveIssue(issue);
-
+        issue = issueDataService.findIssueByNameIgnoreCaseContaining(issue.getName()).get(0);
         return issue;
     }
 
 
-    Board createBoard(Project project, User user) {
+    Board createBoard(Project project, User user, Issue issue) {
         String randNum = randomNumber(0, 1000000) + " " + randomNumber(0, 1000000);
 
         Board board = new Board();
@@ -248,6 +275,8 @@ public class SSOViewController extends AbstractController {
 
         List<BoardColumn> standardColumns = BoardsHelper.generateStandardColumnsForBoard();
         board.setColumns(standardColumns);
+        if (issue != null)
+            board.getColumns().get(0).setIssues(Arrays.asList(issue));
 
         board.setProject(project);
         board.setManagers(Arrays.asList(user));
@@ -290,5 +319,19 @@ public class SSOViewController extends AbstractController {
         userState.clear();
         projectUser.clear();
     }
+
+    private void setUserParametersAfterLogin(User userDetails) {
+        UserData userData = UserData.UserDataBuilder.anUserData()
+                .withEmail(userDetails.getEmail())
+                .withFirstName(userDetails.getFirstName())
+                .withLastName(userDetails.getLastName())
+                .withUsername(userDetails.getUsername())
+                .withUserId(userDetails.getId())
+                .build();
+        projectUser.setUserData(userData);
+        userState.setUserRole(userDetails.getRoles());
+        userState.setLogInDate(new Date());
+    }
+
 
 }

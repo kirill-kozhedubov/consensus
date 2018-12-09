@@ -16,12 +16,12 @@ public class UserData {
         return userId;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
     public String getEmail() {
         return email;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public void setEmail(String email) {
@@ -61,8 +61,8 @@ public class UserData {
     }
 
     public String getFullName() {
-      //  return getFirstName() + " " + getLastName();
-        return "Firstname" + " LastName";  //!TODO REMOVE ITS FOR TEST
+       return getFirstName() + " " + getLastName();
+        //  return "Firstname" + " LastName";  //!TODO REMOVE ITS FOR TEST
     }
 
 

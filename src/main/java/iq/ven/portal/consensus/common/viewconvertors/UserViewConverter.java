@@ -13,7 +13,7 @@ public class UserViewConverter {
         String username = user.getUsername();
         String firstName = user.getFirstName();
         String lastName = user.getLastName();
-        String fullName = user.getLastName();
+        String fullName = user.getFullName();
         String email = user.getEmail();
         Boolean isActive = user.isActive();
         List<Role> userRoles = user.getRoles();

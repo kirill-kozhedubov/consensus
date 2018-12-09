@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -96,9 +97,19 @@ public class IssueDataServiceImpl implements IssueDataService {
 
     @Override
     public List<Issue> findIssueByNameIgnoreCaseContaining(String namePart) {
-        List<Issue> issues = issueRepository.findByNameContainingIgnoreCase(namePart);
+        try {
+            List<Issue> issues = issueRepository.findByNameContainingIgnoreCase(namePart);
+            if (issues != null && issues.size() > 0) {
+                return issues;
+            } else {
+                return new ArrayList<Issue>();
+            }
+        } catch (Exception e) {
+            logger.error("findIssueByNameIgnoreCaseContaining:::name:" + namePart, e);
+            return new ArrayList<Issue>();
+        }
 
-        return issues;
+
     }
 
     @Override

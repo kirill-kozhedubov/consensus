@@ -30,12 +30,14 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="border-grey-bottom">
-                    <div class="hierarchy-of-issues">
-                        <span href="" class="proj-abbr">PROJ-ABBR</span>
+                    <div class="hierarchy-of-issues text-primary font-weight-bold">
+                        <span href="" class="proj-abbr" th:text="${issue.project.abbr}"></span> <!--PROJ-ABBR-->
                         <span> / </span>
-                        <span href="" class="issue-link">PARNT-ISSUE-132</span>
-                        <span> / </span>
-                        <span href="" class="issue-link">ISSUE-1437</span>
+
+                        <span href="" class="issue-link" th:text="" th:if="${issue.parentIssue != null}"></span><!--PARNT-ISSUE-132-->
+                        <span th:if="${issue.parentIssue != null}"> / </span>
+
+                        <span href="" class="issue-link" th:text="${issue.issueKey}"></span> <!--ISSUE-1437-->
                     </div>
                 </div>
             </div>
@@ -77,24 +79,17 @@
                         <div class="people-subtitle">Assignee:</div>
                         <div class="assignee row">
                             <div class="profile-img col-md-1"></div>
-                            <div class="user-name col-md-6">Name Female</div>
+                            <div class="user-name col-md-6" th:text="${issue.assignee.fullName}"></div>
                             <div class="change-assignee js-change-assignee col-md-3">change</div>
                         </div>
                         <div class="people-subtitle">Reporters:</div>
 
                         <!--  reporters start-->
 
-                        <div class="reporter-entry">
+                        <div class="reporter-entry"  th:each="reporter : ${issue.reporters}">
                             <div class="reporter-entity row">
                                 <div class="profile-img col-md-1"></div>
-                                <div class="user-name   col-md-8">Name Female</div>
-                            </div>
-                        </div>
-
-                        <div class="reporter-entry">
-                            <div class="reporter-entity row">
-                                <div class="profile-img col-md-1"></div>
-                                <div class="user-name   col-md-8">Name Female2</div>
+                                <div class="user-name   col-md-8" th:text="${reporter.fullName}"></div>
                             </div>
                         </div>
 
@@ -107,15 +102,15 @@
                         <h5>Dates</h5>
                         <div class="created-date">
                             <div class="col-md-5 date-row">Created:</div>
-                            <div class="col-md-7 date-row">21.03.2018 23:36</div>
+                            <div class="col-md-7 date-row" th:text="${issue.createdDate}"></div>
                         </div>
                         <div class="updated-date">
                             <div class="col-md-5 date-row">Updated:</div>
-                            <div class="col-md-7 date-row">21.03.2018 23:36</div>
+                            <div class="col-md-7 date-row" th:text="${issue.updatedDate}"></div>
                         </div>
                         <div class="due-date">
                             <div class="col-md-5 date-row">Due date:</div>
-                            <div class="col-md-7 date-row">21.03.2018 23:36</div>
+                            <div class="col-md-7 date-row" th:text="${issue.dueDate}"></div>
                         </div>
                     </div>
                 </div>
@@ -129,21 +124,21 @@
                         <div class="col-md-6 issue-details-left">
                             <div class="_issue-detail issue-type">
                                 <div class="_detail issue-type-title    col-md-6">Type:</div>
-                                <div class="_detail issue-type-content  col-md-6">Bug</div>
+                                <div class="_detail issue-type-content  col-md-6" th:text="${issue.issueType}"></div>
                             </div>
                             <div class="_issue-detail issue-priority">
                                 <div class="_detail issue-priority-title    col-md-6">Priority:</div>
-                                <div class="_detail issue-priority-content  col-md-6">High</div>
+                                <div class="_detail issue-priority-content  col-md-6" th:text="${issue.issuePriority}"></div>
                             </div>
-                            <div class="_issue-detail issue-tags">
-                                <div class="_detail issue-tags-title    col-md-6">Tags:</div>
-                                <div class="_detail issue-tags-content  col-md-6">Lul, lylyl</div>
-                            </div>
+                            <!--   <div class="_issue-detail issue-tags" th:if="">
+                                   <div class="_detail issue-tags-title    col-md-6">Tags:</div>
+                                   <div class="_detail issue-tags-content  col-md-6" th:text="${issuePriority}">Lul, lylyl</div>
+                               </div>-->
                         </div>
                         <div class="col-md-6 issue-details-left">
                             <div class="_issue-detail issue-status">
                                 <div class="_detail issue-status-title      col-md-6">Status:</div>
-                                <div class="_detail issue-status-content    col-md-6">IN PROGRESS</div>
+                                <div class="_detail issue-status-content    col-md-6" th:text="${issue.issueStatus}"></div>
                             </div>
                             <div class="_issue-detail issue-resolution">
                                 <div class="_detail issue-resolution-title      col-md-6">Resolution:</div>
@@ -161,14 +156,7 @@
             <div class="col-lg-8 border-grey-left border-grey-top">
                 <div class="issue-sub-title"><h5>Description</h5></div>
                 <div class="issue-description-content">
-                    <p>Resize the browser to see the container go from 1170px (LG) > 970px (MD) > 750px (SM) and then
-                        break
-                        at XS
-                        where each column will take 12 columns</p>
-                    <p>Resize the browser to see the container go from 1170px (LG) > 970px (MD) > 750px (SM) and then
-                        break
-                        at XS
-                        where each column will take 12 columns</p>
+                    <p th:text="${issue.description}"></p>
                 </div>
             </div>
         </div>

@@ -14,6 +14,7 @@ public class BoardsHelper {
             column.setPosition(i);
             column.setName(getName(i));
             column.setIssues(Collections.emptyList());
+            columns.add(column);
         }
 
 

@@ -122,3 +122,43 @@
 ._action-header {
     font-weight: bold;
 }
+
+
+.issue_status_closed{}
+.issue_status_in-progress{}
+.issue_status_rft{}
+.issue_status_info-required{}
+.issue_status_info-received{}
+.issue_status_open{}
+.issue_status_in-assessment{}
+.issue_status_assessed{}
+.issue_status_reopened{}
+
+
+
+.issue_priority_blocker {}
+.issue_priority_critical {}
+.issue_priority_normal {}
+.issue_priority_low {}
+.issue_priority_high {}
+
+
+
+.issue_type_user-story {}
+.issue_type_bug {}
+.issue_type_project {}
+.issue_type_question {}
+.issue_type_dev-task {}
+.issue_type_work-item {}
+.issue_type_design-task {}
+
+
+
+
+
+
+
+
+
+
+

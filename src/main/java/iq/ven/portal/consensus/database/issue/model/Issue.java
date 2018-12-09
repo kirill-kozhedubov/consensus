@@ -11,24 +11,30 @@ import java.util.List;
 @Entity
 @Table(name = "issues")
 @PrimaryKeyJoinColumn(name = "id")
-@SequenceGenerator(name="key_sequence", initialValue=1, allocationSize=1)
+@SequenceGenerator(name = "key_sequence", initialValue = 1, allocationSize = 1)
 
 public class Issue extends Base {
 
     @Transient
     private String issueKey;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     private User assignee;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "issue_reporters",
+            joinColumns = {@JoinColumn(name = "issue_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "reporter_id", referencedColumnName = "id")})
     private List<User> reporters;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name="parent_issue")
     private Issue parentIssue;
 
-    @OneToMany
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinTable(name = "issues_children",
+            joinColumns = {@JoinColumn(name = "issue_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "child_id", referencedColumnName = "id")})
     private List<Issue> childIssues;
 
     @OneToOne(fetch = FetchType.LAZY)

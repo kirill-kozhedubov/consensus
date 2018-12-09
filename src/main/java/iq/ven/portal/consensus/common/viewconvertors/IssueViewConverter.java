@@ -2,6 +2,7 @@ package iq.ven.portal.consensus.common.viewconvertors;
 
 import iq.ven.portal.consensus.database.HistoryEntry;
 import iq.ven.portal.consensus.database.issue.model.*;
+import iq.ven.portal.consensus.database.project.model.Project;
 import iq.ven.portal.consensus.database.user.model.User;
 
 import java.util.*;
@@ -27,11 +28,16 @@ public class IssueViewConverter {
         IssuePriorities issuePriority = issue.getPriority();
         IssueStatuses issueStatus = issue.getStatus();
         List<HistoryEntry> history = issue.getHistory();
+        Project project = issue.getProject();
 
 
         Map<String, Object> issueMap = new HashMap<>();
         Map<String, Object> assigneeMap = UserViewConverter.convertUser(assignee, true);
-        Map<String, Object> parentIssueMap = IssueViewConverter.convertIssue(parentIssue, true);
+        Map<String, Object> projectMap = ProjectViewConverter.convertProject(project, true);
+        Map<String, Object> parentIssueMap = null;
+        if (parentIssue != null) {
+            parentIssueMap = IssueViewConverter.convertIssue(parentIssue, true);
+        }
         if (!isLightweight) {
             List<Map<String, Object>> reportersMap = UserViewConverter.convertUsers(reporters, true);
             List<Map<String, Object>> childIssuesMap = IssueViewConverter.convertIssues(childIssues, true);
@@ -44,6 +50,7 @@ public class IssueViewConverter {
             issueMap.put("attachments", attachmentsMap);
             issueMap.put("comments", commentsMap);
             issueMap.put("history", historyMap);
+            issueMap.put("project", projectMap);
         }
 
         issueMap.put("id", issueId);
@@ -56,9 +63,10 @@ public class IssueViewConverter {
         issueMap.put("createdDate", createdDate);
         issueMap.put("updatedDate", updatedDate);
         issueMap.put("dueDate", dueDate);
-        issueMap.put("issueType", issueType);
-        issueMap.put("issuePriority", issuePriority);
-        issueMap.put("issueStatus", issueStatus);
+
+        issueMap.put("issueType", IssueTypes.getFullIssueTypeByName(issueType.getDisplayName()));
+        issueMap.put("issuePriority", IssuePriorities.getFullIssuePriorityByName(issuePriority.getDisplayName()));
+        issueMap.put("issueStatus", IssueStatuses.getFullIssueStatusByName(issueStatus.getDisplayName()));
 
         return issueMap;
     }

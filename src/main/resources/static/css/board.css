@@ -117,7 +117,31 @@
 
 
 
+.board_issue_status_closed{}
+.board_issue_status_in-progress{}
+.board_issue_status_rft{}
+.board_issue_status_info-required{}
+.board_issue_status_info-received{}
+.board_issue_status_open{}
+.board_issue_status_in-assessment{}
+.board_issue_status_assessed{}
+.board_issue_status_reopened{}
 
+
+.board_issue_priority_blocker {}
+.board_issue_priority_critical {}
+.board_issue_priority_normal {}
+.board_issue_priority_low {}
+.board_issue_priority_high {}
+
+
+.board_issue_type_user-story {}
+.board_issue_type_bug {}
+.board_issue_type_project {}
+.board_issue_type_question {}
+.board_issue_type_dev-task {}
+.board_issue_type_work-item {}
+.board_issue_type_design-task {}
 
 
 
