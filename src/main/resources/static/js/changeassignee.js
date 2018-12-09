@@ -10,7 +10,7 @@
         page.find("#searchInput").bind("blur", blurSearchInput);
         page.find("#searchInput").bind("focus", focusSearchInput);
 
-        page.find(".js-assignee-save").bind("click",selectAssigneeOnBE);
+        page.find(".js-assignee-save").bind("click", selectAssigneeOnBE);
 
         console.log("Issue.init end");
     });
@@ -42,7 +42,7 @@
                             var userFound = {fullName: fullName, username: userName};
                             var userGeneratedBlock = createPossibleAssigneeContainer(userFound);
                             assigneeVariantsContainer.append(userGeneratedBlock);
-                            $("._userName_" + userName).click(function() {
+                            $("._userName_" + userName).click(function () {
                                 selectAssignee(event);
                             });
                         });
@@ -115,16 +115,18 @@
         console.log("ChangeAssignee.selectAssigneeOnBE::::::::::::::::::wrapper");
         $(".js-change-assignee-popup").modal("hide"); //TODO REMOVE
 
+        var searchInput = page.find("#searchInput");
+        var foundUser = searchInput.val();
+        var foundUserArr = foundUser.split("(");
 
+        var issueKey = $(".js-issue-key").text();
+        var fullName = foundUserArr[0].trim();
+        var username = foundUserArr[1].trim().substr(0, foundUserArr[1].length - 1);
 
-        var issueKey = page.find(".js-issue-key");
-        var username = null;
-        var fullName = null;
-
-      /*  $.ajax({
+        $.ajax({
             type: "GET",
             url: "http://" + location.host + "/issues/update-assignee-on-issue",
-            data: {usename: username, fullName: fullName, issueKey: issueKey},
+            data: {username: username, fullName: fullName, issueKey: issueKey},
             success: function (data) {
                 console.log(data);
 
@@ -137,7 +139,7 @@
             error: function (e) {
                 console.log(e);
             }
-        });*/
+        });
     }
 
 

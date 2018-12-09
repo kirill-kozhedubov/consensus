@@ -39,14 +39,8 @@ public class IssueResourceController extends AbstractController {
 
         Issue updatedIssue = issueDataService.updateIssueAssignee(issue, user, projectUser.getUserData().getUserId());
 
-
-
-
-
-
-
         result.put("fullName", user.getFullName());
-        result.put("username", user.getFullName());
+        result.put("username", user.getUsername());
 
 
         return result;

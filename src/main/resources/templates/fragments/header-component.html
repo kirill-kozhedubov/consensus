@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-green" th:fragment="header-component">
-    <a class="navbar-brand" href="#">Veniq's Pines</a>
+    <a class="navbar-brand" href="#">KanbanWWH</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -12,13 +12,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="#">Dashboard</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link" href="#">Boards</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Disabled</a>
+                <a class="nav-link" href="#">Projects</a>
             </li>
             <li>
                 <button type="button" class="btn btn-primary js-create-issue-header form-control">Create</button>
@@ -32,8 +32,8 @@
 
 
         <li class="nav-item">
-            <!-- maybe avatar-->
-            <a class="nav-link" href="#" th:text="${@projectUser.getUserData().getFullName()}"></a>
+            <!-- todo maybe avatar-->
+            <a class="nav-link" th:href="@{/users/} + ${@projectUser.getUserData().getUsername()}" th:text="${@projectUser.getUserData().getFullName()}"></a>
 
 
         </li>

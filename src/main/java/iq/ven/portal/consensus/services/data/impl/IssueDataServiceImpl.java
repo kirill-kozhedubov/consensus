@@ -69,7 +69,7 @@ public class IssueDataServiceImpl implements IssueDataService {
 
     @Override
     public Issue findIssueByIssueKey(String issueKey) {
-        String issueIdString = issueKey.replaceAll("\\D+", "");
+        String issueIdString = issueKey.substring(issueKey.lastIndexOf("-") + 1);
         Issue issue;
         try {
             Long issueId = Long.parseLong(issueIdString);

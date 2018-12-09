@@ -36,12 +36,13 @@ public class IssueViewController extends AbstractController {
 
         Issue issue = issueDataService.findIssueById(issueId);
         if (issue != null) {
-            //find issue in db
-            String issueKey = "[" + projectKey + "-" + issueId + "] ";
-            String issueName = "";
+            String issueKey = "[" + projectKey + "-" + issueId + "]";
+            String issueName = issue.getName();
 
+            Map<String, Object> issueMap = IssueViewConverter.convertIssue(issue, false);
+            modelAndView.addObject("issue", issueMap);
 
-            modelAndView.addObject(TemplatesHelper.PAGE_TITLE, issueKey + issueName);
+            modelAndView.addObject(TemplatesHelper.PAGE_TITLE, issueKey + " " + issueName);
             modelAndView.setViewName("issues/issue");
             return modelAndView;
 
@@ -73,7 +74,7 @@ public class IssueViewController extends AbstractController {
         modelAndView.addObject("issue", issueMap);
 
 
-        modelAndView.addObject(TemplatesHelper.PAGE_TITLE, "Issue");
+        modelAndView.addObject(TemplatesHelper.PAGE_TITLE, issue.getIssueKey());
         modelAndView.setViewName("issues/issue");
         return modelAndView;
     }

@@ -49,8 +49,8 @@ public enum IssueStatuses {
         for (IssueStatuses e : IssueStatuses.values()) {
             if (e.displayName.equals(displayName)) {
                 map.put("displayName", e.displayName);
-                map.put("boardClass", e.displayName);
-                map.put("issueViewClass", e.displayName);
+                map.put("boardClass", e.boardClass);
+                map.put("issueViewClass", e.issueViewClass);
 
                 return map;
             }
