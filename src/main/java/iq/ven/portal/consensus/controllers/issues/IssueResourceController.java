@@ -42,7 +42,6 @@ public class IssueResourceController extends AbstractController {
         result.put("fullName", user.getFullName());
         result.put("username", user.getUsername());
 
-
         return result;
     }
 
