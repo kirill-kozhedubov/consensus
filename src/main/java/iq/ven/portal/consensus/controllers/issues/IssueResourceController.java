@@ -61,6 +61,29 @@ public class IssueResourceController extends AbstractController {
         return result;
     }
 
+    @RequestMapping(path = "/move-issue", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> moveIssue(@RequestParam(value = "moveColumn") String moveColumn, @RequestParam(value = "issueKey") String issueKey) {
+        Map<String, Object> result = new HashMap<>();
+
+        Issue issue = issueDataService.findIssueByIssueKey(issueKey);
+        User user = userState.getUser();
+        issueDataService.moveToAnotherBoardColumn(issue, moveColumn, user);
+
+        return result;
+    }
+
+    @RequestMapping(path = "/change-issue-status", method = RequestMethod.GET)
+    @ResponseBody
+    public Map<String, Object> changeIssueStatus(@RequestParam(value = "newStatus") String newStatus, @RequestParam(value = "issueKey") String issueKey) {
+        Map<String, Object> result = new HashMap<>();
+
+        Issue issue = issueDataService.findIssueByIssueKey(issueKey);
+        User user = userState.getUser();
+        issueDataService.changeStatus(issue, newStatus, user);
+
+        return result;
+    }
 
     private FindUsersResponse findUsers(String searchInput) {
         List<User> users = userDataService.findUsersForAssigneeChange(searchInput);

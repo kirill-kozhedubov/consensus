@@ -3,6 +3,7 @@ package iq.ven.portal.consensus.services.data;
 import iq.ven.portal.consensus.database.issue.model.Issue;
 import iq.ven.portal.consensus.database.user.model.User;
 
+import java.util.Date;
 import java.util.List;
 
 public interface IssueDataService {
@@ -19,5 +20,10 @@ public interface IssueDataService {
 
     Issue updateIssueAssignee(Issue issue, User userChangedTo, Long userIdWhoChanged);
 
+    Issue changeStatus(Issue issue, String newStatus, User user);
+
+    Issue changeDueDate(Issue issue, Date newDueDate, User user);
+
+    Issue moveToAnotherBoardColumn(Issue issue, String columnName, User user);
 
 }

@@ -1,6 +1,8 @@
 package iq.ven.portal.consensus.database.issue.model;
 
 import iq.ven.portal.consensus.database.Base;
+import iq.ven.portal.consensus.database.board.model.main.Board;
+import iq.ven.portal.consensus.database.board.model.main.BoardColumn;
 import iq.ven.portal.consensus.database.project.model.Project;
 import iq.ven.portal.consensus.database.user.model.User;
 
@@ -36,6 +38,15 @@ public class Issue extends Base {
             joinColumns = {@JoinColumn(name = "issue_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "child_id", referencedColumnName = "id")})
     private List<Issue> childIssues;
+
+    @ManyToOne
+    @JoinColumn(name="board_id")
+    private Board board;
+
+    @ManyToOne
+    @JoinColumn(name="board_column_id")
+    private BoardColumn boardColumn;
+
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_id")

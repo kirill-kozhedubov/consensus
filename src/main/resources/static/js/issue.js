@@ -80,6 +80,10 @@
     function addComment() {
         console.log("IssuePage.addComment start");
 
+     //   addCommentModal.modal()
+      var commentTextarea =  page.find(".js-comment-textarea");  // send value of this
+        var commentAddButton =   page.find(".js-comment-addcomment"); // add comment to be through ajax
+        var commentCancelButton =  page.find(".js-comment-cancel"); // clear textarea and close modal
 
         console.log("IssuePage.addComment end");
     }
@@ -87,6 +91,10 @@
     function moveIssue() {
         console.log("IssuePage.moveIssue start");
 
+        var moveModal = page.find(".js-move-modal");
+        var moveDirection = page.find(".js-move-modal-select:selected"); // select option where to move
+        var acceptMoveButton = page.find(".js-move-modal-action");  // move issue to new place on board and send to BE
+        var cancelMoveButton = page.find(".js-move-modal-cancel"); // hide modal and clear
 
         console.log("IssuePage.moveIssue end");
     }
@@ -94,6 +102,11 @@
     function changeIssueStatus() {
         console.log("IssuePage.changeIssueStatus start");
 
+        var issueStatusModal = page.find(".js-change-issue-status");
+        var selectedStatus = page.find(".js-issue-statuses:selected");  // selected status
+
+        var statusChangeActionButton = page.find(".js-change-issue-status-action"); // send to be
+        var cancelStatusChangeButton = page.find(".js-change-issue-status-cancel"); // hide modal and clear
 
         console.log("IssuePage.changeIssueStatus end");
     }
@@ -103,6 +116,11 @@
 
 
         console.log("IssuePage.addAttachment end");
+    }
+
+    function getIssueKey() {
+        var issueKey = $(".js-issue-key").text();
+        return issueKey;
     }
 
 

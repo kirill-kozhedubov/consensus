@@ -1,6 +1,8 @@
 package iq.ven.portal.consensus.common.beans;
 
 import iq.ven.portal.consensus.database.user.model.Role;
+import iq.ven.portal.consensus.database.user.model.User;
+import iq.ven.portal.consensus.services.data.UserDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -11,11 +13,14 @@ import java.util.Date;
 import java.util.List;
 
 @Component
-@Scope(value="session", proxyMode = ScopedProxyMode.TARGET_CLASS)
+@Scope(value = "session", proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class UserState implements Serializable {
 
     @Autowired
     private ProjectUser projectUser;
+
+    @Autowired
+    private UserDataService userDataService;
 
     private List<Role> userRoles;
 
@@ -23,6 +28,10 @@ public class UserState implements Serializable {
 
     public List<Role> getUserRole() {
         return userRoles;
+    }
+
+    public User getUser() {
+        return userDataService.findUserById(projectUser.getUserData().getUserId());
     }
 
     public void setUserRole(List<Role> userRoles) {

@@ -3,6 +3,7 @@ package iq.ven.portal.consensus.services.data.impl;
 import iq.ven.portal.consensus.database.HistoryEntry;
 import iq.ven.portal.consensus.database.HistoryRepository;
 import iq.ven.portal.consensus.database.issue.model.Issue;
+import iq.ven.portal.consensus.database.issue.model.IssueStatuses;
 import iq.ven.portal.consensus.database.issue.repository.IssueRepository;
 import iq.ven.portal.consensus.database.project.model.Project;
 import iq.ven.portal.consensus.database.user.model.User;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 @Service("issuesService")
@@ -129,5 +131,35 @@ public class IssueDataServiceImpl implements IssueDataService {
 
         Issue issueSaved = issueRepository.save(issue);
         return issueSaved;
+    }
+
+    @Override
+    public Issue changeStatus(Issue issue, String newStatus, User user) {
+        IssueStatuses issueStatus = IssueStatuses.getIssueStatusByName(newStatus);
+        issue.setStatus(issueStatus);
+
+        HistoryEntry historyEntry = new HistoryEntry(user, issue, "Issue status changed to " + newStatus);
+        issue.getHistory().add(historyEntry);
+
+
+        return issueRepository.save(issue);
+    }
+
+    @Override
+    public Issue changeDueDate(Issue issue, Date newDueDate, User user) {
+        return null;
+    }
+
+    @Override
+    public Issue moveToAnotherBoardColumn(Issue issue, String columnName, User user) {
+        HistoryEntry historyEntry = new HistoryEntry(user, issue, "Issue moved to " + columnName);
+        issue.getHistory().add(historyEntry);
+
+        //todo add actual logic
+
+        issueRepository.save(issue);
+
+
+        return null;
     }
 }
