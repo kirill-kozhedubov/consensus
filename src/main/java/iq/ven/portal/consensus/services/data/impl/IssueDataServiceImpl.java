@@ -2,6 +2,7 @@ package iq.ven.portal.consensus.services.data.impl;
 
 import iq.ven.portal.consensus.database.HistoryEntry;
 import iq.ven.portal.consensus.database.HistoryRepository;
+import iq.ven.portal.consensus.database.board.model.main.Board;
 import iq.ven.portal.consensus.database.issue.model.Issue;
 import iq.ven.portal.consensus.database.issue.model.IssueStatuses;
 import iq.ven.portal.consensus.database.issue.repository.IssueRepository;
@@ -58,6 +59,39 @@ public class IssueDataServiceImpl implements IssueDataService {
             return null;
         }
 
+
+    }
+
+
+    @Override
+    public Issue saveIssue(Issue issue, Board board, Project project) {
+        try {
+            HistoryEntry historyEntry = new HistoryEntry(issue.getReporters().get(0), issue, "Issue created by " + issue.getReporters().get(0));
+            issue.getHistory().add(historyEntry);
+            if (issue.getAssignee() != null && issue.getReporters() != null && issue.getReporters().get(0) != null) {
+                User assignee = userRepository.findById(issue.getAssignee().getId());
+             //   User reporter = userRepository.findById(issue.getReporters().get(0).getId());
+
+                issue.setAssignee(assignee);
+                issue.setReporters(Arrays.asList(assignee));
+            }
+
+            if (board != null) {
+                issue.setBoard(board);
+                issue.setBoardColumn(board.getColumns().get(0));
+            }
+
+            if (project != null) {
+                issue.setProject(project);
+            }
+
+            Issue savedIssue = issueRepository.save(issue);
+            logger.info("Saved issue:::", savedIssue);
+            Issue savedFetchedIssue = issueRepository.findById(savedIssue.getId());
+            return savedIssue;
+        } catch (Exception e) {
+            return null;
+        }
 
     }
 

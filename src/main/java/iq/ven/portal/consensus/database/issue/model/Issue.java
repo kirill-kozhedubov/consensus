@@ -172,4 +172,19 @@ public class Issue extends Base {
         this.childIssues = childIssues;
     }
 
+    public Board getBoard() {
+        return board;
+    }
+
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
+    public BoardColumn getBoardColumn() {
+        return boardColumn;
+    }
+
+    public void setBoardColumn(BoardColumn boardColumn) {
+        this.boardColumn = boardColumn;
+    }
 }

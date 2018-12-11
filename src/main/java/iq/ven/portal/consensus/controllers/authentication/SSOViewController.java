@@ -72,9 +72,10 @@ public class SSOViewController extends AbstractController {
 
         checker = userDataService.findUserByEmail("user@com.com");
         Project project = createProject(checker);
-        Issue issue = createIssue(project, checker);
-        Board board = createBoard(project, checker, issue);
 
+        Board board = createBoard(project, checker, null);
+
+        Issue issue = createIssue(project, checker, board);
 
         modelAndView.setViewName("redirect:/issues/issue");
         return modelAndView;
@@ -88,30 +89,30 @@ public class SSOViewController extends AbstractController {
 
 
 //--------------------------------START OF TEST-------------------------------------
-
-        User checker = userDataService.findUserByEmail("user@com.com");
-        if (checker == null) {
-            User userr = createUser();
-            Project project = createProject(userr);
-            Issue issue = createIssue(project, userr);
-        }
-
-        User genUser = null;
-        for (int i = 0; i < 10; i++) {
-            genUser = generateAndSaveUser();
-        }
-        Project genProj = null;
-        for (int i = 0; i < 10; i++) {
-            genProj = createProject(checker);
-        }
-        Issue genIssue = null;
-        for (int i = 0; i < 10; i++) {
-            genIssue = createIssue(genProj, genUser);
-        }
-        Board genBoard = null;
-        for (int i = 0; i < 1; i++) {
-            genBoard = createBoard(genProj, genUser, null);
-        }
+//
+   //     User checker = userDataService.findUserByEmail("user@com.com");
+   //     if (checker == null) {
+   //         User userr = createUser();
+   //         Project project = createProject(userr);
+   //         Issue issue = createIssue(project, userr);
+   //     }
+//
+   //     User genUser = null;
+   //     for (int i = 0; i < 10; i++) {
+   //         genUser = generateAndSaveUser();
+   //     }
+   //     Project genProj = null;
+   //     for (int i = 0; i < 10; i++) {
+   //         genProj = createProject(checker);
+   //     }
+   //     Issue genIssue = null;
+   //     for (int i = 0; i < 10; i++) {
+   //         genIssue = createIssue(genProj, genUser);
+   //     }
+   //     Board genBoard = null;
+   //     for (int i = 0; i < 1; i++) {
+   //         genBoard = createBoard(genProj, genUser, null);
+   //     }
 
         //   List<Issue> foundIssue = issueDataService.findIssueByNameIgnoreCaseContaining("Issue ly");
         //   System.out.println(foundIssue);
@@ -239,7 +240,7 @@ public class SSOViewController extends AbstractController {
         return project;
     }
 
-    Issue createIssue(Project project, User user) {
+    Issue createIssue(Project project, User user, Board board) {
         Issue issue = new Issue();
         issue.setName("Issue" + generateString(10));
         issue.setAssignee(user);
@@ -258,6 +259,11 @@ public class SSOViewController extends AbstractController {
         issue.setAttachments(new ArrayList<IssueAttachment>());
         issue.setComments(new ArrayList<IssueComment>());
         issue.setHistory(new ArrayList<HistoryEntry>());
+
+
+        issue.setBoard(board);
+        issue.setBoardColumn(board.getColumns().get(0));
+
 
         issue = issueDataService.saveIssue(issue);
         issue = issueDataService.findIssueByNameIgnoreCaseContaining(issue.getName()).get(0);
