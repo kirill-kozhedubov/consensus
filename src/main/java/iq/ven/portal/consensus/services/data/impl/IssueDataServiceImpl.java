@@ -88,7 +88,7 @@ public class IssueDataServiceImpl implements IssueDataService {
             Issue savedIssue = issueRepository.save(issue);
             logger.info("Saved issue:::", savedIssue);
             Issue savedFetchedIssue = issueRepository.findById(savedIssue.getId());
-            return savedIssue;
+            return savedFetchedIssue;
         } catch (Exception e) {
             return null;
         }
