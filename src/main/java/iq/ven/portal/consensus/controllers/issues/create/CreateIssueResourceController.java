@@ -53,13 +53,11 @@ public class CreateIssueResourceController extends AbstractController {
         issue.setStatus(IssueStatuses.OPEN);
         issue.setDescription(createIssueRequest.getDescription());
 
-
         issue.setAttachments(Collections.emptyList()/* TODO createIssueRequest.getAttachments()*/);
         issue.setComments(Collections.emptyList());
 
         Project project = projectDataService.findProjectById(TemplatesHelper.transformStringToLong(createIssueRequest.getProject()));
         issue.setProject(project);
-
 
         if (!StringUtils.isEmpty(createIssueRequest.getParentIssue())) {
             Issue parentIssue = issueDataService.findIssueByIssueKey(createIssueRequest.getParentIssue());
@@ -68,7 +66,6 @@ public class CreateIssueResourceController extends AbstractController {
                 issue.setParentIssue(parentIssue);
             }
         }
-
 
         if (!StringUtils.isEmpty(createIssueRequest.getDueDate()) && createIssueRequest.getDueDate().length() == 10) {
             String pattern = "MM.dd.yyyy";
@@ -79,13 +76,11 @@ public class CreateIssueResourceController extends AbstractController {
             } catch (ParseException e) {
                 logger.error("Error in date format", e);
             }
-
         }
 
         Issue savedIssue = issueDataService.saveIssue(issue);
         Board board = boardsDataService.findBoardById(TemplatesHelper.transformStringToLong(createIssueRequest.getBoardId()));
         addNewIssueToBoard(board, savedIssue);
-
 
         return result;
     }
