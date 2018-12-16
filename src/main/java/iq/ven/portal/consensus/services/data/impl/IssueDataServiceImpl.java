@@ -58,8 +58,6 @@ public class IssueDataServiceImpl implements IssueDataService {
         } catch (Exception e) {
             return null;
         }
-
-
     }
 
 
