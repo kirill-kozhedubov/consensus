@@ -9,7 +9,6 @@ import java.util.*;
 public class ProjectViewConverter {
 
     public static Map<String, Object> convertProject(Project project, boolean isLightweight) {
-
         Long projectId = project.getId();
         String name = project.getName();
         String abbr = project.getAbbreviation();
@@ -41,12 +40,10 @@ public class ProjectViewConverter {
 
     public static List<Map<String, Object>> convertProjects(List<Project> projects, boolean isLightweight) {
         List<Map<String, Object>> projectsList = new ArrayList<>();
-
         for (Project project : projects) {
-            Map<String, Object> issueMap = convertProject(project, isLightweight);
-            projectsList.add(issueMap);
+            Map<String, Object> projectMap = convertProject(project, isLightweight);
+            projectsList.add(projectMap);
         }
-
         return projectsList;
     }
 

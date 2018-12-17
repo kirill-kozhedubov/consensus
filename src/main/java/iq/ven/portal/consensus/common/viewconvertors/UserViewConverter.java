@@ -20,7 +20,6 @@ public class UserViewConverter {
         Date createdDate = user.getCreatedDate();
         Date updatedDate = user.getUpdatedDate();
 
-
         Map<String, Object> userMap = new HashMap<>();
         List<String> rolesList = convertRoles(userRoles);
 
